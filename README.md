@@ -119,21 +119,3 @@ git add .
 git commit -m "describe your changes"
 git push
 ```
-
----
-
-## Project Structure
-
-```bash
-ladywood-connect-dashboard/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-│
-├── assets/
-│   └── icons and images
-│
-├── data/
-│   └── datasets
-```
