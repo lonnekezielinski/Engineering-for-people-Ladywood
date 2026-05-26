@@ -103,19 +103,3 @@ streamlit run app.py
 The dashboard should automatically open in your browser.
 
 ---
-
-## Git Workflow
-
-### Pull latest changes before starting work
-
-```bash
-git pull
-```
-
-### Save and upload your changes
-
-```bash
-git add .
-git commit -m "describe your changes"
-git push
-```
