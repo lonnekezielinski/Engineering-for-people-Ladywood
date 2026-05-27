@@ -3,3 +3,4 @@
 streamlit
 pandas
 Pillow
+# might need Pillow if we are adding a logo 
