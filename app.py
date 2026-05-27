@@ -26,6 +26,7 @@ st.set_page_config(
 ### CUSTOM CSS
 st.markdown("""
 <style>
+            
 /* ---app background and streamlit overrides--- */
 [data-testid="stAppViewContainer"] {
     background-color: #F5F2EA;
@@ -152,7 +153,22 @@ a {
     text-decoration:none !important;
     color:inherit !important;
 }
+/* ---language dropdown styling--- */
+[data-testid="stSelectbox"] label {
+    font-size: 20px;
+    font-weight: 500;
+    color: #222;
+}
 
+[data-testid="stSelectbox"] > div > div {
+    background: white;
+    border: 2px solid #D8D2C7 !important;
+    border-radius: 18px !important;
+    padding: 10px 28px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #222;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -232,10 +248,14 @@ with col2:
 bottom1, bottom2 = st.columns([1,1])
 
 with bottom1:
+    st.markdown("<div style='background:white; border:2px solid #D8D2C7: border-radius:18px; padding:18px 28px;'>", unsafe_allow_html=True)
+
     language = st.selectbox(
         "Language",
-        ["English", "Arabic", "Urdu", "Punjabi"]
+        ["English", "Arabic", "Urdu", "Punjabi"],
+        label_visibility="visible"
     )
+    st.markdown("</div>", unsafe_allow_html=True)
     # Change languages based on the most spoken languages in Ladywood
 
 with bottom2:
