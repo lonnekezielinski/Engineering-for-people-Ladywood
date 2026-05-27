@@ -1,5 +1,257 @@
+### IMPORTS
 import streamlit as st
+import base64
 
-st.title("Announcements")
+### PAGE CONFIG
+st.set_page_config(
+    page_title="Announcements",
+    layout="wide"
+)
 
-st.write("What is happening today?")
+### FUNCTION FOR PNG ICON
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+announcement_icon = get_base64_image(
+    "assets/megaphone.png"
+)
+
+### CUSTOM CSS
+st.markdown("""
+<style>
+/* ---APP BACKGROUND + STREAMLIT--- */
+[data-testid="stAppViewContainer"]{
+    background-color:#F5F2EA;
+}
+
+[data-testid="stHeader"]{
+    background:transparent;
+}
+
+[data-testid="stToolbar"]{
+    right:2rem;
+}
+
+[data-testid="stSidebar"]{
+    display:none;
+}
+
+.block-container{
+    max-width:none;
+    width:100%;
+    padding-top:2rem;
+    padding-bottom:2rem;
+    padding-left:4rem;
+    padding-right:4rem;
+}
+
+/* ---BACK BUTTON--- */
+.stButton > button{
+    background:white;
+    border-radius:18px;
+    border:2px solid #D8D2C7;
+    padding:12px 18px;
+    font-size:18px;
+    color:#444;
+    margin-bottom:25px;
+}
+
+/* ---HEADER CARD--- */
+.page-header{
+    background:#E5D8F2;
+    border-radius:32px;
+    padding:35px 40px;
+    display:flex;
+    align-items:center;
+    gap:30px;
+    margin-bottom:40px;
+}
+
+.title{
+    font-size:64px;
+    font-weight:800;
+    color:#0D1B3D;
+}
+
+.subtitle{
+    font-size:22px;
+    color:#444;
+    margin-top:5px;
+}
+
+/* ---ANNOUNCEMENT CARDS--- */
+.announcement-card{
+    background:white;
+    border-radius:28px;
+    padding:22px;
+    margin-bottom:22px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:24px;
+    border:2px solid rgba(0,0,0,0.05);
+    box-shadow:
+    0 4px 12px rgba(0,0,0,0.04);
+    transition:0.2s;
+}
+
+.announcement-card:hover{
+    transform:scale(1.01);
+}
+
+.icon-box{
+    width:110px;
+    height:110px;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    flex-shrink:0;
+}
+
+/* card colours */
+.green{
+    background:#D8EBCF;
+}
+
+.purple{
+    background:#E5D8F2;
+}
+
+.orange{
+    background:#F7DFC8;
+}
+
+.pink{
+    background:#F7D7DD;
+}
+
+.card-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:100%;
+}
+            
+/* text */
+/* announcement content reset */
+
+.card-content{
+    margin:0;
+    padding:0;
+}
+
+.card-content *{
+    margin-left:0;
+}
+
+.card-content h3{
+    margin:0;
+    font-size:28px;
+    color:#111;
+}
+
+.card-content p{
+    margin-top:8px;
+    font-size:18px;
+    line-height:1.6;
+    color:#555;
+}
+
+/* ---VIEW ALL BUTTON--- */
+.view-button{
+    background:#D8EBCF;
+    border-radius:25px;
+    padding:28px;
+    margin-top:30px;
+    text-align:center;
+    font-size:26px;
+    font-weight:700;
+    transition:0.2s;
+}
+
+.view-button:hover{
+    transform:scale(1.02);
+}
+
+/* links */
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+### BACK BUTTON
+if st.button("← Back to dashboard"):
+    st.switch_page("app.py")
+
+### HEADER
+st.markdown(f"""
+<div class="page-header">
+
+<img
+src="data:image/png;base64,{announcement_icon}"
+width="110">
+
+<div>
+
+<div class="title">
+Announcements
+</div>
+
+<div class="subtitle">
+Community updates and local events
+</div>
+
+</div>
+
+</div>
+""", unsafe_allow_html=True)
+
+### ANNOUNCEMENTS
+announcement_data = [
+("🌳", "green", "Community Clean-Up Event", "Join the neighbourhood clean-up this Saturday at Ladywood Park. Everyone is welcome."),
+("🚌", "purple", "Bus Route Changes", "Route 11 will have updated timings from next week. Check the Bus page for details."),
+("🚧", "orange", "Roadworks on Richmond Road", "Temporary roadworks will take place from 25 May until 5 June."),
+("❤️", "pink", "Free Health Check Event", "Free health checks available at the Neighbourhood Hub on 30 May.")
+]
+
+for icon, colour, card_title, text in announcement_data:
+
+    st.markdown(
+        f"""
+<div class="announcement-card">
+
+<div class="icon-box {colour}">
+{icon}
+</div>
+
+<div class="card-content">
+
+<h3>{card_title}</h3>
+
+<p>{text}</p>
+
+</div>
+
+</div>
+""",
+        unsafe_allow_html=True
+    )
+
+### VIEW ALL BUTTON
+st.markdown("""
+<a href="https://www.birmingham.gov.uk/" target="_blank">
+
+<div class="view-button">
+
+View All Announcements →
+
+</div>
+
+</a>
+""", unsafe_allow_html=True)

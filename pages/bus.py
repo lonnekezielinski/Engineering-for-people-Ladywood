@@ -13,6 +13,24 @@ st.markdown("""
 [data-testid="stSidebar"] { display: none; }
 .block-container { padding-top: 2rem; padding-bottom: 2rem; }
 
+/* ---BACK BUTTON--- */
+.stButton > button{
+
+    background:white;
+
+    border-radius:18px;
+
+    border:2px solid #D8D2C7;
+
+    padding:12px 18px;
+
+    font-size:18px;
+
+    color:#444;
+
+    margin-bottom:25px;
+}
+            
 .page-title {
     font-size: 58px;
     font-weight: 900;
@@ -78,8 +96,9 @@ a { text-decoration: none !important; color: inherit !important; }
 </style>
 """, unsafe_allow_html=True)
 
-# BACK BUTTON
-st.markdown('<a href="/" target="_self">← Back to Home</a>', unsafe_allow_html=True)
+### BACK BUTTON
+if st.button("← Back to dashboard"):
+    st.switch_page("app.py")
 
 # TITLE
 st.markdown('<div class="page-title">🚌 Community Bus</div>', unsafe_allow_html=True)
