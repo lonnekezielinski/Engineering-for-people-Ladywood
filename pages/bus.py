@@ -1,10 +1,4 @@
 import streamlit as st
-
-st.title("Bus Information")
-
-st.write("Live transport updates and schedules.")
-
-import streamlit as st
 import folium
 from streamlit_folium import st_folium
 

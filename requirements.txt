@@ -2,5 +2,6 @@
 # See README for steps on how to do this.
 streamlit
 pandas
-Pillow
-# might need Pillow if we are adding a logo 
+Pillow # might need Pillow if we are adding a logo 
+folium
+streamlit-folium
