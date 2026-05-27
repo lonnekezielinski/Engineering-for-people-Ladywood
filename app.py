@@ -5,7 +5,7 @@
 
 # IMPORTS 
 import streamlit as st
-from PIL import Image #if we want to add a logo keep this
+from PIL import Image #If we want to make a logo keep this library
 import base64
 
 def get_base64_image(image_path):
@@ -26,7 +26,7 @@ st.set_page_config(
 ### CUSTOM CSS
 st.markdown("""
 <style>
-/* app background and streamlit overrides*/
+/* ---app background and streamlit overrides--- */
 [data-testid="stAppViewContainer"] {
     background-color: #F5F2EA;
 }
@@ -43,13 +43,13 @@ st.markdown("""
     display:none;
 }
 
-/* page spacing */         
+/* ---page spacing--- */         
 .block-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
-/* header styling: titles and subtitles */
+/* ---header styling: titles and subtitles--- */
 .title {
     font-size: 72px;
     font-weight: 800;
@@ -62,7 +62,7 @@ st.markdown("""
     margin-bottom: 40px;
 }
 
-/* main cards and their styling */
+/* ---main cards and their styling--- */
 .card {
     border-radius: 32px;
     padding: 50px;
@@ -108,7 +108,7 @@ st.markdown("""
     background-color: #F4D2BD;
 }
             
-/* weather and date boxes in top right corner */           
+/* ---weather and date boxes in top right corner--- */           
 .weather-box{
     background:#FAFAFA;
     border:2px solid #D8D2C7;
@@ -121,7 +121,7 @@ st.markdown("""
     font-weight:500;
 }
 
-/* accessibility controls */
+/* ---accessibility controls--- */
 .text-size-box{
     background:white;
     border:2px solid #D8D2C7;
@@ -147,7 +147,7 @@ st.markdown("""
     font-size:38px;
 }
 
-/* link styling: it removes the default hyperlink formatting for clickable card in streamlit */           
+/* ---link styling: it removes the default hyperlink formatting for clickable card in streamlit--- */           
 a {
     text-decoration:none !important;
     color:inherit !important;
@@ -236,6 +236,7 @@ with bottom1:
         "Language",
         ["English", "Arabic", "Urdu", "Punjabi"]
     )
+    # Change languages based on the most spoken languages in Ladywood
 
 with bottom2:
     st.markdown("""
@@ -246,3 +247,16 @@ with bottom2:
         <span class='bigA'>A</span>
     </div>
     """, unsafe_allow_html=True)
+#with bottom2: 
+    #text_size = st.radio(
+        #"Text size", ["A", "A+", "A++"], 
+        #horizontal=True
+        #)
+# We need to change the appearance and the functions of the bottom settings:
+# - make the text size function look like you can actually click on it, so like the commented code above
+# - make language dropdown menu look more aesthetically pleasing or at least make both bottom settings look the same
+
+# Extra to do:
+# - make a logo and add it?
+# - make the design for the pages (bus, announcements, feedback, workshops)
+# - make sure the icon of the pages is in front of the title so "🚌 Bus" but with the png image
