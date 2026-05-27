@@ -156,19 +156,36 @@ a {
 /* ---language dropdown styling--- */
 [data-testid="stSelectbox"] label {
     font-size: 20px;
-    font-weight: 500;
-    color: #222;
+    font-weight: 600;
+    color: #0D1B3D;
 }
 
 [data-testid="stSelectbox"] > div > div {
     background: white;
     border: 2px solid #D8D2C7 !important;
     border-radius: 18px !important;
-    padding: 10px 28px;
-    font-size: 20px;
+    padding: 12px 28px;
+    font-size: 18px;
     font-weight: 500;
     color: #222;
 }
+
+/* ---text size radio styling--- */
+[data-testid = "stRadio"] {
+    background: white;
+    border: 2px solid #D8D2C7;
+    border-radius: 18px;
+    padding: 18px 28px;
+}
+
+[data-testid = "stRadio"] label{
+    font-weight: 700;
+    color: #0D1B3D;
+}
+
+[data-testid="stRadio"] >div > label:nth-child(1) span:last-child { font-size: 16px; }
+[data-testid="stRadio"] >div > label:nth-child(2) span:last-child { font-size : 22px'; }
+[data-testid="stRadio"] >div > label:nth-child(3) span:last-child{ font-size: 30px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -251,14 +268,15 @@ with bottom1:
     st.markdown("<div style='background:white; border:2px solid #D8D2C7: border-radius:18px; padding:18px 28px;'>", unsafe_allow_html=True)
 
     language = st.selectbox(
-        "Language",
-        ["English", "Arabic", "Urdu", "Punjabi"],
+        "🌐 Language",
+        ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"],
         label_visibility="visible"
     )
     st.markdown("</div>", unsafe_allow_html=True)
     # Change languages based on the most spoken languages in Ladywood
 
-with bottom2:
+
+with bottom2: 
     st.markdown("""
     <div class='text-size-box'>
         Text size
@@ -267,11 +285,11 @@ with bottom2:
         <span class='bigA'>A</span>
     </div>
     """, unsafe_allow_html=True)
-#with bottom2: 
-    #text_size = st.radio(
-        #"Text size", ["A", "A+", "A++"], 
-        #horizontal=True
-        #)
+    text_size = st.radio(
+        "Text size", ["A", "A+", "A++"], 
+        horizontal= True,
+        label_visibility = "visible"
+    )
 # We need to change the appearance and the functions of the bottom settings:
 # - make the text size function look like you can actually click on it, so like the commented code above
 # - make language dropdown menu look more aesthetically pleasing or at least make both bottom settings look the same
