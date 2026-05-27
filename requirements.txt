@@ -1,2 +1,5 @@
 # These are the required libraries / packages that need to be installed into your virtual environment.
 # See README for steps on how to do this.
+streamlit
+pandas
+Pillow
