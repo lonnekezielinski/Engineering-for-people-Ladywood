@@ -57,29 +57,42 @@ st.markdown("""
     margin-bottom:25px;
 }
 
-/* ---HEADER CARD--- */
+/* ---HEADER--- */
 .page-header{
-    background:#E5D8F2;
-    border-radius:32px;
-    padding:35px 40px;
     display:flex;
     align-items:center;
-    gap:30px;
-    margin-bottom:40px;
+    gap:20px;
+    margin-bottom:10px;
 }
 
-.title{
-    font-size:64px;
-    font-weight:800;
-    color:#0D1B3D;
+.page-header img{
+    width:80px;
+}
+            
+.page-title {
+    font-size: 58px;
+    font-weight: 900;
+    color: #0D1B3D;
+    margin-bottom: 5px;
 }
 
-.subtitle{
-    font-size:22px;
-    color:#444;
-    margin-top:5px;
+.page-subtitle {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 30px;
 }
-
+            
+/* --- ANNOUNCEMENTS INTRO BOX --- */
+.subtitle-box{
+    background:#CFEAC2;
+    border:2px solid #A8D8A0;
+    border-radius:24px;
+    padding:20px 28px;
+    margin-bottom:30px;
+    font-size:18px;
+    color:#1A3E1A;
+}
+            
 /* ---ANNOUNCEMENT CARDS--- */
 .announcement-card{
     background:white;
@@ -133,16 +146,10 @@ st.markdown("""
     flex-direction:column;
     justify-content:center;
     width:100%;
-}
-            
-/* text */
-/* announcement content reset */
-
-.card-content{
     margin:0;
     padding:0;
 }
-
+            
 .card-content *{
     margin-left:0;
 }
@@ -189,26 +196,24 @@ a{
 if st.button("← Back to dashboard"):
     st.switch_page("app.py")
 
+### HEADER"
 ### HEADER
-st.markdown(f"""
-<div class="page-header">
 
-<img
-src="data:image/png;base64,{announcement_icon}"
-width="110">
-
-<div>
-
-<div class="title">
-Announcements
+st.markdown("""
+<div style="
+    font-size:58px;
+    font-weight:900;
+    color:#0D1B3D;
+    margin-bottom:10px;
+">
+📢 Announcements
 </div>
+""", unsafe_allow_html=True)
 
-<div class="subtitle">
-Community updates and local events
-</div>
-
-</div>
-
+st.markdown("""
+<div class='subtitle-box'>
+    Stay up to date with community news, local events,
+    transport updates and important information for Ladywood residents.
 </div>
 """, unsafe_allow_html=True)
 
