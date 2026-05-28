@@ -1,5 +1,3 @@
-# This is the code for the homepage of the application, to change any other page go to their corresponding file in the "page”
-
 # To run: open terminal -> activate virtual environment: venv/Scripts/activate (Windows) or source venv/bin/activate (Mac) -> streamlit run app.py in terminal
 # To stop the application: ctrl + C in terminal (or cmd + C)
 
@@ -25,8 +23,8 @@ st.set_page_config(
 ### CUSTOM CSS
 st.markdown("""
 <style>
-            
-/* ---app background and streamlit overrides--- */
+/* ---APP BACKGROUND + STREAMLIT OVERRIDES--- */
+
 [data-testid="stAppViewContainer"] {
     background-color: #F5F2EA;
 }
@@ -40,18 +38,15 @@ st.markdown("""
 }
 
 [data-testid="stSidebar"] {
-    display:none;
+    display: none;
 }
 
-/* ---page spacing--- */         
 .block-container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding: 2rem 3rem;
 }
 
-/* ---header styling: titles and subtitles--- */
+/* ---HEADER--- */
+
 .title {
     font-size: 72px;
     font-weight: 800;
@@ -64,36 +59,59 @@ st.markdown("""
     margin-bottom: 40px;
 }
 
-/* ---main cards and their styling--- */
+.weather-box {
+    background: #FAFAFA;
+    border: 2px solid #D8D2C7;
+    border-radius: 18px;
+    padding: 22px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #1A1A1A;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/* ---MAIN NAVIGATION CARDS--- */
 .card {
+    height: 240px;
+    padding: 30px;
+
     border-radius: 32px;
-    padding: 50px;
-    height: 260px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:35px;
-    border:2px solid;
-    cursor:pointer;
-    transition:0.2s;
-}
+    border: 2px solid rgba(0,0,0,0.05);
 
-.card img {
-    width:110px;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
 
-.card-title {
-    font-size:30px;
-    font-weight:700;
-    margin-top:25px;
+    margin-bottom: 25px;
+
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .card:hover {
     transform: scale(1.02);
 }
 
-/* card colors */
+.card img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+/* Card background colours */
+
 .bus {
     background-color: #DDB8E8;
 }
@@ -109,34 +127,66 @@ st.markdown("""
 .feedback {
     background-color: #F4D2BD;
 }
-            
-/* ---weather and date boxes in top right corner--- */           
-.weather-box{
-    background:#FAFAFA;
-    border:2px solid #D8D2C7;
-    border-radius:18px;
-    padding:22px;
-    display:flex;
-    justify-content:space-between;
-    color:#1A1A1A;
-    font-size:20px;
-    font-weight:500;
+
+/* Card icon colours */
+.bus img {
+    filter: brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(1170%) hue-rotate(246deg) brightness(92%) contrast(90%);
 }
 
-/* ---link styling: it removes the default hyperlink formatting for clickable card in streamlit--- */           
-a {
-    text-decoration:none !important;
-    color:inherit !important;
+.workshops img {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(18%) saturate(926%) hue-rotate(172deg) brightness(92%) contrast(90%);
 }
-            
-/* ---language dropdown styling--- */
-[data-testid="stSelectbox"] label {
-    font-size: 20px;
+
+.announcements img {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1118%) hue-rotate(64deg) brightness(92%) contrast(90%);
+}
+
+.feedback img {
+    filter: brightness(0) saturate(100%) invert(32%) sepia(34%) saturate(643%) hue-rotate(340deg) brightness(92%) contrast(90%);
+}
+
+/* Card title colours */
+.bus .card-title {
+    color: #5A2E75;
+}
+
+.workshops .card-title {
+    color: #285C7A;
+}
+
+.announcements .card-title {
+    color: #3D6B32;
+}
+
+.feedback .card-title {
+    color: #9A5B2E;
+}
+
+/* ---LINKS: Removes default hyperlink styling from cards--- */
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* ---BOTTOM SETTINGS: Language + text size controls--- */
+.setting-label {
+    font-size: 18px;
     font-weight: 600;
     color: #0D1B3D;
+    margin-bottom: 8px;
 }
 
-/* dropdown box */
+/* Language dropdown */
+[data-testid="stSelectbox"] {
+    width: 320px !important;
+    max-width: 320px;
+    margin-top: 0;
+}
+
+[data-testid="stSelectbox"] label {
+    display: none;
+}
+
 [data-baseweb="select"] > div {
     background-color: white !important;
     border: 2px solid #D8D2C7 !important;
@@ -144,31 +194,26 @@ a {
     color: #222 !important;
 }
 
-/* selected text */
 [data-baseweb="select"] span {
     color: #222 !important;
     font-weight: 500;
 }
 
-/* ---text size selector--- */
-[data-testid="stRadio"]{
-    background:white;
-    border:2px solid #D8D2C7;
-    border-radius:18px;
-    padding:14px 22px;
+/* Text size selector */
+[data-testid="stRadio"] {
+    width: 220px !important;
+    background: white;
+    border: 2px solid #D8D2C7;
+    border-radius: 18px;
+    padding: 8px 12px;
+    margin-top: 0;
+    margin-left: 0 !important;
 }
 
-/* radio title */
-[data-testid="stRadio"] > label p{
-    color:#0D1B3D !important;
-    font-weight:600 !important;
-    font-size:16px !important;
-}
-
-/* option text */
-div[role="radiogroup"] label p{
-    color:#0D1B3D !important;
-    font-weight:600 !important;
+div[role="radiogroup"] label p {
+    color: #0D1B3D !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -200,13 +245,6 @@ with col2:
 col1, col2 = st.columns(2)
 
 with col1:
-
-    st.page_link(
-        "pages/bus.py",
-        label="",
-        icon=None
-    )
-
     st.markdown(f"""
     <a href="bus" target="_self">
         <div class='card bus'>
@@ -226,7 +264,6 @@ with col1:
     """, unsafe_allow_html=True)
 
 with col2:
-
     st.markdown(f"""
     <a href="workshops" target="_self">
         <div class='card workshops'>
@@ -246,24 +283,36 @@ with col2:
     """, unsafe_allow_html=True)
 
 # BOTTOM SETTINGS
-bottom1, spacer, bottom2 = st.columns([1.3, 0.4, 1.0])
+bottom1, bottom2 = st.columns([1, 1])
 
 with bottom1:
+    st.markdown(
+    "<div class='setting-label'>🌐 Language</div>",
+    unsafe_allow_html=True
+)
+
     language = st.selectbox(
-        "🌐 Language",
+        "",
         [
             "🇬🇧 English",
             "🇸🇦 Arabic",
             "🇵🇰 Urdu",
             "🇵🇰 Punjabi"
-        ]
+        ],
+        label_visibility="collapsed"
     )
 
 with bottom2:
+    st.markdown(
+        "<div class='setting-label'>🔠 Text size</div>",
+        unsafe_allow_html=True
+    )
+
     text_size = st.radio(
-        "🔠 Text size",
-        ["small", "normal", "large"],
-        horizontal=True
+        "",
+        ["A", "A+", "A++"],
+        horizontal=True,
+        label_visibility="collapsed"
     )
 
 # We need to change the appearance and the functions of the bottom settings:
