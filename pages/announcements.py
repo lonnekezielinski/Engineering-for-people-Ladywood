@@ -167,26 +167,52 @@ st.markdown("""
     color:#555;
 }
 
-/* ---view all button styling--- */
 .view-button{
-    background:#D8EBCF;
-    border-radius:25px;
-    padding:28px;
-    margin-top:30px;
-    text-align:center;
-    font-size:26px;
+    background:#E3F2DB;
+    border:2px solid #9ED492;
+    border-radius:20px;
+    padding:18px 30px;
+    margin:35px auto 10px auto;
+    width:320px;
+    height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:20px;
     font-weight:700;
+    color:#3D6B32;
     transition:0.2s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.04);
+}
+
+.view-button span{
+    position:absolute;
+    right:28px;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    font-size:24px;
+    line-height:1;
 }
 
 .view-button:hover{
-    transform:scale(1.02);
+    transform:translateY(-2px);
+    background:#D6EDCB;
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+}
+
+.view-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    background:#F8FFF5;
 }
 
 /* links */
 a{
-    text-decoration:none;
-    color:inherit;
+    text-decoration:none !important;
+    color:inherit !important;
 }
 
 </style>
@@ -252,7 +278,9 @@ st.markdown("""
 
 <div class="view-button">
 
-View All Announcements →
+<div>View All Announcements</div>
+
+<span>→</span>
 
 </div>
 
