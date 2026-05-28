@@ -292,7 +292,7 @@ with bottom1:
 )
 
     language = st.selectbox(
-        "",
+        "Language",
         [
             "🇬🇧 English",
             "🇸🇦 Arabic",
@@ -309,7 +309,7 @@ with bottom2:
     )
 
     text_size = st.radio(
-        "",
+        "Text size",
         ["A", "A+", "A++"],
         horizontal=True,
         label_visibility="collapsed"

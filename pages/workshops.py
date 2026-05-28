@@ -1,25 +1,41 @@
 import streamlit as st
-import streamlit.components.v1 as components
-st.title("Workshops")
+import tempfile
 
 st.set_page_config(page_title="Workshops", layout="wide")
 
+def show_html_as_iframe(html_content, height=820):
+    with tempfile.NamedTemporaryFile(
+        delete=False,
+        suffix=".html",
+        mode="w",
+        encoding="utf-8"
+    ) as f:
+        f.write(html_content)
+        file_path = f.name
+
+    st.iframe(
+    file_path,
+    height=height
+    )
+
 st.markdown("""
 <style>
-    .stApp { background-color: #fdf6f0; }
-    [data-testid="stAppViewContainer"] { background-color: #fdf6f0; }
-    [data-testid="stHeader"] { background-color: #fdf6f0; }
-    #MainMenu, footer, header { visibility: hidden; }
+    [data-testid="stAppViewContainer"] {background-color: #F5F2EA;}
+    [data-testid="stHeader"] {background-color: transparent;}
+    .block-container {padding-top: 1rem;}
+    #MainMenu, footer {visibility: hidden;}
 
     /* Form container */
     .form-section {
-        background: white;
-        border-radius: 24px;
-        padding: 2.5rem 3rem;
-        max-width: 560px;
-        margin: 0 auto 3rem auto;
-        box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        background:white;
+        border:2px solid rgba(0,0,0,0.06);
+        border-radius:28px;
+        padding:2rem 2.5rem;
+        max-width:650px;
+        margin:0 auto 3rem auto;
+        box-shadow:0 4px 12px rgba(0,0,0,0.04);
     }
+
     .form-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.8rem;
@@ -57,7 +73,7 @@ st.markdown("""
 
     /* Submit button */
     div[data-testid="stForm"] button[type="submit"] {
-        background: #1a1a1a !important;
+        background: #285C7A !important;
         color: white !important;
         border: none !important;
         border-radius: 50px !important;
@@ -124,10 +140,49 @@ st.markdown("""
         margin: 0.5rem 0 2rem 0;
         font-family: 'DM Sans', sans-serif;
     }
+            
+    [data-testid="stSidebar"] {
+    display:none;
+    }
+
+    .intro-box {
+    background:#C8E2F5;
+    border:2px solid #9CC7E6;
+    border-radius:24px;
+    padding:22px 28px;
+    margin-bottom:30px;
+    font-size:19px;
+    color:#285C7A;
+    line-height:1.5;
+    }
+
+    .stButton > button {
+        background:white;
+        border-radius:18px;
+        border:2px solid #D8D2C7;
+        padding:12px 18px;
+        font-size:18px;
+        color:#444;
+        margin-bottom:25px;
+    }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
 
+if st.button("← Back to dashboard"):
+    st.switch_page("app.py")
+
+st.markdown("""
+<div style="font-size:58px;font-weight:900;color:#0D1B3D;margin-bottom:10px;">
+📅 Workshops
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="intro-box">
+    📚 Community workshops and digital support sessions.
+</div>
+""", unsafe_allow_html=True)
 
 cards_html = """
 <!DOCTYPE html>
@@ -138,7 +193,6 @@ cards_html = """
     body { margin: 0; padding: 1rem 0; background-color: #fdf6f0; font-family: 'DM Sans', sans-serif; }
 
     .top-bar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; }
-    .top-bar-subtitle { max-width: 380px; font-size: 1rem; color: #6b6b6b; line-height: 1.6; }
     .top-bar-stats { display: flex; gap: 1.5rem; }
     .stat-badge { display: flex; align-items: center; gap: 0.6rem; background: white; border-radius: 50px; padding: 0.5rem 1.1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
     .stat-icon { font-size: 1.4rem; }
@@ -186,7 +240,6 @@ cards_html = """
 <body>
 
 <div class="top-bar">
-    <p class="top-bar-subtitle">Community workshops and digital support sessions.</p>
     <div class="top-bar-stats">
         <div class="stat-badge">
             <span class="stat-icon">&#11088;</span>
@@ -254,10 +307,7 @@ cards_html = """
 </html>
 """
 
-components.html(cards_html, height=820, scrolling=False)
-
-# ── Divider ──
-st.markdown('<div class="divider">── Register below — no account needed ──</div>', unsafe_allow_html=True)
+show_html_as_iframe(cards_html, height=820)
 
 # ── Registration Form ──
 if "registered" not in st.session_state:
@@ -438,4 +488,4 @@ print_html = """
 </html>
 """
 
-components.html(print_html, height=820, scrolling=True)
+show_html_as_iframe(print_html, height=820)
