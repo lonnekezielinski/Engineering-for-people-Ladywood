@@ -20,7 +20,7 @@ announcement_icon = get_base64_image(
 ### CUSTOM CSS
 st.markdown("""
 <style>
-/* ---APP BACKGROUND + STREAMLIT--- */
+/* ---app background & streamlit overrides--- */
 [data-testid="stAppViewContainer"]{
     background-color:#F5F2EA;
 }
@@ -46,7 +46,7 @@ st.markdown("""
     padding-right:4rem;
 }
 
-/* ---BACK BUTTON--- */
+/* ---back button styling--- */
 .stButton > button{
     background:white;
     border-radius:18px;
@@ -57,7 +57,7 @@ st.markdown("""
     margin-bottom:25px;
 }
 
-/* ---HEADER--- */
+/* ---header--- */
 .page-header{
     display:flex;
     align-items:center;
@@ -82,7 +82,7 @@ st.markdown("""
     margin-bottom: 30px;
 }
             
-/* --- ANNOUNCEMENTS INTRO BOX --- */
+/* ---announcements box--- */
 .subtitle-box{
     background:#CFEAC2;
     border:2px solid #A8D8A0;
@@ -93,7 +93,7 @@ st.markdown("""
     color:#1A3E1A;
 }
             
-/* ---ANNOUNCEMENT CARDS--- */
+/* ---announcements cards--- */
 .announcement-card{
     background:white;
     border-radius:28px;
@@ -167,7 +167,7 @@ st.markdown("""
     color:#555;
 }
 
-/* ---VIEW ALL BUTTON--- */
+/* ---view all button styling--- */
 .view-button{
     background:#D8EBCF;
     border-radius:25px;
@@ -196,9 +196,7 @@ a{
 if st.button("← Back to dashboard"):
     st.switch_page("app.py")
 
-### HEADER"
 ### HEADER
-
 st.markdown("""
 <div style="
     font-size:58px;
