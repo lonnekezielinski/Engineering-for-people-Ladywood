@@ -1,237 +1,110 @@
 # To run: open terminal -> activate virtual environment: venv/Scripts/activate (Windows) or source venv/bin/activate (Mac) -> streamlit run app.py in terminal
 # To stop the application: ctrl + C in terminal (or cmd + C)
 
-# IMPORTS 
+# IMPORTS
 import streamlit as st
 import base64
+from translations import t, is_rtl, apply_rtl_css
 
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
-bus_icon = get_base64_image("assets/front-of-bus.png")
-workshop_icon = get_base64_image("assets/calendar.png")
+bus_icon          = get_base64_image("assets/front-of-bus.png")
+workshop_icon     = get_base64_image("assets/calendar.png")
 announcement_icon = get_base64_image("assets/megaphone.png")
-feedback_icon = get_base64_image("assets/chat.png")
+feedback_icon     = get_base64_image("assets/chat.png")
 
 # PAGE CONFIG
-st.set_page_config(
-    page_title="Ladywood Connect",
-    layout="wide"
-)
+st.set_page_config(page_title="Ladywood Connect", layout="wide")
+
+# ── Language stored in session_state so all pages can read it ──
+LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
+LANGUAGE_MAP     = {
+    "🇬🇧 English": "English",
+    "🇸🇦 Arabic":  "Arabic",
+    "🇵🇰 Urdu":    "Urdu",
+    "🇵🇰 Punjabi": "Punjabi",
+}
+
+if "language" not in st.session_state:
+    st.session_state["language"] = "English"
+if "lang" in st.query_params:
+    url_lang = st.query_params["lang"]
+    if url_lang in ["English", "Arabic","Urdu","Punjabi"]:
+        st.session_state["language"] = url_lang
+
+lang = st.session_state["language"]
 
 ### CUSTOM CSS
 st.markdown("""
 <style>
-/* ---APP BACKGROUND + STREAMLIT OVERRIDES--- */
+[data-testid="stAppViewContainer"] { background-color: #F5F2EA; }
+[data-testid="stHeader"]           { background-color: transparent; }
+[data-testid="stToolbar"]          { right: 2rem; }
+[data-testid="stSidebar"]          { display: none; }
+.block-container                   { padding: 2rem 3rem; }
 
-[data-testid="stAppViewContainer"] {
-    background-color: #F5F2EA;
-}
-
-[data-testid="stHeader"] {
-    background-color: transparent;
-}
-
-[data-testid="stToolbar"] {
-    right: 2rem;
-}
-
-[data-testid="stSidebar"] {
-    display: none;
-}
-
-.block-container {
-    padding: 2rem 3rem;
-}
-
-/* ---HEADER--- */
-
-.title {
-    font-size: 72px;
-    font-weight: 800;
-    color: #0D1B3D;
-}
-
-.subtitle {
-    font-size: 24px;
-    color: #444;
-    margin-bottom: 40px;
-}
+.title    { font-size: 72px; font-weight: 800; color: #0D1B3D; }
+.subtitle { font-size: 24px; color: #444; margin-bottom: 40px; }
 
 .weather-box {
-    background: #FAFAFA;
-    border: 2px solid #D8D2C7;
-    border-radius: 18px;
-    padding: 22px;
-
-    display: flex;
-    justify-content: space-between;
-
-    color: #1A1A1A;
-    font-size: 20px;
-    font-weight: 500;
+    background: #FAFAFA; border: 2px solid #D8D2C7; border-radius: 18px;
+    padding: 22px; display: flex; justify-content: space-between;
+    color: #1A1A1A; font-size: 20px; font-weight: 500;
 }
 
-
-/* ---MAIN NAVIGATION CARDS--- */
 .card {
-    height: 240px;
-    padding: 30px;
-
-    border-radius: 32px;
+    height: 240px; padding: 30px; border-radius: 32px;
     border: 2px solid rgba(0,0,0,0.05);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-
-    margin-bottom: 25px;
-
-    cursor: pointer;
-    transition: 0.2s;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; gap: 18px;
+    margin-bottom: 25px; cursor: pointer; transition: 0.2s;
 }
+.card:hover     { transform: scale(1.02); }
+.card img       { width: 85px; height: 85px; object-fit: contain; }
+.card-title     { font-size: 30px; font-weight: 800; margin-top: 8px; }
 
-.card:hover {
-    transform: scale(1.02);
-}
+.bus           { background-color: #DDB8E8; }
+.workshops     { background-color: #C8E2F5; }
+.announcements { background-color: #CFEAC2; }
+.feedback      { background-color: #F4D2BD; }
 
-.card img {
-    width: 85px;
-    height: 85px;
-    object-fit: contain;
-}
+.bus img           { filter: brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(1170%) hue-rotate(246deg) brightness(92%) contrast(90%); }
+.workshops img     { filter: brightness(0) saturate(100%) invert(29%) sepia(18%) saturate(926%) hue-rotate(172deg) brightness(92%) contrast(90%); }
+.announcements img { filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1118%) hue-rotate(64deg) brightness(92%) contrast(90%); }
+.feedback img      { filter: brightness(0) saturate(100%) invert(32%) sepia(34%) saturate(643%) hue-rotate(340deg) brightness(92%) contrast(90%); }
 
-.card-title {
-    font-size: 30px;
-    font-weight: 800;
-    margin-top: 8px;
-}
+.bus .card-title           { color: #5A2E75; }
+.workshops .card-title     { color: #285C7A; }
+.announcements .card-title { color: #3D6B32; }
+.feedback .card-title      { color: #9A5B2E; }
 
-/* Card background colours */
+a { text-decoration: none !important; color: inherit !important; }
 
-.bus {
-    background-color: #DDB8E8;
-}
+.setting-label { font-size: 18px; font-weight: 600; color: #0D1B3D; margin-bottom: 8px; }
 
-.workshops {
-    background-color: #C8E2F5;
-}
+[data-testid="stSelectbox"] { width: 320px !important; max-width: 320px; margin-top: 0; }
+[data-testid="stSelectbox"] label { display: none; }
+[data-baseweb="select"] > div { background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }
+[data-baseweb="select"] span  { color: #222 !important; font-weight: 500; }
 
-.announcements {
-    background-color: #CFEAC2;
-}
-
-.feedback {
-    background-color: #F4D2BD;
-}
-
-/* Card icon colours */
-.bus img {
-    filter: brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(1170%) hue-rotate(246deg) brightness(92%) contrast(90%);
-}
-
-.workshops img {
-    filter: brightness(0) saturate(100%) invert(29%) sepia(18%) saturate(926%) hue-rotate(172deg) brightness(92%) contrast(90%);
-}
-
-.announcements img {
-    filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1118%) hue-rotate(64deg) brightness(92%) contrast(90%);
-}
-
-.feedback img {
-    filter: brightness(0) saturate(100%) invert(32%) sepia(34%) saturate(643%) hue-rotate(340deg) brightness(92%) contrast(90%);
-}
-
-/* Card title colours */
-.bus .card-title {
-    color: #5A2E75;
-}
-
-.workshops .card-title {
-    color: #285C7A;
-}
-
-.announcements .card-title {
-    color: #3D6B32;
-}
-
-.feedback .card-title {
-    color: #9A5B2E;
-}
-
-/* ---LINKS: Removes default hyperlink styling from cards--- */
-a {
-    text-decoration: none !important;
-    color: inherit !important;
-}
-
-/* ---BOTTOM SETTINGS: Language + text size controls--- */
-.setting-label {
-    font-size: 18px;
-    font-weight: 600;
-    color: #0D1B3D;
-    margin-bottom: 8px;
-}
-
-/* Language dropdown */
-[data-testid="stSelectbox"] {
-    width: 320px !important;
-    max-width: 320px;
-    margin-top: 0;
-}
-
-[data-testid="stSelectbox"] label {
-    display: none;
-}
-
-[data-baseweb="select"] > div {
-    background-color: white !important;
-    border: 2px solid #D8D2C7 !important;
-    border-radius: 18px !important;
-    color: #222 !important;
-}
-
-[data-baseweb="select"] span {
-    color: #222 !important;
-    font-weight: 500;
-}
-
-/* Text size selector */
 [data-testid="stRadio"] {
-    width: 220px !important;
-    background: white;
-    border: 2px solid #D8D2C7;
-    border-radius: 18px;
-    padding: 8px 12px;
-    margin-top: 0;
-    margin-left: 0 !important;
+    width: 220px !important; background: white; border: 2px solid #D8D2C7;
+    border-radius: 18px; padding: 8px 12px; margin-top: 0; margin-left: 0 !important;
 }
-
-div[role="radiogroup"] label p {
-    color: #0D1B3D !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-}
+div[role="radiogroup"] label p { color: #0D1B3D !important; font-weight: 600 !important; font-size: 16px !important; }
 </style>
 """, unsafe_allow_html=True)
 
+# Inject RTL CSS if needed
+st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
+
 ### HEADER
-col1, col2 = st.columns([4,1])
-
+col1, col2 = st.columns([4, 1])
 with col1:
-    st.markdown(
-        '<div class="title">Ladywood Connect</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="subtitle">Your community hub</div>',
-        unsafe_allow_html=True
-    )
-
+    st.markdown(f'<div class="title">{t("app_title", lang)}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="subtitle">{t("app_subtitle", lang)}</div>', unsafe_allow_html=True)
 with col2:
     st.markdown("""
     <div class='weather-box'>
@@ -239,78 +112,67 @@ with col2:
         <span>☀️ 30°C</span>
     </div>
     """, unsafe_allow_html=True)
-# We now have to set the temp and date, we could try to make it so that it becomes automatic. However i do think that for the prototype this is fine.
 
 ### BUTTON GRID
 col1, col2 = st.columns(2)
-
 with col1:
     st.markdown(f"""
-    <a href="bus" target="_self">
+    <a href="bus?lang={lang}" target="_self">
         <div class='card bus'>
             <img src='data:image/png;base64,{bus_icon}'>
-            <div class='card-title'>Bus</div>
+            <div class='card-title'>{t("nav_bus", lang)}</div>
         </div>
     </a>
     """, unsafe_allow_html=True)
 
     st.markdown(f"""
-    <a href="announcements" target="_self">
+    <a href="announcements?lang={lang}" target="_self">
         <div class='card announcements'>
             <img src='data:image/png;base64,{announcement_icon}'>
-            <div class='card-title'>Announcements</div>
+            <div class='card-title'>{t("nav_announcements", lang)}</div>
         </div>
     </a>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown(f"""
-    <a href="workshops" target="_self">
+    <a href="workshops?lang={lang}" target="_self">
         <div class='card workshops'>
             <img src='data:image/png;base64,{workshop_icon}'>
-            <div class='card-title'>Workshops</div>
+            <div class='card-title'>{t("nav_workshops", lang)}</div>
         </div>
     </a>
     """, unsafe_allow_html=True)
 
     st.markdown(f"""
-    <a href="feedback" target="_self">
+    <a href="feedback?lang={lang}" target="_self">
         <div class='card feedback'>
             <img src='data:image/png;base64,{feedback_icon}'>
-            <div class='card-title'>Feedback & Requests</div>
+            <div class='card-title'>{t("nav_feedback", lang)}</div>
         </div>
     </a>
     """, unsafe_allow_html=True)
 
-# BOTTOM SETTINGS
+### BOTTOM SETTINGS
 bottom1, bottom2 = st.columns([1, 1])
-
 with bottom1:
-    st.markdown(
-    "<div class='setting-label'>🌐 Language</div>",
-    unsafe_allow_html=True
-)
-
-    language = st.selectbox(
+    st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
+    selected_display = st.selectbox(
         "Language",
-        [
-            "🇬🇧 English",
-            "🇸🇦 Arabic",
-            "🇵🇰 Urdu",
-            "🇵🇰 Punjabi"
-        ],
+        LANGUAGE_OPTIONS,
+        index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
         label_visibility="collapsed"
     )
+    # Update session state when language changes → triggers rerun
+    new_lang = LANGUAGE_MAP[selected_display]
+    if new_lang != st.session_state["language"]:
+        st.session_state["language"] = new_lang
+        st.query_params["lang"]=new_lang
+        st.rerun()
 
 with bottom2:
-    st.markdown(
-        "<div class='setting-label'>🔠 Text size</div>",
-        unsafe_allow_html=True
-    )
-
+    st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
     text_size = st.radio(
-        "Text size",
-        ["A", "A+", "A++"],
-        horizontal=True,
-        label_visibility="collapsed"
+        "Text size", ["A", "A+", "A++"],
+        horizontal=True, label_visibility="collapsed"
     )
