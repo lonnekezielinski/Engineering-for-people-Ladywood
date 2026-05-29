@@ -15,19 +15,12 @@ st.markdown("""
 
 /* ---BACK BUTTON--- */
 .stButton > button{
-
     background:white;
-
     border-radius:18px;
-
     border:2px solid #D8D2C7;
-
     padding:12px 18px;
-
     font-size:18px;
-
     color:#444;
-
     margin-bottom:25px;
 }
             
@@ -100,7 +93,7 @@ a { text-decoration: none !important; color: inherit !important; }
 if st.button("← Back to dashboard"):
     st.switch_page("app.py")
 
-# TITLE
+### TITLE
 st.markdown('<div class="page-title">🚌 Community Bus</div>', unsafe_allow_html=True)
 
 st.markdown("""
@@ -110,7 +103,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# LIVE LOCATION
+### LIVE LOCATION
 st.markdown('<div class="section-title">📍 Where is the bus this week?</div>', unsafe_allow_html=True)
 st.markdown('<div class="live-badge">🟢 Parked here all week!</div>', unsafe_allow_html=True)
 
@@ -159,7 +152,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# WEEKLY SCHEDULE
+### WEEKLY SCHEDULE
 st.markdown('<div class="section-title">🗓️ Opening Hours This Week</div>', unsafe_allow_html=True)
 
 st.markdown("""

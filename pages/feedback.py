@@ -1,10 +1,13 @@
+### IMPORTS
 import streamlit as st
 
+### PAGE CONFIG
 st.set_page_config(
     page_title="Feedback & Requests",
     layout="wide"
 )
 
+### CUSTOM CSS
 st.markdown("""
 <style>
 [data-testid="stAppViewContainer"] {
@@ -26,7 +29,7 @@ st.markdown("""
     padding-right:3rem;
 }
 
-/* back button */
+/* ---back button--- */
 .stButton > button {
     background:white;
     border-radius:18px;
@@ -37,7 +40,7 @@ st.markdown("""
     margin-bottom:25px;
 }
 
-/* page title */
+/* ---page title--- */
 .page-title {
     font-size:58px;
     font-weight:900;
@@ -51,7 +54,7 @@ st.markdown("""
     margin-bottom:25px;
 }
 
-/* --- HEADER --- */
+/* ---header--- */
 
 .page-header{
     display:flex;
@@ -70,23 +73,15 @@ st.markdown("""
     color:#0D1B3D;
 }
 
-/* subtitle/info box */
-
+/* ---subtitle/info box--- */
 .intro-box{
     background:#F4D2BD;
-
     border:2px solid #E4B999;
-
     border-radius:28px;
-
     padding:28px 34px;
-
     margin-bottom:35px;
-
     font-size:22px;
-
     line-height:1.6;
-
     color:#5A2E0E;
 } 
 
@@ -102,7 +97,7 @@ st.markdown("""
     line-height:1.5;
 }
 
-/* cards */
+/* ---cards--- */
 .panel {
     background:white;
     border:2px solid rgba(0,0,0,0.06);
@@ -153,7 +148,7 @@ st.markdown("""
     color:#444;
 }
 
-/* request list */
+/* ---request list--- */
 .request-card {
     background:#FAFAFA;
     border:2px solid rgba(0,0,0,0.06);
@@ -216,7 +211,7 @@ st.markdown("""
     color:#555;
 }
 
-/* form styling */
+/* ---form styling--- */
 div[data-baseweb="select"] > div,
 textarea,
 input {
@@ -227,7 +222,7 @@ input {
     min-height:170px;
 }
 
-/* submit button */
+/* ---submit button--- */
 div[data-testid="stFormSubmitButton"] button {
     width:100%;
     background:#7B3FB2;
@@ -274,7 +269,7 @@ div[data-testid="stFormSubmitButton"] button:hover {
     border-bottom: 5px solid #7B3FB2 !important;
 }
             
-/* Make form inputs light */
+/* make form inputs light */
 input,
 textarea,
 [data-baseweb="select"] > div {
@@ -310,7 +305,7 @@ input::placeholder {
     color:#777 !important;
 }
             
-/* success message */
+/* ---success message--- */
 [data-testid="stAlert"] {
     background-color: #D8EBCF !important;
     border: 2px solid #9ED18F !important;
@@ -322,7 +317,6 @@ input::placeholder {
     font-size: 18px !important;
     font-weight: 700 !important;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -349,7 +343,7 @@ Your feedback and requests help us improve services and create a stronger commun
 ### TABS
 feedback_tab, requests_tab = st.tabs(["💬 Feedback", "📝 Requests"])
 
-### FEEDBACK TAB
+# Feedback tab
 with feedback_tab:
 
     left, right = st.columns([1.1, 1])
@@ -412,7 +406,7 @@ with feedback_tab:
 </div>
 """, unsafe_allow_html=True)
 
-### REQUESTS TAB
+# Requests tab
 with requests_tab:
 
     left, right = st.columns([1.1, 1])

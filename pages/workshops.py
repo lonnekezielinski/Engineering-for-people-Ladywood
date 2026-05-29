@@ -1,6 +1,7 @@
 import streamlit as st
 import tempfile
 
+### PAGE CONFIG
 st.set_page_config(page_title="Workshops", layout="wide")
 
 def show_html_as_iframe(html_content, height=820):
@@ -18,6 +19,7 @@ def show_html_as_iframe(html_content, height=820):
     height=height
     )
 
+### CUSTOM CSS
 st.markdown("""
 <style>
     [data-testid="stAppViewContainer"] {background-color: #F5F2EA;}
@@ -25,7 +27,7 @@ st.markdown("""
     .block-container {padding-top: 1rem;}
     #MainMenu, footer {visibility: hidden;}
 
-    /* Form container */
+    /* ---Form container--- */
     .form-section {
         background:white;
         border:2px solid rgba(0,0,0,0.06);
@@ -49,7 +51,7 @@ st.markdown("""
         margin-bottom: 2rem;
     }
 
-    /* Style Streamlit inputs */
+    /* ---Style Streamlit inputs--- */
     div[data-testid="stTextInput"] input {
         border-radius: 50px !important;
         border: 1.5px solid #e5e5e5 !important;
@@ -71,7 +73,7 @@ st.markdown("""
         color: #444 !important;
     }
 
-    /* Submit button */
+    /* ---Submit button--- */
     div[data-testid="stForm"] button[type="submit"] {
         background: #285C7A !important;
         color: white !important;
@@ -90,7 +92,7 @@ st.markdown("""
         background: #333 !important;
     }
 
-    /* Success box */
+    /* ---Success box--- */
     .success-box {
         background: #e8f5e9;
         border-radius: 16px;
@@ -103,7 +105,7 @@ st.markdown("""
     .success-title { font-size: 1.2rem; font-weight: 700; color: #2e7d32; margin-bottom: 0.3rem; }
     .success-text { font-size: 0.9rem; color: #555; }
 
-    /* Privacy notice */
+    /* ---Privacy notice--- */
     .privacy-notice {
         background: #f0f4ff;
         border-left: 4px solid #c4b5e8;
@@ -132,7 +134,7 @@ st.markdown("""
         padding-left: 1.2rem;
     }
 
-    /* Divider */
+    /* ---Divider--- */
     .divider {
         text-align: center;
         font-size: 0.85rem;
@@ -169,9 +171,11 @@ st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
 
+### BACK BUTTON
 if st.button("← Back to dashboard"):
     st.switch_page("app.py")
 
+### HEADER
 st.markdown("""
 <div style="font-size:58px;font-weight:900;color:#0D1B3D;margin-bottom:10px;">
 📅 Workshops
@@ -184,6 +188,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+### CARDS
 cards_html = """
 <!DOCTYPE html>
 <html>

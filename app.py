@@ -235,8 +235,8 @@ with col1:
 with col2:
     st.markdown("""
     <div class='weather-box'>
-        <span>📅 28 May 2026</span>
-        <span>☀️ 25°C</span>
+        <span>📅 29 May 2026</span>
+        <span>☀️ 30°C</span>
     </div>
     """, unsafe_allow_html=True)
 # We now have to set the temp and date, we could try to make it so that it becomes automatic. However i do think that for the prototype this is fine.
@@ -314,12 +314,3 @@ with bottom2:
         horizontal=True,
         label_visibility="collapsed"
     )
-
-# We need to change the appearance and the functions of the bottom settings:
-# - make the text size function look like you can actually click on it, so like the commented code above
-# - make language dropdown menu look more aesthetically pleasing or at least make both bottom settings look the same
-
-# Extra to do:
-# - make a logo and add it?
-# - make the design for the pages (bus, announcements, feedback, workshops)
-# - make sure the icon of the pages is in front of the title so "🚌 Bus" but with the png image
