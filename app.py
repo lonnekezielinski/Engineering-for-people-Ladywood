@@ -176,3 +176,42 @@ with bottom2:
         "Text size", ["A", "A+", "A++"],
         horizontal=True, label_visibility="collapsed"
     )
+
+# Font size settings
+if text_size == "A":
+    title_size = "72px"
+    subtitle_size = "24px"
+    card_title_size = "30px"
+    setting_label_size = "18px"
+
+elif text_size == "A+":
+    title_size = "84px"
+    subtitle_size = "28px"
+    card_title_size = "36px"
+    setting_label_size = "22px"
+
+else:  # A++
+    title_size = "96px"
+    subtitle_size = "32px"
+    card_title_size = "42px"
+    setting_label_size = "26px"
+
+st.markdown(f"""
+<style>
+.title {{
+    font-size: {title_size};
+}}
+
+.subtitle {{
+    font-size: {subtitle_size};
+}}
+
+.card-title {{
+    font-size: {card_title_size};
+}}
+
+.setting-label {{
+    font-size: {setting_label_size};
+}}
+</style>
+""", unsafe_allow_html=True)
