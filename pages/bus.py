@@ -1,3 +1,4 @@
+### IMPORTS
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
@@ -13,35 +14,109 @@ if "lang" in st.query_params:
 
 lang = st.session_state.get("language", "English")
 
+### ACCESSIBILITY BUTTONS
+LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
+LANGUAGE_MAP = {
+    "🇬🇧 English": "English",
+    "🇸🇦 Arabic": "Arabic",
+    "🇵🇰 Urdu": "Urdu",
+    "🇵🇰 Punjabi": "Punjabi",
+}
+
+if "text_size" not in st.session_state:
+    st.session_state["text_size"] = "A"
+
+text_size = st.session_state["text_size"]
+
+if text_size == "A":
+    page_title_size = "58px"
+    section_title_size = "28px"
+    body_size = "18px"
+elif text_size == "A+":
+    page_title_size = "70px"
+    section_title_size = "34px"
+    body_size = "22px"
+else:
+    page_title_size = "82px"
+    section_title_size = "40px"
+    body_size = "26px"
+
 ### CUSTOM CSS
-st.markdown("""
+st.markdown(f"""
 <style>
-[data-testid="stAppViewContainer"] { background-color: #F5F2EA; }
-[data-testid="stHeader"]           { background-color: transparent; }
-[data-testid="stSidebar"]          { display: none; }
-.block-container { padding-top: 2rem; padding-bottom: 2rem; }
+[data-testid="stAppViewContainer"] {{ background-color: #F5F2EA; }}
+[data-testid="stHeader"]           {{ background-color: transparent; }}
+[data-testid="stSidebar"]          {{ display: none; }}
+.block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
 
-.stButton > button { background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }
+.stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
 
-.page-title    { font-size:58px; font-weight:900; color:#0D1B3D; margin-bottom:5px; }
-.section-title { font-size:28px; font-weight:700; color:#0D1B3D; margin-top:30px; margin-bottom:10px; }
-.info-box      { background:#DDB8E8; border:2px solid #c99de0; border-radius:24px; padding:20px 28px; margin-bottom:20px; font-size:18px; color:#2a1a3e; }
-.live-badge    { display:inline-block; background:#CFEAC2; color:#2a6e1f; font-weight:700; font-size:16px; border-radius:20px; padding:6px 18px; margin-bottom:16px; border:2px solid #a8d8a0; }
-.schedule-box  { background:#C8E2F5; border:2px solid #a0c8e8; border-radius:24px; padding:20px 28px; margin-bottom:10px; }
-.tip-box       { background:#F4D2BD; border:2px solid #e0b89a; border-radius:24px; padding:20px 28px; margin-top:20px; font-size:18px; color:#5a2e0e; }
-.day-row       { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #b8d4e8; font-size:17px; color:#0D1B3D; }
-.day-name      { font-weight:700; width:120px; }
-.day-time      { color:#444; }
-.closed        { color:#cc4444; font-weight:600; }
-a { text-decoration:none !important; color:inherit !important; }
+.page-title    {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:5px; }}
+.section-title {{ font-size:{section_title_size}; font-weight:700; color:#0D1B3D; margin-top:30px; margin-bottom:10px; }}
+.info-box      {{ background:#DDB8E8; border:2px solid #c99de0; border-radius:24px; padding:20px 28px; margin-bottom:20px; font-size:{body_size}; color:#2a1a3e; }}
+.live-badge    {{ display:inline-block; background:#CFEAC2; color:#2a6e1f; font-weight:700; font-size:16px; border-radius:20px; padding:6px 18px; margin-bottom:16px; border:2px solid #a8d8a0; }}
+.schedule-box  {{ background:#C8E2F5; border:2px solid #a0c8e8; border-radius:24px; padding:20px 28px; margin-bottom:10px; }}
+.tip-box       {{ background:#F4D2BD; border:2px solid #e0b89a; border-radius:24px; padding:20px 28px; margin-top:20px; font-size:{body_size}; color:#5a2e0e; }}
+.day-row       {{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #b8d4e8; font-size:{body_size}; color:#0D1B3D; }}
+.day-name      {{ font-weight:700; width:120px; }}
+.day-time      {{ color:#444; }}
+.closed        {{ color:#cc4444; font-weight:600; }}
+a {{ text-decoration:none !important; color:inherit !important; }}
+
+.setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
+[data-testid="stSelectbox"] {{ width: 240px !important; max-width: 240px }}
+[data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
+div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
+[data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
+[data-baseweb="select"] span {{ color: #222 !important; font-weight: 500; }}
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 
-### BACK BUTTON
-if st.button(t("bus_back", lang)):
-    st.switch_page("app.py")
+### TOP BAR
+top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
+
+with top_left:
+    if st.button(t("bus_back", lang)):
+        st.switch_page("app.py")
+
+with top_right:
+    acc1, acc2 = st.columns([1.2, 1])
+
+    with acc1:
+        st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
+
+        selected_display = st.selectbox(
+            "Language",
+            LANGUAGE_OPTIONS,
+            index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
+            label_visibility="collapsed",
+            key="bus_language_select"
+        )
+
+        new_lang = LANGUAGE_MAP[selected_display]
+
+        if new_lang != st.session_state["language"]:
+            st.session_state["language"] = new_lang
+            st.query_params["lang"] = new_lang
+            st.rerun()
+
+    with acc2:
+        st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
+
+        text_size = st.radio(
+            "Text size",
+            ["A", "A+", "A++"],
+            index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+            horizontal=True,
+            label_visibility="collapsed",
+            key="bus_text_size_radio"
+        )
+
+        if text_size != st.session_state["text_size"]:
+            st.session_state["text_size"] = text_size
+            st.rerun()
 
 ### TITLE
 st.markdown(f'<div class="page-title">{t("bus_title", lang)}</div>', unsafe_allow_html=True)

@@ -13,68 +13,142 @@ if "lang" in st.query_params:
 
 lang = st.session_state.get("language", "English")
 
+### ACCESSIBILITY BUTTONS
+LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
+LANGUAGE_MAP = {
+    "🇬🇧 English": "English",
+    "🇸🇦 Arabic": "Arabic",
+    "🇵🇰 Urdu": "Urdu",
+    "🇵🇰 Punjabi": "Punjabi",
+}
+
+if "text_size" not in st.session_state:
+    st.session_state["text_size"] = "A"
+
+text_size = st.session_state["text_size"]
+
+if text_size == "A":
+    page_title_size = "58px"
+    panel_title_size = "28px"
+    body_size = "18px"
+elif text_size == "A+":
+    page_title_size = "70px"
+    panel_title_size = "34px"
+    body_size = "22px"
+else:
+    page_title_size = "82px"
+    panel_title_size = "40px"
+    body_size = "26px"
+
 ### CUSTOM CSS
-st.markdown("""
+st.markdown(f"""
 <style>
-[data-testid="stAppViewContainer"] { background-color:#F5F2EA; }
-[data-testid="stHeader"]           { background:transparent; }
-[data-testid="stSidebar"]          { display:none; }
-.block-container { padding-top:2rem; padding-bottom:2rem; padding-left:3rem; padding-right:3rem; }
+[data-testid="stAppViewContainer"] {{ background-color:#F5F2EA; }}
+[data-testid="stHeader"]           {{ background:transparent; }}
+[data-testid="stSidebar"]          {{ display:none; }}
+.block-container {{ padding-top:2rem; padding-bottom:2rem; padding-left:3rem; padding-right:3rem; }}
 
-.stButton > button { background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }
+.stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
 
-.page-title  { font-size:58px; font-weight:900; color:#0D1B3D; margin-bottom:8px; }
-.intro-box   { background:#F4D2BD; border:2px solid #E4B999; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:19px; color:#5A2E0E; line-height:1.5; }
+.page-title  {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:8px; }}
+.intro-box   {{ background:#F4D2BD; border:2px solid #E4B999; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:{body_size}; color:#5A2E0E; line-height:1.5; }}
 
-.panel       { background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:28px; margin-bottom:25px; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
-.panel-title { font-size:28px; font-weight:800; color:#0D1B3D; margin-bottom:20px; }
-.help-row    { display:flex; gap:18px; align-items:flex-start; margin-bottom:24px; }
-.help-icon   { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
-.blue   { background:#D9ECFA; }
-.green  { background:#D8EBCF; }
-.purple { background:#E5D8F2; }
-.orange { background:#F7DFC8; }
-.help-title { font-size:20px; font-weight:800; color:#0D1B3D; }
-.help-text  { font-size:17px; color:#444; }
+.panel       {{ background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:28px; margin-bottom:25px; box-shadow:0 4px 12px rgba(0,0,0,0.04); }}
+.panel-title {{ font-size:{panel_title_size}; font-weight:800; color:#0D1B3D; margin-bottom:20px; }}
+.help-row    {{ display:flex; gap:18px; align-items:flex-start; margin-bottom:24px; }}
+.help-icon   {{ width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }}
+.blue   {{ background:#D9ECFA; }}
+.green  {{ background:#D8EBCF; }}
+.purple {{ background:#E5D8F2; }}
+.orange {{ background:#F7DFC8; }}
+.help-title {{ font-size:{body_size}; font-weight:800; color:#0D1B3D; }}
+.help-text  {{ font-size:{body_size}; color:#444; }}
 
-.request-card  { background:#FAFAFA; border:2px solid rgba(0,0,0,0.06); border-radius:20px; padding:18px; margin-bottom:14px; display:flex; align-items:center; gap:18px; }
-.request-icon  { width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:32px; flex-shrink:0; }
-.request-title { font-size:19px; font-weight:800; color:#0D1B3D; }
-.request-meta  { font-size:15px; color:#555; margin-top:4px; }
-.status        { margin-left:auto; padding:8px 14px; border-radius:18px; font-size:14px; font-weight:700; }
-.in-progress   { background:#D9ECFA; color:#1C6BB0; }
-.under-review  { background:#F7DFC8; color:#A35E00; }
-.completed     { background:#D8EBCF; color:#287A3E; }
-.closed        { background:#E8E8E8; color:#555; }
+.request-card  {{ background:#FAFAFA; border:2px solid rgba(0,0,0,0.06); border-radius:20px; padding:18px; margin-bottom:14px; display:flex; align-items:center; gap:18px; }}
+.request-icon  {{ width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:32px; flex-shrink:0; }}
+.request-title {{ font-size:{body_size}; font-weight:800; color:#0D1B3D; }}
+.request-meta  {{ font-size:{body_size}; color:#555; margin-top:4px; }}
+.status        {{ margin-left:auto; padding:8px 14px; border-radius:18px; font-size:14px; font-weight:700; }}
+.in-progress   {{ background:#D9ECFA; color:#1C6BB0; }}
+.under-review  {{ background:#F7DFC8; color:#A35E00; }}
+.completed     {{ background:#D8EBCF; color:#287A3E; }}
+.closed        {{ background:#E8E8E8; color:#555; }}
 
-div[data-baseweb="select"] > div, textarea, input { border-radius:16px !important; }
-.stTextArea textarea { min-height:170px; }
+div[data-baseweb="select"] > div, textarea, input {{ border-radius:16px !important; }}
+.stTextArea textarea {{ min-height:170px; }}
 
-div[data-testid="stFormSubmitButton"] button { width:100%; background:#7B3FB2; color:white; border:none; border-radius:16px; padding:16px; font-size:20px; font-weight:700; }
-div[data-testid="stFormSubmitButton"] button:hover { background:#6A329E; color:white; }
+div[data-testid="stFormSubmitButton"] button {{ width:100%; background:#7B3FB2; color:white; border:none; border-radius:16px; padding:16px; font-size:20px; font-weight:700; }}
+div[data-testid="stFormSubmitButton"] button:hover {{ background:#6A329E; color:white; }}
 
-.stTabs [data-baseweb="tab-list"]  { gap:14px; margin-bottom:30px; border-bottom:2px solid #D8D2C7; }
-.stTabs [data-baseweb="tab"]       { background:#F5F2EA; border:2px solid #D8D2C7; border-bottom:none; border-radius:18px 18px 0 0; padding:14px 32px; font-size:30px; font-weight:700; color:#555; height:65px; }
-.stTabs [data-baseweb="tab"] p     { font-size:18px; }
-.stTabs [aria-selected="true"]     { background:white !important; color:#7B3FB2 !important; border-bottom:5px solid #7B3FB2 !important; }
+.stTabs [data-baseweb="tab-list"]  {{ gap:14px; margin-bottom:30px; border-bottom:2px solid #D8D2C7; }}
+.stTabs [data-baseweb="tab"]       {{ background:#F5F2EA; border:2px solid #D8D2C7; border-bottom:none; border-radius:18px 18px 0 0; padding:14px 32px; font-size:30px; font-weight:700; color:#555; height:65px; }}
+.stTabs [data-baseweb="tab"] p     {{ font-size:18px; }}
+.stTabs [aria-selected="true"]     {{ background:white !important; color:#7B3FB2 !important; border-bottom:5px solid #7B3FB2 !important; }}
 
-input, textarea, [data-baseweb="select"] > div { background-color:white !important; color:#0D1B3D !important; border:2px solid #D8D2C7 !important; }
-textarea::placeholder, input::placeholder { color:#777 !important; }
+input, textarea, [data-baseweb="select"] > div {{ background-color:white !important; color:#0D1B3D !important; border:2px solid #D8D2C7 !important; }}
+textarea::placeholder, input::placeholder {{ color:#777 !important; }}
 
 [data-testid="stSelectbox"] label p,
 [data-testid="stTextArea"] label p,
-[data-testid="stTextInput"] label p { color:#0D1B3D !important; font-weight:700 !important; font-size:17px !important; }
+[data-testid="stTextInput"] label p {{ color:#0D1B3D !important; font-weight:700 !important; font-size:17px !important; }}
 
-[data-testid="stAlert"]   { background-color:#D8EBCF !important; border:2px solid #9ED18F !important; border-radius:18px !important; }
-[data-testid="stAlert"] p { color:#1E4D2B !important; font-size:18px !important; font-weight:700 !important; }
+[data-testid="stAlert"]   {{ background-color:#D8EBCF !important; border:2px solid #9ED18F !important; border-radius:18px !important; }}
+[data-testid="stAlert"] p {{ color:#1E4D2B !important; font-size:18px !important; font-weight:700 !important; }}
+
+.setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
+[data-testid="stSelectbox"] {{ width: 240px !important; max-width: 240px; }}
+[data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
+div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
+[data-baseweb="select"] > div {{ background-color:white !important; border:2px solid #D8D2C7 !important; border-radius:18px !important; color:#222 !important; }}
+[data-baseweb="select"] span {{ color:#222 !important; font-weight:500; }}
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 
-### BACK BUTTON
-if st.button(t("fb_back", lang)):
-    st.switch_page("app.py")
+### TOP BAR
+top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
+
+with top_left:
+    if st.button(t("fb_back", lang)):
+        st.switch_page("app.py")
+
+with top_right:
+    acc1, acc2 = st.columns([1.2, 1])
+
+    with acc1:
+        st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
+
+        selected_display = st.selectbox(
+            "Language",
+            LANGUAGE_OPTIONS,
+            index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
+            label_visibility="collapsed",
+            key="fb_language_select"
+        )
+
+        new_lang = LANGUAGE_MAP[selected_display]
+
+        if new_lang != st.session_state["language"]:
+            st.session_state["language"] = new_lang
+            st.query_params["lang"] = new_lang
+            st.rerun()
+
+    with acc2:
+        st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
+
+        text_size = st.radio(
+            "Text size",
+            ["A", "A+", "A++"],
+            index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+            horizontal=True,
+            label_visibility="collapsed",
+            key="fb_text_size_radio"
+        )
+
+        if text_size != st.session_state["text_size"]:
+            st.session_state["text_size"] = text_size
+            st.rerun()
 
 ### HEADER
 st.markdown(f'<div class="page-title">{t("fb_title", lang)}</div>', unsafe_allow_html=True)

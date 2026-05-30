@@ -12,6 +12,33 @@ if "lang" in st.query_params:
 
 lang = st.session_state.get("language", "English")
 
+### ACCESSIBILITY BUTTONS
+LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
+LANGUAGE_MAP = {
+    "🇬🇧 English": "English",
+    "🇸🇦 Arabic": "Arabic",
+    "🇵🇰 Urdu": "Urdu",
+    "🇵🇰 Punjabi": "Punjabi",
+}
+
+if "text_size" not in st.session_state:
+    st.session_state["text_size"] = "A"
+
+text_size = st.session_state["text_size"]
+
+if text_size == "A":
+    page_title_size = "58px"
+    body_size = "18px"
+    form_title_size = "1.8rem"
+elif text_size == "A+":
+    page_title_size = "70px"
+    body_size = "22px"
+    form_title_size = "2.2rem"
+else:
+    page_title_size = "82px"
+    body_size = "26px"
+    form_title_size = "2.6rem"
+
 def show_html_as_iframe(html_content, height=820):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w", encoding="utf-8") as f:
         f.write(html_content)
@@ -19,49 +46,100 @@ def show_html_as_iframe(html_content, height=820):
     st.iframe(file_path, height=height)
 
 ### CUSTOM CSS
-st.markdown("""
+st.markdown(f"""
 <style>
-    [data-testid="stAppViewContainer"] {background-color: #F5F2EA;}
-    [data-testid="stHeader"] {background-color: transparent;}
-    .block-container {padding-top: 1rem;}
-    #MainMenu, footer {visibility: hidden;}
-    [data-testid="stSidebar"] { display:none; }
+    [data-testid="stAppViewContainer"] {{background-color: #F5F2EA;}}
+    [data-testid="stHeader"] {{background-color: transparent;}}
+    .block-container {{padding-top: 1rem;}}
+    #MainMenu, footer {{visibility: hidden;}}
+    [data-testid="stSidebar"] {{ display:none; }}
 
-    .form-section { background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:2rem 2.5rem; max-width:650px; margin:0 auto 3rem auto; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
-    .form-title    { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:#1a1a1a; margin-bottom:0.3rem; }
-    .form-subtitle { font-size:0.9rem; color:#888; margin-bottom:2rem; }
+    .form-section {{ background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:2rem 2.5rem; max-width:650px; margin:0 auto 3rem auto; box-shadow:0 4px 12px rgba(0,0,0,0.04); }}
+    .form-title    {{ font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:#1a1a1a; margin-bottom:0.3rem; }}
+    .form-subtitle {{ font-size:0.9rem; color:#888; margin-bottom:2rem; }}
 
-    div[data-testid="stTextInput"] input { border-radius:50px !important; border:1.5px solid #e5e5e5 !important; padding:0.65rem 1.2rem !important; font-size:0.95rem !important; background:#fafafa !important; }
-    div[data-testid="stTextInput"] input:focus { border-color:#f7679a !important; background:white !important; box-shadow:0 0 0 3px rgba(247,103,154,0.1) !important; }
-    div[data-testid="stTextInput"] label { font-size:0.85rem !important; font-weight:500 !important; color:#444 !important; }
+    div[data-testid="stTextInput"] input {{ border-radius:50px !important; border:1.5px solid #e5e5e5 !important; padding:0.65rem 1.2rem !important; font-size:0.95rem !important; background:#fafafa !important; }}
+    div[data-testid="stTextInput"] input:focus {{ border-color:#f7679a !important; background:white !important; box-shadow:0 0 0 3px rgba(247,103,154,0.1) !important; }}
+    div[data-testid="stTextInput"] label {{ font-size:0.85rem !important; font-weight:500 !important; color:#444 !important; }}
 
-    div[data-testid="stForm"] button[type="submit"] { background:#285C7A !important; color:white !important; border:none !important; border-radius:50px !important; padding:0.75rem 2rem !important; font-size:0.95rem !important; font-weight:500 !important; width:100% !important; cursor:pointer !important; margin-top:0.5rem !important; }
-    div[data-testid="stForm"] button[type="submit"]:hover { background:#333 !important; }
+    div[data-testid="stForm"] button[type="submit"] {{ background:#285C7A !important; color:white !important; border:none !important; border-radius:50px !important; padding:0.75rem 2rem !important; font-size:0.95rem !important; font-weight:500 !important; width:100% !important; cursor:pointer !important; margin-top:0.5rem !important; }}
+    div[data-testid="stForm"] button[type="submit"]:hover {{ background:#333 !important; }}
 
-    .success-box  { background:#e8f5e9; border-radius:16px; padding:1.5rem 2rem; text-align:center; max-width:560px; margin:0 auto 3rem auto; }
-    .success-icon  { font-size:2.5rem; margin-bottom:0.5rem; }
-    .success-title { font-size:1.2rem; font-weight:700; color:#2e7d32; margin-bottom:0.3rem; }
-    .success-text  { font-size:0.9rem; color:#555; }
+    .success-box  {{ background:#e8f5e9; border-radius:16px; padding:1.5rem 2rem; text-align:center; max-width:560px; margin:0 auto 3rem auto; }}
+    .success-icon  {{ font-size:2.5rem; margin-bottom:0.5rem; }}
+    .success-title {{ font-size:1.2rem; font-weight:700; color:#2e7d32; margin-bottom:0.3rem; }}
+    .success-text  {{ font-size:0.9rem; color:#555; }}
 
-    .privacy-notice       { background:#f0f4ff; border-left:4px solid #c4b5e8; border-radius:12px; padding:1rem 1.2rem; margin-top:1rem; }
-    .privacy-notice-title { font-size:0.82rem; font-weight:700; color:#5a4a7a; margin-bottom:0.4rem; }
-    .privacy-notice p     { font-size:0.78rem; color:#666; line-height:1.6; margin:0.2rem 0; }
-    .privacy-notice ul    { font-size:0.78rem; color:#666; line-height:1.7; margin:0.3rem 0 0 0; padding-left:1.2rem; }
+    .privacy-notice       {{ background:#f0f4ff; border-left:4px solid #c4b5e8; border-radius:12px; padding:1rem 1.2rem; margin-top:1rem; }}
+    .privacy-notice-title {{ font-size:0.82rem; font-weight:700; color:#5a4a7a; margin-bottom:0.4rem; }}
+    .privacy-notice p     {{ font-size:0.78rem; color:#666; line-height:1.6; margin:0.2rem 0; }}
+    .privacy-notice ul    {{ font-size:0.78rem; color:#666; line-height:1.7; margin:0.3rem 0 0 0; padding-left:1.2rem; }}
 
-    .stButton > button { background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }
-    .intro-box { background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:19px; color:#285C7A; line-height:1.5; }
+    .stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
+    .intro-box {{ background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:19px; color:#285C7A; line-height:1.5; }}
+    
+    .page-title {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:10px; }}
+    .intro-box {{ background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:{body_size}; color:#285C7A; line-height:1.5; }}
+    .form-title {{ font-family:'Playfair Display',serif; font-size:{form_title_size}; font-weight:900; color:#1a1a1a; margin-bottom:0.3rem; }}
+    .form-subtitle {{ font-size:{body_size}; color:#888; margin-bottom:2rem; }}
+    .setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
+    [data-testid="stSelectbox"] {{ width:240px !important; max-width:240px; }}
+    [data-testid="stRadio"] {{ width:240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
+    div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important;}}
+    [data-baseweb="select"] > div {{ background-color:white !important; border:2px solid #D8D2C7 !important; border-radius:18px !important; color:#222 !important; }}
+    [data-baseweb="select"] span {{ color:#222 !important; font-weight:500; }}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
 
 st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 
-### BACK BUTTON
-if st.button(t("ws_back", lang)):
-    st.switch_page("app.py")
+### TOP BAR
+top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
+
+with top_left:
+    if st.button(t("ws_back", lang)):
+        st.switch_page("app.py")
+
+with top_right:
+    acc1, acc2 = st.columns([1.2, 1])
+
+    with acc1:
+        st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
+
+        selected_display = st.selectbox(
+            "Language",
+            LANGUAGE_OPTIONS,
+            index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
+            label_visibility="collapsed",
+            key="ws_language_select"
+        )
+
+        new_lang = LANGUAGE_MAP[selected_display]
+
+        if new_lang != st.session_state["language"]:
+            st.session_state["language"] = new_lang
+            st.query_params["lang"] = new_lang
+            st.rerun()
+
+    with acc2:
+        st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
+
+        text_size = st.radio(
+            "Text size",
+            ["A", "A+", "A++"],
+            index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+            horizontal=True,
+            label_visibility="collapsed",
+            key="ws_text_size_radio"
+        )
+
+        if text_size != st.session_state["text_size"]:
+            st.session_state["text_size"] = text_size
+            st.rerun()
 
 ### HEADER
-st.markdown(f'<div style="font-size:58px;font-weight:900;color:#0D1B3D;margin-bottom:10px;">{t("ws_title", lang)}</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="page-title">{t("ws_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="intro-box">{t("ws_subtitle", lang)}</div>', unsafe_allow_html=True)
 
 ### CARDS IFRAME
