@@ -10,6 +10,7 @@ def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
+logo_icon = get_base64_image("assets/Waypoint.png")
 bus_icon          = get_base64_image("assets/front-of-bus.png")
 workshop_icon     = get_base64_image("assets/calendar.png")
 announcement_icon = get_base64_image("assets/megaphone.png")
@@ -47,6 +48,12 @@ st.markdown("""
 
 .title    { font-size: 72px; font-weight: 800; color: #0D1B3D; }
 .subtitle { font-size: 24px; color: #444; margin-bottom: 40px; }
+.title-row { display: flex; align-items: center; gap: 20px; }
+.title-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
 
 .weather-box {
     background: #FAFAFA; border: 2px solid #D8D2C7; border-radius: 18px;
@@ -103,7 +110,13 @@ st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 ### HEADER
 col1, col2 = st.columns([4, 1])
 with col1:
-    st.markdown(f'<div class="title">{t("app_title", lang)}</div>', unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="title-row">
+        <img class="title-logo"
+            src="data:image/png;base64,{logo_icon}">
+        <div class="title">{t("app_title", lang)}</div>
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown(f'<div class="subtitle">{t("app_subtitle", lang)}</div>', unsafe_allow_html=True)
 with col2:
     st.markdown("""
@@ -198,20 +211,9 @@ else:  # A++
 
 st.markdown(f"""
 <style>
-.title {{
-    font-size: {title_size};
-}}
-
-.subtitle {{
-    font-size: {subtitle_size};
-}}
-
-.card-title {{
-    font-size: {card_title_size};
-}}
-
-.setting-label {{
-    font-size: {setting_label_size};
-}}
+.title {{ font-size: {title_size}; }}
+.subtitle {{ font-size: {subtitle_size}; }}
+.card-title {{ font-size: {card_title_size}; }}
+.setting-label {{ font-size: {setting_label_size}; }}
 </style>
 """, unsafe_allow_html=True)
