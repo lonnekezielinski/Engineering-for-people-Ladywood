@@ -20,20 +20,36 @@ feedback_icon     = get_base64_image("assets/chat.png")
 st.set_page_config(page_title="Ladywood Connect", layout="wide")
 
 # ── Language stored in session_state so all pages can read it ──
-LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
-LANGUAGE_MAP     = {
-    "🇬🇧 English": "English",
-    "🇸🇦 Arabic":  "Arabic",
-    "🇵🇰 Urdu":    "Urdu",
-    "🇵🇰 Punjabi": "Punjabi",
+LANGUAGE_OPTIONS = [
+    "🇬🇧 English",
+    "🇸🇦 Arabic",
+    "🇵🇰 Urdu",
+    "🇵🇰 Punjabi",
+    "🇧🇩 Bengali",
+    "🇧🇩 Bengali (Sylheti)",
+    "🇧🇩 Bengali (Chatgaya)",
+    "🇵🇱 Polish",
+]
+LANGUAGE_MAP = {
+    "🇬🇧 English":           "English",
+    "🇸🇦 Arabic":             "Arabic",
+    "🇵🇰 Urdu":               "Urdu",
+    "🇵🇰 Punjabi":            "Punjabi",
+    "🇧🇩 Bengali":            "Bengali",
+    "🇧🇩 Bengali (Sylheti)":  "Sylheti",
+    "🇧🇩 Bengali (Chatgaya)": "Chatgaya",
+    "🇵🇱 Polish":             "Polish",
 }
 
 if "language" not in st.session_state:
-    st.session_state["language"] = "English"
-if "lang" in st.query_params:
-    url_lang = st.query_params["lang"]
-    if url_lang in ["English", "Arabic","Urdu","Punjabi"]:
-        st.session_state["language"] = url_lang
+    if "lang" in st.query_params:
+        url_lang = st.query_params["lang"]
+        if url_lang in ["English","Arabic","Urdu","Punjabi","Bengali","Sylheti","Chatgaya","Polish"]:
+            st.session_state["language"] = url_lang
+        else:
+            st.session_state["language"] = "English"
+    else:
+        st.session_state["language"] = "English"
 
 lang = st.session_state["language"]
 
@@ -180,7 +196,7 @@ with bottom1:
     new_lang = LANGUAGE_MAP[selected_display]
     if new_lang != st.session_state["language"]:
         st.session_state["language"] = new_lang
-        st.query_params["lang"]=new_lang
+        st.query_params["lang"] = new_lang
         st.rerun()
 
 with bottom2:

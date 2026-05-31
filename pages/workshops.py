@@ -1,3 +1,5 @@
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
 import tempfile
 from translations import t, apply_rtl_css
@@ -5,21 +7,38 @@ from translations import t, apply_rtl_css
 st.set_page_config(page_title="Workshops", layout="wide")
 
 # ── Language: read from URL first, then session state ──
-if "lang" in st.query_params:
-    url_lang = st.query_params["lang"]
-    if url_lang in ["English", "Arabic", "Urdu", "Punjabi"]:
-        st.session_state["language"] = url_lang
+if "language" not in st.session_state:
+    if "lang" in st.query_params:
+        url_lang = st.query_params["lang"]
+        if url_lang in ["English","Arabic","Urdu","Punjabi","Bengali","Sylheti","Chatgaya","Polish"]:
+            st.session_state["language"] = url_lang
+        else:
+            st.session_state["language"] = "English"
+    else:
+        st.session_state["language"] = "English"
+
+LANGUAGE_OPTIONS = [
+    "🇬🇧 English",
+    "🇸🇦 Arabic",
+    "🇵🇰 Urdu",
+    "🇵🇰 Punjabi",
+    "🇧🇩 Bengali",
+    "🇧🇩 Bengali (Sylheti)",
+    "🇧🇩 Bengali (Chatgaya)",
+    "🇵🇱 Polish",
+]
+LANGUAGE_MAP = {
+    "🇬🇧 English":           "English",
+    "🇸🇦 Arabic":             "Arabic",
+    "🇵🇰 Urdu":               "Urdu",
+    "🇵🇰 Punjabi":            "Punjabi",
+    "🇧🇩 Bengali":            "Bengali",
+    "🇧🇩 Bengali (Sylheti)":  "Sylheti",
+    "🇧🇩 Bengali (Chatgaya)": "Chatgaya",
+    "🇵🇱 Polish":             "Polish",
+}
 
 lang = st.session_state.get("language", "English")
-
-### ACCESSIBILITY BUTTONS
-LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
-LANGUAGE_MAP = {
-    "🇬🇧 English": "English",
-    "🇸🇦 Arabic": "Arabic",
-    "🇵🇰 Urdu": "Urdu",
-    "🇵🇰 Punjabi": "Punjabi",
-}
 
 if "text_size" not in st.session_state:
     st.session_state["text_size"] = "A"
@@ -77,13 +96,13 @@ st.markdown(f"""
 
     .stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
     .intro-box {{ background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:19px; color:#285C7A; line-height:1.5; }}
-    
+
     .page-title {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:10px; }}
     .intro-box {{ background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:{body_size}; color:#285C7A; line-height:1.5; }}
     .form-title {{ font-family:'Playfair Display',serif; font-size:{form_title_size}; font-weight:900; color:#1a1a1a; margin-bottom:0.3rem; }}
     .form-subtitle {{ font-size:{body_size}; color:#888; margin-bottom:2rem; }}
     .setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
-    [data-testid="stSelectbox"] {{ width:240px !important; max-width:240px; }}
+    [data-testid="stSelectbox"] {{ width:280px !important; max-width:280px; }}
     [data-testid="stRadio"] {{ width:240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
     div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important;}}
     [data-baseweb="select"] > div {{ background-color:white !important; border:2px solid #D8D2C7 !important; border-radius:18px !important; color:#222 !important; }}

@@ -1,26 +1,46 @@
 ### IMPORTS
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
 import base64
 from translations import t, apply_rtl_css
 
 ### PAGE CONFIG
 st.set_page_config(page_title="Announcements", layout="wide")
+
 # Read language from URL or session state
-if "lang" in st.query_params:
-    url_lang = st.query_params["lang"]
-    if url_lang in ["English", "Arabic", "Urdu", "Punjabi"]:
-        st.session_state["language"] = url_lang
+if "language" not in st.session_state:
+    if "lang" in st.query_params:
+        url_lang = st.query_params["lang"]
+        if url_lang in ["English","Arabic","Urdu","Punjabi","Bengali","Sylheti","Chatgaya","Polish"]:
+            st.session_state["language"] = url_lang
+        else:
+            st.session_state["language"] = "English"
+    else:
+        st.session_state["language"] = "English"
+
+LANGUAGE_OPTIONS = [
+    "🇬🇧 English",
+    "🇸🇦 Arabic",
+    "🇵🇰 Urdu",
+    "🇵🇰 Punjabi",
+    "🇧🇩 Bengali",
+    "🇧🇩 Bengali (Sylheti)",
+    "🇧🇩 Bengali (Chatgaya)",
+    "🇵🇱 Polish",
+]
+LANGUAGE_MAP = {
+    "🇬🇧 English":           "English",
+    "🇸🇦 Arabic":             "Arabic",
+    "🇵🇰 Urdu":               "Urdu",
+    "🇵🇰 Punjabi":            "Punjabi",
+    "🇧🇩 Bengali":            "Bengali",
+    "🇧🇩 Bengali (Sylheti)":  "Sylheti",
+    "🇧🇩 Bengali (Chatgaya)": "Chatgaya",
+    "🇵🇱 Polish":             "Polish",
+}
 
 lang = st.session_state.get("language", "English")
-
-### ACCESSIBILITY BUTTONS
-LANGUAGE_OPTIONS = ["🇬🇧 English", "🇸🇦 Arabic", "🇵🇰 Urdu", "🇵🇰 Punjabi"]
-LANGUAGE_MAP = {
-    "🇬🇧 English": "English",
-    "🇸🇦 Arabic": "Arabic",
-    "🇵🇰 Urdu": "Urdu",
-    "🇵🇰 Punjabi": "Punjabi",
-}
 
 if "text_size" not in st.session_state:
     st.session_state["text_size"] = "A"
@@ -85,7 +105,7 @@ st.markdown(f"""
 a {{ text-decoration:none !important; color:inherit !important; }}
 
 .setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
-[data-testid="stSelectbox"] {{ width: 240px !important; max-width: 240px; }}
+[data-testid="stSelectbox"] {{ width: 280px !important; max-width: 280px; }}
 [data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
 div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
@@ -99,45 +119,45 @@ st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
 
 with top_left:
-  if st.button(t("ann_back", lang)):
-      st.switch_page("app.py")
+    if st.button(t("ann_back", lang)):
+        st.switch_page("app.py")
 
 with top_right:
-  acc1, acc2 = st.columns([1.2, 1])
+    acc1, acc2 = st.columns([1.2, 1])
 
-  with acc1:
-      st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
+    with acc1:
+        st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
 
-      selected_display = st.selectbox(
-          "Language",
-          LANGUAGE_OPTIONS,
-          index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
-          label_visibility="collapsed",
-          key="ann_language_select"
-      )
+        selected_display = st.selectbox(
+            "Language",
+            LANGUAGE_OPTIONS,
+            index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
+            label_visibility="collapsed",
+            key="ann_language_select"
+        )
 
-      new_lang = LANGUAGE_MAP[selected_display]
+        new_lang = LANGUAGE_MAP[selected_display]
 
-      if new_lang != st.session_state["language"]:
-          st.session_state["language"] = new_lang
-          st.query_params["lang"] = new_lang
-          st.rerun()
+        if new_lang != st.session_state["language"]:
+            st.session_state["language"] = new_lang
+            st.query_params["lang"] = new_lang
+            st.rerun()
 
-  with acc2:
-      st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
+    with acc2:
+        st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
 
-      text_size = st.radio(
-          "Text size",
-          ["A", "A+", "A++"],
-          index=["A", "A+", "A++"].index(st.session_state["text_size"]),
-          horizontal=True,
-          label_visibility="collapsed",
-          key="ann_text_size_radio"
-      )
+        text_size = st.radio(
+            "Text size",
+            ["A", "A+", "A++"],
+            index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+            horizontal=True,
+            label_visibility="collapsed",
+            key="ann_text_size_radio"
+        )
 
-      if text_size != st.session_state["text_size"]:
-          st.session_state["text_size"] = text_size
-          st.rerun()
+        if text_size != st.session_state["text_size"]:
+            st.session_state["text_size"] = text_size
+            st.rerun()
 
 ### HEADER
 st.markdown(f'<div class="page-title">{t("ann_title", lang)}</div>', unsafe_allow_html=True)
