@@ -52,16 +52,33 @@ if text_size == "A":
     body_size = "18px"
     card_title_size = "28px"
     button_size = "20px"
+
+    mobile_page_title_size = "40px"
+    mobile_body_size = "16px"
+    mobile_card_title_size = "22px"
+    mobile_button_size = "18px"
+
 elif text_size == "A+":
     page_title_size = "70px"
     body_size = "22px"
     card_title_size = "34px"
     button_size = "24px"
+
+    mobile_page_title_size = "46px"
+    mobile_body_size = "19px"
+    mobile_card_title_size = "26px"
+    mobile_button_size = "21px"
+
 else:
     page_title_size = "82px"
     body_size = "26px"
     card_title_size = "40px"
     button_size = "28px"
+
+    mobile_page_title_size = "52px"
+    mobile_body_size = "22px"
+    mobile_card_title_size = "30px"
+    mobile_button_size = "24px"
 
 ### FUNCTION FOR PNG ICON
 def get_base64_image(image_path):
@@ -117,7 +134,7 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
     
     .title,
-    .page-title {{ font-size: 40px !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
+    .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
     h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
 
     .subtitle,
@@ -125,7 +142,7 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     .intro-box,
     .info-box,
     .tip-box {{
-        font-size: 16px !important;
+        font-size: {mobile_body_size} !important;
         padding: 16px 18px !important;
         border-radius: 20px !important;
         max-width: 100% !important;
@@ -136,9 +153,11 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
 
     .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
 
-    .card-content h3 {{ font-size: 22px !important; line-height: 1.25 !important; }}
+    .card-content h3 {{ font-size: {mobile_card_title_size} !important; line-height: 1.25 !important; }}
 
-    .card-content p {{ font-size: 16px !important; line-height: 1.45 !important;}}
+    .card-content p {{ font-size: {mobile_body_size} !important; line-height: 1.45 !important;}}
+
+    .view-button {{font-size: {mobile_button_size} !important; }}
 
     .form-card,
     .help-card,

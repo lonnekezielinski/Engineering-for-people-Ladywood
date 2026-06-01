@@ -49,14 +49,28 @@ if text_size == "A":
     page_title_size = "58px"
     body_size = "18px"
     form_title_size = "1.8rem"
+
+    mobile_page_title_size = "40px"
+    mobile_body_size = "16px"
+    mobile_form_title_size = "1.5rem"
+
 elif text_size == "A+":
     page_title_size = "70px"
     body_size = "22px"
     form_title_size = "2.2rem"
+
+    mobile_page_title_size = "48px"
+    mobile_body_size = "20px"
+    mobile_form_title_size = "1.9rem"
+
 else:
     page_title_size = "82px"
     body_size = "26px"
     form_title_size = "2.6rem"
+
+    mobile_page_title_size = "56px"
+    mobile_body_size = "24px"
+    mobile_form_title_size = "2.3rem"
 
 def show_html_as_iframe(html_content, height=820):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w", encoding="utf-8") as f:
@@ -113,8 +127,7 @@ st.markdown(f"""
         html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
         .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
         
-        .title,
-        .page-title {{ font-size: 40px !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
+        .title, .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
         h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
 
         .subtitle,
@@ -122,12 +135,18 @@ st.markdown(f"""
         .intro-box,
         .info-box,
         .tip-box {{
-            font-size: 16px !important;
+            font-size: {mobile_body_size} !important;
             padding: 16px 18px !important;
             border-radius: 20px !important;
             max-width: 100% !important;
             box-sizing: border-box !important;
         }}
+
+        .form-title {{ font-size: {mobile_form_title_size} !important; }}
+        .form-subtitle {{ font-size: {mobile_body_size} !important; }}
+        .form-section {{ padding: 1.5rem !important; max-width: 100% !important; }}
+        .success-title {{ font-size: {mobile_body_size} !important; }}
+        .success-text {{ font-size: {mobile_body_size} !important; }}
 
         .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
 

@@ -51,14 +51,28 @@ if text_size == "A":
     page_title_size = "58px"
     section_title_size = "28px"
     body_size = "18px"
+
+    mobile_page_title_size = "40px"
+    mobile_section_title_size = "22px"
+    mobile_body_size = "16px"
+
 elif text_size == "A+":
     page_title_size = "70px"
     section_title_size = "34px"
     body_size = "22px"
+
+    mobile_page_title_size = "48px"
+    mobile_section_title_size = "28px"
+    mobile_body_size = "20px"
+
 else:
     page_title_size = "82px"
     section_title_size = "40px"
     body_size = "26px"
+
+    mobile_page_title_size = "56px"
+    mobile_section_title_size = "34px"
+    mobile_body_size = "24px"
 
 ### CUSTOM CSS
 st.markdown(f"""
@@ -94,8 +108,7 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
     .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
     
-    .title,
-    .page-title {{ font-size: 40px !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
+    .title, .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
     h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
 
     .subtitle,
@@ -103,12 +116,14 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     .intro-box,
     .info-box,
     .tip-box {{
-        font-size: 16px !important;
+        font-size: {mobile_body_size} !important;
         padding: 16px 18px !important;
         border-radius: 20px !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
     }}
+
+    .section-title {{ font-size: {mobile_section_title_size} !important; }}
 
     .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
 
@@ -134,6 +149,8 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
         width: 100% !important;
         max-width: 100% !important;
     }}
+
+    .day-row, .day-name, .day-time {{ font-size: {mobile_body_size} !important; }}
 
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
 }}
