@@ -110,6 +110,56 @@ a {{ text-decoration:none !important; color:inherit !important; }}
 div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
 [data-baseweb="select"] span {{ color: #222 !important; font-weight: 500;}}
+
+/* ---MOBILE FIXES--- */
+@media (max-width: 768px) {{
+    html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
+    .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
+    
+    .title,
+    .page-title {{ font-size: 40px !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
+    h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
+
+    .subtitle,
+    .subtitle-box,
+    .intro-box,
+    .info-box,
+    .tip-box {{
+        font-size: 16px !important;
+        padding: 16px 18px !important;
+        border-radius: 20px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }}
+
+    .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
+
+    .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
+
+    .card-content h3 {{ font-size: 22px !important; line-height: 1.25 !important; }}
+
+    .card-content p {{ font-size: 16px !important; line-height: 1.45 !important;}}
+
+    .form-card,
+    .help-card,
+    .request-card,
+    .contact-card {{
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }}
+
+    input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important;}}
+
+    [data-testid="stSelectbox"],
+    [data-testid="stRadio"] {{
+        width: 100% !important;
+        max-width: 100% !important;
+    }}
+
+    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+}}
+
 </style>
 """, unsafe_allow_html=True)
 

@@ -117,6 +117,144 @@ a { text-decoration: none !important; color: inherit !important; }
     border-radius: 18px; padding: 8px 12px; margin-top: 0; margin-left: 0 !important;
 }
 div[role="radiogroup"] label p { color: #0D1B3D !important; font-weight: 600 !important; font-size: 16px !important; }
+
+/* ---MOBILE FIXES--- */
+@media (max-width: 768px) {
+
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-x: hidden !important;
+    }
+
+    .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 1rem !important;
+        max-width: 100% !important;
+    }
+
+    /* General page titles */
+    .title,
+    .page-title {
+        font-size: 40px !important;
+        line-height: 1.1 !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+    /* Very large headings written inline */
+    h1, h2, h3 {
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+    /* Subtitle/info boxes */
+    .subtitle,
+    .subtitle-box,
+    .intro-box,
+    .info-box,
+    .tip-box {
+        font-size: 16px !important;
+        padding: 16px 18px !important;
+        border-radius: 20px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Homepage cards */
+    .card {
+        height: 165px !important;
+        padding: 18px !important;
+        border-radius: 24px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .card img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .card-title {
+        font-size: 22px !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Announcement cards */
+    .announcement-card {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .icon-box {
+        width: 80px !important;
+        height: 80px !important;
+        font-size: 34px !important;
+    }
+
+    .card-content h3 {
+        font-size: 22px !important;
+        line-height: 1.25 !important;
+    }
+
+    .card-content p {
+        font-size: 16px !important;
+        line-height: 1.45 !important;
+    }
+
+    /* Forms and request cards */
+    .form-card,
+    .help-card,
+    .request-card,
+    .contact-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Inputs */
+    input, textarea, select {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Accessibility controls */
+    [data-testid="stSelectbox"],
+    [data-testid="stRadio"] {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Back button */
+    .stButton > button {
+        font-size: 16px !important;
+        padding: 10px 14px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Title fix for home page specifically */
+@media (max-width: 768px) {
+    .title {
+        font-size: 38px !important;
+        max-width: 100% !important;
+    }
+
+    .subtitle {
+        font-size: 18px !important;
+    }
+
+    .weather-box {
+        font-size: 15px !important;
+        padding: 14px !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+}
+
 </style>
 """, unsafe_allow_html=True)
 
