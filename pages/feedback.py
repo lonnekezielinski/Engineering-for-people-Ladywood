@@ -168,6 +168,16 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     }}
 
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+
+    /* email fix */
+    .request-card {{ display:flex !important; align-items:center !important; gap:12px !important; }} 
+    .request-title,
+    .request-meta {{
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }}
+    .request-title {{ max-width:100% !important; }}
+    .status {{ margin-left:0 !important; font-size:13px !important; padding:7px 10px !important; flex-shrink:0 !important; }}    
 }}
 
 </style>
@@ -259,27 +269,21 @@ with feedback_tab:
 """, unsafe_allow_html=True)
 
 # ── Requests tab ──
-with requests_tab:
-    left, right = st.columns([1.1, 1])
-    with left:
-        st.markdown(f'<div class="panel-title">{t("fb_req_form_title", lang)}</div>', unsafe_allow_html=True)
-        with st.form("request_form"):
-            request_topic = st.selectbox(t("fb_req_topic_label", lang), t("fb_req_topic_options", lang))
-            request_text  = st.text_area(t("fb_req_text_label", lang), placeholder=t("fb_req_text_placeholder", lang))
-            request_name  = st.text_input(t("fb_req_name_label", lang), placeholder=t("fb_req_name_placeholder", lang))
-            request_submitted = st.form_submit_button(t("fb_req_submit", lang))
-            if request_submitted:
-                st.success(t("fb_req_success", lang))
-
-    with right:
-        st.markdown(f"""
+with right:
+    st.markdown(f"""
 <div class="panel">
-<div class="panel-title">{t("fb_your_requests", lang)}</div>
-<div style="font-size:17px;color:#555;margin-bottom:20px;">{t("fb_your_requests_sub", lang)}</div>
-<div class="request-card"><div class="request-icon orange">🚌</div><div><div class="request-title">Request for better bus shelter</div><div class="request-meta">Transport · 5 days ago</div></div><div class="status in-progress">In progress</div></div>
-<div class="request-card"><div class="request-icon green">🌳</div><div><div class="request-title">Fix lighting in the park</div><div class="request-meta">Parks · 1 week ago</div></div><div class="status under-review">Under review</div></div>
-<div class="request-card"><div class="request-icon purple">👥</div><div><div class="request-title">Request for youth activities</div><div class="request-meta">Community · 2 weeks ago</div></div><div class="status completed">Completed</div></div>
-<div class="request-card"><div class="request-icon orange">🗑️</div><div><div class="request-title">More frequent bin collection</div><div class="request-meta">Waste · 2 weeks ago</div></div><div class="status closed">Closed</div></div>
-<div style="text-align:center;margin-top:20px;font-weight:700;color:#7B3FB2;">{t("fb_view_all", lang)}</div>
+<div class="panel-title">{t("fb_next_title", lang)}</div>
+<div class="help-row"><div class="help-icon blue">🔍</div><div><div class="help-title">{t("fb_next_1_title", lang)}</div><div class="help-text">{t("fb_next_1_text", lang)}</div></div></div>
+<div class="help-row"><div class="help-icon green">✅</div><div><div class="help-title">{t("fb_next_2_title", lang)}</div><div class="help-text">{t("fb_next_2_text", lang)}</div></div></div>
+<div class="help-row"><div class="help-icon purple">📢</div><div><div class="help-title">{t("fb_next_3_title", lang)}</div><div class="help-text">{t("fb_next_3_text", lang)}</div></div></div>
+</div>
+""", unsafe_allow_html=True)
+
+    st.markdown(f"""
+<div class="panel">
+<div class="panel-title">{t("fb_contact_title", lang)}</div>
+<div class="request-card"><div class="request-icon orange">📞</div><div><div class="request-title">0121 345 6789</div></div></div>
+<div class="request-card"><div class="request-icon orange">✉️</div><div><div class="request-title">info@ladywoodconnect.org</div></div></div>
+<div class="request-card"><div class="request-icon orange">📪</div><div><div class="request-title">Fill in the form at the Community Bus</div></div></div>
 </div>
 """, unsafe_allow_html=True)

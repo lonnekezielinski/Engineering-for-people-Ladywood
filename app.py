@@ -53,207 +53,149 @@ if "language" not in st.session_state:
 
 lang = st.session_state["language"]
 
+# Text size stored in session_state
+if "text_size" not in st.session_state:
+    st.session_state["text_size"] = "A"
+
+text_size = st.session_state["text_size"]
+
+if text_size == "A":
+    title_size = "72px"
+    subtitle_size = "24px"
+    card_title_size = "30px"
+    setting_label_size = "18px"
+
+    mobile_title_size = "38px"
+    mobile_subtitle_size = "18px"
+    mobile_card_title_size = "22px"
+
+elif text_size == "A+":
+    title_size = "84px"
+    subtitle_size = "28px"
+    card_title_size = "36px"
+    setting_label_size = "22px"
+
+    mobile_title_size = "44px"
+    mobile_subtitle_size = "21px"
+    mobile_card_title_size = "26px"
+
+else:
+    title_size = "96px"
+    subtitle_size = "32px"
+    card_title_size = "42px"
+    setting_label_size = "26px"
+
+    mobile_title_size = "50px"
+    mobile_subtitle_size = "24px"
+    mobile_card_title_size = "30px"
+
 ### CUSTOM CSS
-st.markdown("""
+st.markdown(f"""
 <style>
-[data-testid="stAppViewContainer"] { background-color: #F5F2EA; }
-[data-testid="stHeader"]           { background-color: transparent; }
-[data-testid="stToolbar"]          { right: 2rem; }
-[data-testid="stSidebar"]          { display: none; }
-.block-container                   { padding: 2rem 3rem; }
+[data-testid="stAppViewContainer"] {{ background-color: #F5F2EA; }}
+[data-testid="stHeader"]           {{ background-color: transparent; }}
+[data-testid="stToolbar"]          {{ right: 2rem; }}
+[data-testid="stSidebar"]          {{ display: none; }}
+.block-container                   {{ padding: 2rem 3rem; }}
 
-.title    { font-size: 72px; font-weight: 800; color: #0D1B3D; }
-.subtitle { font-size: 24px; color: #444; margin-bottom: 40px; }
-.title-row { display: flex; align-items: center; gap: 20px; }
-.title-logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-}
+.title    {{ font-size: {title_size}; font-weight: 800; color: #0D1B3D; }}
+.subtitle {{ font-size: {subtitle_size}; color: #444; margin-bottom: 40px; }}
+.title-row {{ display: flex; align-items: center; gap: 20px; }}
+.title-logo {{ width: 90px; height: 90px; object-fit: contain; }}
 
-.weather-box {
+.weather-box {{
     background: #FAFAFA; border: 2px solid #D8D2C7; border-radius: 18px;
     padding: 22px; display: flex; justify-content: space-between;
     color: #1A1A1A; font-size: 20px; font-weight: 500;
-}
+}}
 
-.card {
+.card {{
     height: 240px; padding: 30px; border-radius: 32px;
     border: 2px solid rgba(0,0,0,0.05);
     display: flex; flex-direction: column;
     justify-content: center; align-items: center; gap: 18px;
     margin-bottom: 25px; cursor: pointer; transition: 0.2s;
-}
-.card:hover     { transform: scale(1.02); }
-.card img       { width: 85px; height: 85px; object-fit: contain; }
-.card-title     { font-size: 30px; font-weight: 800; margin-top: 8px; }
+}}
+.card:hover     {{ transform: scale(1.02); }}
+.card img       {{ width: 85px; height: 85px; object-fit: contain; }}
+.card-title     {{ font-size: {card_title_size}; font-weight: 800; margin-top: 8px; }}
 
-.bus           { background-color: #DDB8E8; }
-.workshops     { background-color: #C8E2F5; }
-.announcements { background-color: #CFEAC2; }
-.feedback      { background-color: #F4D2BD; }
+.bus           {{ background-color: #DDB8E8; }}
+.workshops     {{ background-color: #C8E2F5; }}
+.announcements {{ background-color: #CFEAC2; }}
+.feedback      {{ background-color: #F4D2BD; }}
 
-.bus img           { filter: brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(1170%) hue-rotate(246deg) brightness(92%) contrast(90%); }
-.workshops img     { filter: brightness(0) saturate(100%) invert(29%) sepia(18%) saturate(926%) hue-rotate(172deg) brightness(92%) contrast(90%); }
-.announcements img { filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1118%) hue-rotate(64deg) brightness(92%) contrast(90%); }
-.feedback img      { filter: brightness(0) saturate(100%) invert(32%) sepia(34%) saturate(643%) hue-rotate(340deg) brightness(92%) contrast(90%); }
+.bus img           {{ filter: brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(1170%) hue-rotate(246deg) brightness(92%) contrast(90%); }}
+.workshops img     {{ filter: brightness(0) saturate(100%) invert(29%) sepia(18%) saturate(926%) hue-rotate(172deg) brightness(92%) contrast(90%); }}
+.announcements img {{ filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1118%) hue-rotate(64deg) brightness(92%) contrast(90%); }}
+.feedback img      {{ filter: brightness(0) saturate(100%) invert(32%) sepia(34%) saturate(643%) hue-rotate(340deg) brightness(92%) contrast(90%); }}
 
-.bus .card-title           { color: #5A2E75; }
-.workshops .card-title     { color: #285C7A; }
-.announcements .card-title { color: #3D6B32; }
-.feedback .card-title      { color: #9A5B2E; }
+.bus .card-title           {{ color: #5A2E75; }}
+.workshops .card-title     {{ color: #285C7A; }}
+.announcements .card-title {{ color: #3D6B32; }}
+.feedback .card-title      {{ color: #9A5B2E; }}
 
-a { text-decoration: none !important; color: inherit !important; }
+a {{ text-decoration: none !important; color: inherit !important; }}
 
-.setting-label { font-size: 18px; font-weight: 600; color: #0D1B3D; margin-bottom: 8px; }
+.setting-label {{ font-size: {setting_label_size}; font-weight: 600; color: #0D1B3D; margin-bottom: 8px; }}
 
-[data-testid="stSelectbox"] { width: 320px !important; max-width: 320px; margin-top: 0; }
-[data-testid="stSelectbox"] label { display: none; }
-[data-baseweb="select"] > div { background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }
-[data-baseweb="select"] span  { color: #222 !important; font-weight: 500; }
+[data-testid="stSelectbox"] {{ width: 320px !important; max-width: 320px; margin-top: 0; }}
+[data-testid="stSelectbox"] label {{ display: none; }}
+[data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
+[data-baseweb="select"] span  {{ color: #222 !important; font-weight: 500; }}
 
-[data-testid="stRadio"] {
+[data-testid="stRadio"] {{
     width: 220px !important; background: white; border: 2px solid #D8D2C7;
     border-radius: 18px; padding: 8px 12px; margin-top: 0; margin-left: 0 !important;
-}
-div[role="radiogroup"] label p { color: #0D1B3D !important; font-weight: 600 !important; font-size: 16px !important; }
+}}
+div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !important; font-size: 16px !important; }}
 
 /* ---MOBILE FIXES--- */
-@media (max-width: 768px) {
-
-    html, body, [data-testid="stAppViewContainer"] {
-        overflow-x: hidden !important;
-    }
-
-    .block-container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        padding-top: 1rem !important;
-        max-width: 100% !important;
-    }
+@media (max-width: 768px) {{
+    html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
+    .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important; }}
 
     /* General page titles */
-    .title,
-    .page-title {
-        font-size: 40px !important;
-        line-height: 1.1 !important;
-        word-break: normal !important;
-        overflow-wrap: normal !important;
-    }
+    .title, .page-title {{ font-size: {mobile_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
 
     /* Very large headings written inline */
-    h1, h2, h3 {
-        word-break: normal !important;
-        overflow-wrap: normal !important;
-    }
+    h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important; }}
 
     /* Subtitle/info boxes */
-    .subtitle,
-    .subtitle-box,
-    .intro-box,
-    .info-box,
-    .tip-box {
-        font-size: 16px !important;
-        padding: 16px 18px !important;
-        border-radius: 20px !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
+    .subtitle, .subtitle-box, .intro-box, .info-box, .tip-box {{ font-size: {mobile_subtitle_size} !important; padding: 16px 18px !important; border-radius: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
 
     /* Homepage cards */
-    .card {
-        height: 165px !important;
-        padding: 18px !important;
-        border-radius: 24px !important;
-        margin-bottom: 18px !important;
-    }
-
-    .card img {
-        width: 60px !important;
-        height: 60px !important;
-    }
-
-    .card-title {
-        font-size: 22px !important;
-        text-align: center !important;
-        line-height: 1.2 !important;
-    }
+    .card {{ height: 165px !important; padding: 18px !important; border-radius: 24px !important; margin-bottom: 18px !important; }}
+    .card img {{ width: 60px !important; height: 60px !important; }}
+    .card-title {{ font-size: {mobile_card_title_size} !important; text-align: center !important; line-height: 1.2 !important; }}
 
     /* Announcement cards */
-    .announcement-card {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        padding: 20px !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .icon-box {
-        width: 80px !important;
-        height: 80px !important;
-        font-size: 34px !important;
-    }
-
-    .card-content h3 {
-        font-size: 22px !important;
-        line-height: 1.25 !important;
-    }
-
-    .card-content p {
-        font-size: 16px !important;
-        line-height: 1.45 !important;
-    }
+    .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
+    .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
+    .card-content h3 {{ font-size: 22px !important; line-height: 1.25 !important; }}
+    .card-content p {{ font-size: 16px !important; line-height: 1.45 !important; }}
 
     /* Forms and request cards */
-    .form-card,
-    .help-card,
-    .request-card,
-    .contact-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
+    .form-card, .help-card, .request-card, .contact-card {{ width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }}
 
     /* Inputs */
-    input, textarea, select {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
+    input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important; }}
 
     /* Accessibility controls */
-    [data-testid="stSelectbox"],
-    [data-testid="stRadio"] {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
+    [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
 
     /* Back button */
-    .stButton > button {
-        font-size: 16px !important;
-        padding: 10px 14px !important;
-        margin-bottom: 20px !important;
-    }
-}
+    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+            
+    .weather-box {{ margin-bottom: 25px !important; }}
+}}
 
 /* Title fix for home page specifically */
-@media (max-width: 768px) {
-    .title {
-        font-size: 38px !important;
-        max-width: 100% !important;
-    }
-
-    .subtitle {
-        font-size: 18px !important;
-    }
-
-    .weather-box {
-        font-size: 15px !important;
-        padding: 14px !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-    }
-}
+@media (max-width: 768px) {{
+    .title {{ font-size: 38px !important; max-width: 100% !important; }}
+    .subtitle {{ font-size: 18px !important; }}
+    .weather-box {{ font-size: 15px !important; padding: 14px !important; flex-direction: column !important; gap: 8px !important; }}
+}}
 
 </style>
 """, unsafe_allow_html=True)
@@ -339,35 +281,16 @@ with bottom1:
 
 with bottom2:
     st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
-    text_size = st.radio(
-        "Text size", ["A", "A+", "A++"],
-        horizontal=True, label_visibility="collapsed"
+
+    text_size_choice = st.radio(
+        "Text size",
+        ["A", "A+", "A++"],
+        index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+        horizontal=True,
+        label_visibility="collapsed",
+        key="home_text_size_radio"
     )
 
-# Font size settings
-if text_size == "A":
-    title_size = "72px"
-    subtitle_size = "24px"
-    card_title_size = "30px"
-    setting_label_size = "18px"
-
-elif text_size == "A+":
-    title_size = "84px"
-    subtitle_size = "28px"
-    card_title_size = "36px"
-    setting_label_size = "22px"
-
-else:  # A++
-    title_size = "96px"
-    subtitle_size = "32px"
-    card_title_size = "42px"
-    setting_label_size = "26px"
-
-st.markdown(f"""
-<style>
-.title {{ font-size: {title_size}; }}
-.subtitle {{ font-size: {subtitle_size}; }}
-.card-title {{ font-size: {card_title_size}; }}
-.setting-label {{ font-size: {setting_label_size}; }}
-</style>
-""", unsafe_allow_html=True)
+    if text_size_choice != st.session_state["text_size"]:
+        st.session_state["text_size"] = text_size_choice
+        st.rerun()
