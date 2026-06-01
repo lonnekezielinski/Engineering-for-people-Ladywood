@@ -170,6 +170,8 @@ top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
 
 with top_left:
     if st.button(t("bus_back", lang)):
+        st.query_params["text_size"] = st.session_state["text_size"]
+        st.query_params["lang"] = lang
         st.switch_page("app.py")
 
 with top_right:
@@ -207,6 +209,7 @@ with top_right:
 
         if text_size != st.session_state["text_size"]:
             st.session_state["text_size"] = text_size
+            st.query_params["text_size"] = text_size
             st.rerun()
 
 ### TITLE

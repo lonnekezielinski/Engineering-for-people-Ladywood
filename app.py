@@ -54,6 +54,11 @@ if "language" not in st.session_state:
 lang = st.session_state["language"]
 
 # Text size stored in session_state
+if "text_size" in st.query_params:
+    url_text_size = st.query_params["text_size"]
+    if url_text_size in ["S", "M", "L"]:
+        st.session_state["text_size"] = url_text_size
+
 if "text_size" not in st.session_state:
     st.session_state["text_size"] = "S"
 
@@ -294,4 +299,5 @@ with bottom2:
 
     if text_size_choice != st.session_state["text_size"]:
         st.session_state["text_size"] = text_size_choice
+        st.query_params["text_size"] = text_size_choice
         st.rerun()
