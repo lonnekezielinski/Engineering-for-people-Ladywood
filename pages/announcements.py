@@ -42,12 +42,17 @@ LANGUAGE_MAP = {
 
 lang = st.session_state.get("language", "English")
 
+if "text_size" in st.query_params:
+    url_text_size = st.query_params["text_size"]
+    if url_text_size in ["S", "M", "L"]:
+        st.session_state["text_size"] = url_text_size
+
 if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "A"
+    st.session_state["text_size"] = "S"
 
 text_size = st.session_state["text_size"]
 
-if text_size == "A":
+if text_size == "S":
     page_title_size = "58px"
     body_size = "18px"
     card_title_size = "28px"
@@ -58,7 +63,7 @@ if text_size == "A":
     mobile_card_title_size = "22px"
     mobile_button_size = "18px"
 
-elif text_size == "A+":
+elif text_size == "M":
     page_title_size = "70px"
     body_size = "22px"
     card_title_size = "34px"
@@ -69,7 +74,7 @@ elif text_size == "A+":
     mobile_card_title_size = "26px"
     mobile_button_size = "21px"
 
-else:
+elif text_size == "L":
     page_title_size = "82px"
     body_size = "26px"
     card_title_size = "40px"
@@ -217,8 +222,8 @@ with top_right:
 
         text_size = st.radio(
             "Text size",
-            ["A", "A+", "A++"],
-            index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+            ["S", "M", "L"],
+            index=["S", "M", "L"].index(st.session_state["text_size"]),
             horizontal=True,
             label_visibility="collapsed",
             key="ann_text_size_radio"

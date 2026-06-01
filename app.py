@@ -55,11 +55,11 @@ lang = st.session_state["language"]
 
 # Text size stored in session_state
 if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "A"
+    st.session_state["text_size"] = "S"
 
 text_size = st.session_state["text_size"]
 
-if text_size == "A":
+if text_size == "S":
     title_size = "72px"
     subtitle_size = "24px"
     card_title_size = "30px"
@@ -69,7 +69,7 @@ if text_size == "A":
     mobile_subtitle_size = "18px"
     mobile_card_title_size = "22px"
 
-elif text_size == "A+":
+elif text_size == "M":
     title_size = "84px"
     subtitle_size = "28px"
     card_title_size = "36px"
@@ -79,7 +79,7 @@ elif text_size == "A+":
     mobile_subtitle_size = "21px"
     mobile_card_title_size = "26px"
 
-else:
+elif text_size == "L":
     title_size = "96px"
     subtitle_size = "32px"
     card_title_size = "42px"
@@ -217,16 +217,17 @@ with col1:
 with col2:
     st.markdown("""
     <div class='weather-box'>
-        <span>📅 29 May 2026</span>
-        <span>☀️ 30°C</span>
+        <span>📅 1 June 2026</span>
+        <span>☀️ 20°C</span>
     </div>
     """, unsafe_allow_html=True)
+
 
 ### BUTTON GRID
 col1, col2 = st.columns(2)
 with col1:
     st.markdown(f"""
-    <a href="bus?lang={lang}" target="_self">
+    <a href="bus?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card bus'>
             <img src='data:image/png;base64,{bus_icon}'>
             <div class='card-title'>{t("nav_bus", lang)}</div>
@@ -235,7 +236,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     st.markdown(f"""
-    <a href="announcements?lang={lang}" target="_self">
+    <a href="announcements?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card announcements'>
             <img src='data:image/png;base64,{announcement_icon}'>
             <div class='card-title'>{t("nav_announcements", lang)}</div>
@@ -245,7 +246,7 @@ with col1:
 
 with col2:
     st.markdown(f"""
-    <a href="workshops?lang={lang}" target="_self">
+    <a href="workshops?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card workshops'>
             <img src='data:image/png;base64,{workshop_icon}'>
             <div class='card-title'>{t("nav_workshops", lang)}</div>
@@ -254,7 +255,7 @@ with col2:
     """, unsafe_allow_html=True)
 
     st.markdown(f"""
-    <a href="feedback?lang={lang}" target="_self">
+    <a href="feedback?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card feedback'>
             <img src='data:image/png;base64,{feedback_icon}'>
             <div class='card-title'>{t("nav_feedback", lang)}</div>
@@ -284,8 +285,8 @@ with bottom2:
 
     text_size_choice = st.radio(
         "Text size",
-        ["A", "A+", "A++"],
-        index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+        ["S", "M", "L"],
+        index=["S", "M", "L"].index(st.session_state["text_size"]),
         horizontal=True,
         label_visibility="collapsed",
         key="home_text_size_radio"

@@ -41,12 +41,17 @@ LANGUAGE_MAP = {
 
 lang = st.session_state.get("language", "English")
 
+if "text_size" in st.query_params:
+    url_text_size = st.query_params["text_size"]
+    if url_text_size in ["S", "M", "L"]:
+        st.session_state["text_size"] = url_text_size
+
 if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "A"
+    st.session_state["text_size"] = "S"
 
 text_size = st.session_state["text_size"]
 
-if text_size == "A":
+if text_size == "S":
     page_title_size = "58px"
     body_size = "18px"
     card_title_size = "28px"
@@ -57,7 +62,7 @@ if text_size == "A":
     mobile_card_title_size = "22px"
     mobile_button_size = "18px"
 
-elif text_size == "A+":
+elif text_size == "M":
     page_title_size = "70px"
     body_size = "22px"
     card_title_size = "34px"
@@ -68,7 +73,7 @@ elif text_size == "A+":
     mobile_card_title_size = "26px"
     mobile_button_size = "21px"
 
-else:
+elif text_size == "L":
     page_title_size = "82px"
     body_size = "26px"
     card_title_size = "40px"
@@ -93,7 +98,7 @@ st.markdown(f"""
 .intro-box   {{ background:#F4D2BD; border:2px solid #E4B999; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:{body_size}; color:#5A2E0E; line-height:1.5; }}
 
 .panel       {{ background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:28px; margin-bottom:25px; box-shadow:0 4px 12px rgba(0,0,0,0.04); }}
-.panel-title {{ font-size:{panel_title_size}; font-weight:800; color:#0D1B3D; margin-bottom:20px; }}
+.panel-title {{ font-size:{card_title_size}; font-weight:800; color:#0D1B3D; margin-bottom:20px; }}
 .help-row    {{ display:flex; gap:18px; align-items:flex-start; margin-bottom:24px; }}
 .help-icon   {{ width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }}
 .blue   {{ background:#D9ECFA; }}
@@ -239,8 +244,8 @@ with top_right:
 
         text_size = st.radio(
             "Text size",
-            ["A", "A+", "A++"],
-            index=["A", "A+", "A++"].index(st.session_state["text_size"]),
+            ["S", "M", "L"],
+            index=["S", "M", "L"].index(st.session_state["text_size"]),
             horizontal=True,
             label_visibility="collapsed",
             key="fb_text_size_radio"
