@@ -256,7 +256,7 @@ a.card-link{text-decoration:none;display:flex;flex:1;min-width:170px;max-width:2
 .card-icon-wrap{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.35);margin-bottom:1rem;border:3px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-size:2.8rem;}
 .card-bottom{margin-top:auto;}.card-title{font-size:0.95rem;font-weight:600;color:rgba(0,0,0,0.75);margin-bottom:0.4rem;}
 .card-arrow{display:inline-block;width:30px;height:30px;background:rgba(255,255,255,0.45);border-radius:50%;line-height:30px;font-size:1rem;color:rgba(0,0,0,0.65);}
-.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap; padding:0 4 rem;}
 .hero-headline{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:900;color:#1a1a1a;line-height:1.08;margin:0;}
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:1rem;}
 .participants{display:flex;align-items:center;gap:0.7rem;}
