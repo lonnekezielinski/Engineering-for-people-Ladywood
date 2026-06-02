@@ -30,7 +30,7 @@ TRANSLATIONS = {
         "bus_info": "🌟 Our community bus brings <strong>free internet</strong> right to your neighbourhood in Ladywood! Come visit us — everyone is welcome 💜",
         "bus_where": "📍 Where is the bus this week?",
         "bus_live_badge": "🟢 Parked here all week!",
-        "bus_address": "📌 <strong>Ladywood Leisure Centre</strong>, Ladywood Middleway, Birmingham B16 8DN<br>🚶 5 minute walk from Five Ways Station",
+        "bus_address": "📌 <strong>Chamberlain Gardens</strong>, Ladywood, Birmingham B16 8XN<br>🚶 20 minute walk from Five Ways Station",
         "bus_hours_title": "🗓️ Opening Hours This Week",
         "bus_monday": "Monday",
         "bus_tuesday": "Tuesday",

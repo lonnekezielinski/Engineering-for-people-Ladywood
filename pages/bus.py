@@ -220,7 +220,7 @@ st.markdown(f'<div class="info-box">{t("bus_info", lang)}</div>', unsafe_allow_h
 st.markdown(f'<div class="section-title">{t("bus_where", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="live-badge">{t("bus_live_badge", lang)}</div>', unsafe_allow_html=True)
 
-bus_lat, bus_lon = 52.47927, -1.91598
+bus_lat, bus_lon = 52.475583, -1.928278 
 m = folium.Map(location=[bus_lat, bus_lon], zoom_start=16, tiles="OpenStreetMap")
 folium.CircleMarker(location=[bus_lat, bus_lon], radius=30, color="#DDB8E8", fill=True, fill_color="#DDB8E8", fill_opacity=0.5).add_to(m)
 folium.Marker(
@@ -228,7 +228,7 @@ folium.Marker(
     popup=folium.Popup("""
         <div style='font-family:sans-serif;text-align:center;padding:5px;'>
             <h3 style='color:#6a0dad;margin:0;'>🚌 Community Bus</h3>
-            <p style='margin:5px 0;'>📍 Ladywood Leisure Centre</p>
+            <p style='margin:5px 0;'>📍 Chamberlain Gardens</p>
             <p style='margin:5px 0;'>⏰ Mon–Sun: 9:00–17:00</p>
         </div>
     """, max_width=220),
