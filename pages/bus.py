@@ -229,8 +229,7 @@ folium.Marker(
         <div style='font-family:sans-serif;text-align:center;padding:5px;'>
             <h3 style='color:#6a0dad;margin:0;'>🚌 Community Bus</h3>
             <p style='margin:5px 0;'>📍 Ladywood Leisure Centre</p>
-            <p style='margin:5px 0;'>⏰ Mon–Fri: 9:00–16:00</p>
-            <p style='margin:5px 0;color:#cc4444;'>❌ Closed weekends</p>
+            <p style='margin:5px 0;'>⏰ Mon–Sun: 9:00–17:00</p>
         </div>
     """, max_width=220),
     tooltip="🚌 Community Bus — click for info!",
@@ -244,13 +243,13 @@ st.markdown(f'<div class="info-box" style="background:#CFEAC2;border-color:#a8d8
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)
 
 days = [
-    ("bus_monday",    "⏰ 9:00 – 16:00", False),
-    ("bus_tuesday",   "⏰ 9:00 – 16:00", False),
-    ("bus_wednesday", "⏰ 9:00 – 16:00", False),
-    ("bus_thursday",  "⏰ 9:00 – 16:00", False),
-    ("bus_friday",    "⏰ 9:00 – 16:00", False),
-    ("bus_saturday",  None,               True),
-    ("bus_sunday",    None,               True),
+    ("bus_monday",    "⏰ 9:00 – 17:00", False),
+    ("bus_tuesday",   "⏰ 9:00 – 17:00", False),
+    ("bus_wednesday", "⏰ 9:00 – 17:00", False),
+    ("bus_thursday",  "⏰ 9:00 – 17:00", False),
+    ("bus_friday",    "⏰ 9:00 – 17:00", False),
+    ("bus_saturday",  "⏰ 9:00 – 17:00", False),
+    ("bus_sunday",    "⏰ 9:00 – 17:00", False),
 ]
 
 rows_html = ""
