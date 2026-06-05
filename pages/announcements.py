@@ -261,7 +261,7 @@ for icon, colour, title_key, text_key in announcement_data:
 
 ### VIEW ALL BUTTON
 st.markdown(f"""
-<a href="https://www.birmingham.gov.uk/" target="_blank">
+<a href="https://civicsquare.cc/" target="_blank">
   <div class="view-button">
     <div>{t("ann_view_all", lang)}</div>
     <span>→</span>

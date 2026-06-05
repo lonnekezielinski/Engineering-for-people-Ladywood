@@ -3,7 +3,7 @@ TRANSLATIONS = {
         # --- app.py ---
         "app_title": "Ladywood Connect",
         "app_subtitle": "Your community hub",
-        "nav_bus": "Bus",
+        "nav_bus": "Community Bus",
         "nav_workshops": "Workshops",
         "nav_announcements": "Announcements",
         "nav_feedback": "Feedback & Requests",

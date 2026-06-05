@@ -11,10 +11,6 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 logo_icon = get_base64_image("assets/waypoint-logo.png")
-bus_icon          = get_base64_image("assets/front-of-bus.png")
-workshop_icon     = get_base64_image("assets/calendar.png")
-announcement_icon = get_base64_image("assets/megaphone.png")
-feedback_icon     = get_base64_image("assets/chat.png")
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ladywood Connect", layout="wide")
@@ -122,18 +118,13 @@ st.markdown(f"""
     margin-bottom: 25px; cursor: pointer; transition: 0.2s;
 }}
 .card:hover     {{ transform: scale(1.02); }}
-.card img       {{ width: 85px; height: 85px; object-fit: contain; }}
+.card-icon {{ font-size: 80px; line-height: 1;}}
 .card-title     {{ font-size: {card_title_size}; font-weight: 800; margin-top: 8px; }}
 
 .bus           {{ background-color: #DDB8E8; }}
 .workshops     {{ background-color: #C8E2F5; }}
 .announcements {{ background-color: #CFEAC2; }}
 .feedback      {{ background-color: #F4D2BD; }}
-
-.bus img           {{ filter: brightness(0) saturate(100%) invert(18%) sepia(17%) saturate(1170%) hue-rotate(246deg) brightness(92%) contrast(90%); }}
-.workshops img     {{ filter: brightness(0) saturate(100%) invert(29%) sepia(18%) saturate(926%) hue-rotate(172deg) brightness(92%) contrast(90%); }}
-.announcements img {{ filter: brightness(0) saturate(100%) invert(31%) sepia(15%) saturate(1118%) hue-rotate(64deg) brightness(92%) contrast(90%); }}
-.feedback img      {{ filter: brightness(0) saturate(100%) invert(32%) sepia(34%) saturate(643%) hue-rotate(340deg) brightness(92%) contrast(90%); }}
 
 .bus .card-title           {{ color: #5A2E75; }}
 .workshops .card-title     {{ color: #285C7A; }}
@@ -171,7 +162,7 @@ div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !i
 
     /* Homepage cards */
     .card {{ height: 165px !important; padding: 18px !important; border-radius: 24px !important; margin-bottom: 18px !important; }}
-    .card img {{ width: 60px !important; height: 60px !important; }}
+    .card-icon {{ font-size: 55px; }}
     .card-title {{ font-size: {mobile_card_title_size} !important; text-align: center !important; line-height: 1.2 !important; }}
 
     /* Announcement cards */
@@ -234,7 +225,7 @@ with col1:
     st.markdown(f"""
     <a href="bus?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card bus'>
-            <img src='data:image/png;base64,{bus_icon}'>
+            <div class='card-icon'>🚌</div>
             <div class='card-title'>{t("nav_bus", lang)}</div>
         </div>
     </a>
@@ -243,7 +234,7 @@ with col1:
     st.markdown(f"""
     <a href="announcements?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card announcements'>
-            <img src='data:image/png;base64,{announcement_icon}'>
+            <div class='card-icon'>📢</div>
             <div class='card-title'>{t("nav_announcements", lang)}</div>
         </div>
     </a>
@@ -253,7 +244,7 @@ with col2:
     st.markdown(f"""
     <a href="workshops?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card workshops'>
-            <img src='data:image/png;base64,{workshop_icon}'>
+            <div class='card-icon'>📅</div>
             <div class='card-title'>{t("nav_workshops", lang)}</div>
         </div>
     </a>
@@ -262,7 +253,7 @@ with col2:
     st.markdown(f"""
     <a href="feedback?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card feedback'>
-            <img src='data:image/png;base64,{feedback_icon}'>
+            <div class='card-icon'>📋</div>
             <div class='card-title'>{t("nav_feedback", lang)}</div>
         </div>
     </a>
