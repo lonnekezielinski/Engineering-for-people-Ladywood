@@ -3,7 +3,7 @@ TRANSLATIONS = {
         # --- app.py ---
         "app_title": "Ladywood Connect",
         "app_subtitle": "Your community hub",
-        "nav_bus": "Bus",
+        "nav_bus": "Community Bus",
         "nav_workshops": "Workshops",
         "nav_announcements": "Announcements",
         "nav_feedback": "Feedback & Requests",
@@ -12,7 +12,7 @@ TRANSLATIONS = {
 
         # --- announcements.py ---
         "ann_title": "📢 Announcements",
-        "ann_subtitle": "Stay up to date with community news, local events, transport updates and important information for Ladywood residents.",
+        "ann_subtitle": "Stay connected with your community! Discover local events, important updates, services,transport updates, and opportunities happening across Ladywood.",
         "ann_back": "← Back to dashboard",
         "ann_view_all": "View All Announcements",
         "ann_1_title": "Community Clean-Up Event",

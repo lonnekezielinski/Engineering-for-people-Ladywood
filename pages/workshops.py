@@ -1,7 +1,6 @@
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
-import tempfile
 from translations import t, apply_rtl_css
 
 st.set_page_config(page_title="Workshops", layout="wide")
@@ -77,12 +76,6 @@ elif text_size == "L":
     mobile_body_size = "24px"
     mobile_form_title_size = "2.3rem"
 
-def show_html_as_iframe(html_content, height=820):
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w", encoding="utf-8") as f:
-        f.write(html_content)
-        file_path = f.name
-    st.iframe(file_path, height=height)
-
 ### CUSTOM CSS
 st.markdown(f"""
 <style>
@@ -92,26 +85,12 @@ st.markdown(f"""
     #MainMenu, footer {{visibility: hidden;}}
     [data-testid="stSidebar"] {{ display:none; }}
 
-    .form-section {{ background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:2rem 2.5rem; max-width:650px; margin:0 auto 3rem auto; box-shadow:0 4px 12px rgba(0,0,0,0.04); }}
-    .form-title    {{ font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:#1a1a1a; margin-bottom:0.3rem; }}
-    .form-subtitle {{ font-size:0.9rem; color:#888; margin-bottom:2rem; }}
-
     div[data-testid="stTextInput"] input {{ border-radius:50px !important; border:1.5px solid #e5e5e5 !important; padding:0.65rem 1.2rem !important; font-size:0.95rem !important; background:#fafafa !important; }}
     div[data-testid="stTextInput"] input:focus {{ border-color:#f7679a !important; background:white !important; box-shadow:0 0 0 3px rgba(247,103,154,0.1) !important; }}
     div[data-testid="stTextInput"] label {{ font-size:0.85rem !important; font-weight:500 !important; color:#444 !important; }}
 
     div[data-testid="stForm"] button[type="submit"] {{ background:#285C7A !important; color:white !important; border:none !important; border-radius:50px !important; padding:0.75rem 2rem !important; font-size:0.95rem !important; font-weight:500 !important; width:100% !important; cursor:pointer !important; margin-top:0.5rem !important; }}
     div[data-testid="stForm"] button[type="submit"]:hover {{ background:#333 !important; }}
-
-    .success-box  {{ background:#e8f5e9; border-radius:16px; padding:1.5rem 2rem; text-align:center; max-width:560px; margin:0 auto 3rem auto; }}
-    .success-icon  {{ font-size:2.5rem; margin-bottom:0.5rem; }}
-    .success-title {{ font-size:1.2rem; font-weight:700; color:#2e7d32; margin-bottom:0.3rem; }}
-    .success-text  {{ font-size:0.9rem; color:#555; }}
-
-    .privacy-notice       {{ background:#f0f4ff; border-left:4px solid #c4b5e8; border-radius:12px; padding:1rem 1.2rem; margin-top:1rem; }}
-    .privacy-notice-title {{ font-size:0.82rem; font-weight:700; color:#5a4a7a; margin-bottom:0.4rem; }}
-    .privacy-notice p     {{ font-size:0.78rem; color:#666; line-height:1.6; margin:0.2rem 0; }}
-    .privacy-notice ul    {{ font-size:0.78rem; color:#666; line-height:1.7; margin:0.3rem 0 0 0; padding-left:1.2rem; }}
 
     .stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
     .intro-box {{ background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:19px; color:#285C7A; line-height:1.5; }}
@@ -121,11 +100,106 @@ st.markdown(f"""
     .form-title {{ font-family:'Playfair Display',serif; font-size:{form_title_size}; font-weight:900; color:#1a1a1a; margin-bottom:0.3rem; }}
     .form-subtitle {{ font-size:{body_size}; color:#888; margin-bottom:2rem; }}
     .setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
-    [data-testid="stSelectbox"] {{ width:280px !important; max-width:280px; }}
     [data-testid="stRadio"] {{ width:240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
     div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important;}}
     [data-baseweb="select"] > div {{ background-color:white !important; border:2px solid #D8D2C7 !important; border-radius:18px !important; color:#222 !important; }}
     [data-baseweb="select"] span {{ color:#222 !important; font-weight:500; }}
+
+    .theme-access {{
+        background: #FFF1B8;
+        color: #6B4E00;
+    }}
+
+    .theme-opportunity {{
+        background: #D8EBCF;
+        color: #2F6B32;
+    }}
+
+    .theme-confidence {{
+        background: #D9ECFA;
+        color: #285C7A;
+    }}
+
+    .side-card {{
+        border: 2px solid rgba(0,0,0,0.06);
+        border-radius: 32px;
+        padding: 28px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #0D1B3D;
+    }}
+
+    /* registration CSS */
+    .registration-card {{
+        background: white;
+        border: 2px solid rgba(0,0,0,0.06);
+        border-radius: 28px;
+        padding: 32px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }}
+
+    .registration-title {{
+        font-size: 34px;
+        font-weight: 900;
+        color: #0D1B3D;
+        margin-bottom: 6px;
+    }}
+
+    .registration-subtitle {{
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 24px;
+    }}
+
+    [data-testid="stForm"] {{ background: transparent;}}
+
+    [data-testid="stForm"] > div {{ padding: 0;}}
+
+    [data-testid="stSelectbox"] {{
+        width: 100% !important;
+        max-width: 420px !important;
+    }}
+
+    div[data-testid="stFormSubmitButton"] button {{
+        width: auto !important;
+        min-width: 170px;
+        background: #285C7A !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 18px !important;
+        padding: 14px 24px !important;
+        font-size: 18px !important;
+        font-weight: 800 !important;
+    }}
+
+    .soft-card {{
+        background: white !important;
+        border-radius: 28px !important;
+        padding: 32px !important;
+        margin-bottom: 24px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        display: flex;
+        gap: 22px;
+        align-items: flex-start;
+    }}
+
+    .soft-card .side-icon {{
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: #D9ECFA;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        flex-shrink: 0;
+    }}
+
+    .theme-title {{
+        font-weight: 900 !important;
+    }}
 
     /* ---MOBILE FIXES--- */
     @media (max-width: 768px) {{
@@ -153,23 +227,6 @@ st.markdown(f"""
         .success-title {{ font-size: {mobile_body_size} !important; }}
         .success-text {{ font-size: {mobile_body_size} !important; }}
 
-        .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
-
-        .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
-
-        .card-content h3 {{ font-size: 22px !important; line-height: 1.25 !important; }}
-
-        .card-content p {{ font-size: 16px !important; line-height: 1.45 !important;}}
-
-        .form-card,
-        .help-card,
-        .request-card,
-        .contact-card {{
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-        }}
-
         input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important;}}
 
         [data-testid="stSelectbox"],
@@ -178,7 +235,135 @@ st.markdown(f"""
             max-width: 100% !important;
         }}
 
+        .workshop-layout {{ grid-template-columns: 1fr; }}
+
         .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+    }}
+
+    /* FIX workshop page text colours */
+    .schedule-box h2,
+    .registration-card,
+    .registration-card label,
+    .registration-card p,
+    .registration-card div,
+    .registration-card span,
+    [data-testid="stForm"] label,
+    [data-testid="stForm"] p {{
+        color: #0D1B3D !important;
+    }}
+
+    /* FIX dark notes box */
+    textarea {{
+        background: white !important;
+        color: #0D1B3D !important;
+        border: 2px solid #1f2230 !important;
+        border-radius: 14px !important;
+    }}
+
+    /* Make registration form look like one card */
+    [data-testid="stForm"] {{
+        background: white !important;
+        border: 2px solid rgba(0,0,0,0.06) !important;
+        border-radius: 28px !important;
+        padding: 32px !important;
+        margin-bottom: 40px !important;
+    }}
+
+    .schedule-main-title {{
+        color: #0D1B3D !important;
+        font-size: {form_title_size} !important;
+        font-weight: 900 !important;
+        line-height: 1.05 !important;
+        margin-bottom: 16px !important;
+        font-family: 'Playfair Display', serif;
+    }}
+
+    .compact-theme-row {{
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        padding: 14px 18px;
+        border-radius: 14px;
+        margin-bottom: 10px;
+    }}
+
+    .theme-title {{ font-weight: 900 !important; }}
+
+    .theme-text {{ margin-top: 4px; }}
+
+    .theme-time {{ font-weight: 900; white-space: nowrap; color: #0D1B3D; }}
+
+    [data-testid="stExpander"] {{ border: none !important; border-bottom: 1px solid #EEE7DC !important; box-shadow: none !important; }}
+
+    [data-testid="stExpander"] summary {{
+        font-size: 22px !important;
+        font-weight: 900 !important;
+        color: #0D1B3D !important;
+    }}
+
+    div[data-testid="stFormSubmitButton"] button,
+    div[data-testid="stFormSubmitButton"] button * {{
+        color: white !important;
+    }}
+
+    /* Make the schedule a real white card */
+    .schedule-card {{
+        background: white !important;
+        border-radius: 28px !important;
+        padding: 32px !important;
+        margin-bottom: 30px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04) !important;
+        border: 2px solid rgba(0,0,0,0.06) !important;
+    }}
+
+    /* Fix invisible text */
+    .schedule-note {{
+        color: #4B5563 !important;
+        font-size: 22px !important;
+        }}
+    .schedule-card p,
+    .schedule-card div,
+    .schedule-card span {{
+        color: #0D1B3D !important;
+    }}
+
+    /* Make expander day rows white, not black */
+    [data-testid="stExpander"] {{
+        background: rgba(255,255,255,0.65) !important;
+        border: 2px solid rgba(0,0,0,0.05) !important;
+        border-bottom: 1px solid #EEE7DC !important;
+        box-shadow: none !important;
+    }}
+
+    [data-testid="stExpander"] details,
+    [data-testid="stExpander"] summary {{
+        background: white !important;
+        color: #0D1B3D !important;
+    }}
+
+    /* Bigger day text, no emoji styling needed */
+    [data-testid="stExpander"] summary p {{
+        font-size: 21px !important;
+        font-weight: 900 !important;
+        color: #0D1B3D !important;
+    }}
+
+    [data-testid="stExpander"] {{
+        border-radius: 18px !important;
+        overflow: hidden !important;
+        margin-bottom: 16px !important;
+    }}
+
+    [data-testid="stExpander"] details {{
+        border-radius: 18px !important;
+        overflow: hidden !important;
+    }}
+
+    [data-testid="stExpander"] summary {{
+        border-radius: 18px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
     }}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -237,156 +422,130 @@ with top_right:
 st.markdown(f'<div class="page-title">{t("ws_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="intro-box">{t("ws_subtitle", lang)}</div>', unsafe_allow_html=True)
 
-### CARDS IFRAME
-cards_html = """<!DOCTYPE html>
-<html><head>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-body{margin:0;padding:1rem 0;background-color:#fdf6f0;font-family:'DM Sans',sans-serif;}
-.top-bar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;}
-.top-bar-stats{display:flex;gap:1.5rem;}
-.stat-badge{display:flex;align-items:center;gap:0.6rem;background:white;border-radius:50px;padding:0.5rem 1.1rem;box-shadow:0 2px 12px rgba(0,0,0,0.07);}
-.stat-icon{font-size:1.4rem;}.stat-value{font-size:1.05rem;font-weight:600;color:#1a1a1a;}.stat-label{font-size:0.72rem;color:#999;}
-.cards-row{display:flex;gap:1.1rem;align-items:flex-end;margin-bottom:3rem;overflow-x:auto;}
-a.card-link{text-decoration:none;display:flex;flex:1;min-width:170px;max-width:240px;}
-.workshop-card{flex:1;border-radius:130px 130px 110px 110px;padding:1.4rem 1.2rem 1.6rem;cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;align-items:center;text-align:center;}
-.workshop-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.13);}
-.card-tall{min-height:380px;}.card-medium{min-height:340px;margin-bottom:40px;}.card-tall2{min-height:400px;}.card-medium2{min-height:330px;margin-bottom:55px;}.card-short{min-height:310px;margin-bottom:20px;}
-.card-pink{background:#f7679a;}.card-sage{background:#c8d5b9;}.card-amber{background:#f7c45e;}.card-lavender{background:#c4b5e8;}.card-mint{background:#a8d8a0;}
-.card-icon-wrap{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.35);margin-bottom:1rem;border:3px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-size:2.8rem;}
-.card-bottom{margin-top:auto;}.card-title{font-size:0.95rem;font-weight:600;color:rgba(0,0,0,0.75);margin-bottom:0.4rem;}
-.card-arrow{display:inline-block;width:30px;height:30px;background:rgba(255,255,255,0.45);border-radius:50%;line-height:30px;font-size:1rem;color:rgba(0,0,0,0.65);}
-.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap; padding:0 4 rem;}
-.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:900;color:#1a1a1a;line-height:1.08;margin:0;}
-.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:1rem;}
-.participants{display:flex;align-items:center;gap:0.7rem;}
-.avatar-stack{display:flex;}.avatar{width:32px;height:32px;border-radius:50%;border:2px solid #fdf6f0;margin-left:-10px;font-size:1.1rem;display:flex;align-items:center;justify-content:center;}
-.avatar:first-child{margin-left:0;}.participants-text{font-size:0.82rem;color:#888;}.participants-text strong{color:#1a1a1a;}
-.cta-buttons{display:flex;gap:0.8rem;}.cta-buttons a{text-decoration:none;}
-.btn-secondary{background:transparent;color:#1a1a1a;border:2px solid #1a1a1a;border-radius:50px;padding:0.7rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;}
-</style></head><body>
-<div class="top-bar"><div class="top-bar-stats">
-<div class="stat-badge"><span class="stat-icon">⭐</span><div><div class="stat-value">4.9</div><div class="stat-label">Rating</div></div></div>
-<div class="stat-badge"><span class="stat-icon">🏅</span><div><div class="stat-value">Certified</div><div class="stat-label">Facilitators</div></div></div>
-</div></div>
-<div class="cards-row">
-<a class="card-link" href="https://www.saathihouse.org/projects" target="_blank"><div class="workshop-card card-pink card-tall"><div class="card-icon-wrap">🗣️</div><div class="card-bottom"><div class="card-title">Language Bridges</div><div class="card-arrow">→</div></div></div></a>
-<a class="card-link" href="https://digitalnns.org.uk" target="_blank"><div class="workshop-card card-sage card-medium"><div class="card-icon-wrap">💻</div><div class="card-bottom"><div class="card-title">Digital Inclusion</div><div class="card-arrow">→</div></div></div></a>
-<a class="card-link" href="https://digitalnns.org.uk/first-fact-or-fiction-session/" target="_blank"><div class="workshop-card card-amber card-tall2"><div class="card-icon-wrap">🔒</div><div class="card-bottom"><div class="card-title">Online Safety</div><div class="card-arrow">→</div></div></div></a>
-<a class="card-link" href="https://www.birminghamsettlement.org.uk/ladywood/" target="_blank"><div class="workshop-card card-lavender card-medium2"><div class="card-icon-wrap">📱</div><div class="card-bottom"><div class="card-title">Everyday Tech</div><div class="card-arrow">→</div></div></div></a>
-<a class="card-link" href="https://www.birminghamsettlement.org.uk/neighbourhood-futures-festival/" target="_blank"><div class="workshop-card card-mint card-short"><div class="card-icon-wrap">🤝</div><div class="card-bottom"><div class="card-title">Community Connect</div><div class="card-arrow">→</div></div></div></a>
-</div>
-<div class="hero-row">
-<h1 class="hero-headline">Skills That Open<br>Doors for Everyone</h1>
-<div class="hero-right">
-<div class="participants"><div class="avatar-stack"><div class="avatar">👩</div><div class="avatar">👨</div><div class="avatar">👩</div><div class="avatar">🧑</div></div><div class="participants-text"><strong>2.4K+</strong><br>Participants Joined</div></div>
-<div class="cta-buttons"><a href="https://digitalnns.org.uk/news-and-events/" target="_blank"><button class="btn-secondary">Browse All</button></a></div>
-</div></div>
-</body></html>"""
+### WORKSHOP SCHEDULE
 
-show_html_as_iframe(cards_html, height=820)
+left, right = st.columns([2.2, 1])
 
-# ── Registration Form ──
-if "registered" not in st.session_state:
-    st.session_state.registered = False
+days = {
+    "Monday": [
+        ("10:00 AM – 11:30 AM", "Access", "Using the app · Understanding settings", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "Laptop fundamentals · Email and professional communication", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "CV creation · Job searching", "theme-confidence"),
+    ],
+    "Tuesday": [
+        ("10:00 AM – 11:30 AM", "Access", "Troubleshooting common issues · Updating apps", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "Word processing · Spreadsheet basics", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "Online banking safely · Budgeting apps", "theme-confidence"),
+    ],
+    "Wednesday": [
+        ("10:00 AM – 11:30 AM", "Access", "Managing storage · Managing files and photos", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "Online meetings · Online forms and document uploads", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "Avoiding financial scams · Comparing utility providers", "theme-confidence"),
+    ],
+    "Thursday": [
+        ("10:00 AM – 11:30 AM", "Access", "Recovering forgotten passwords · Cloud storage", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "AI tools for everyday tasks · NHS and council services", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "Online shopping safely · Consumer rights", "theme-confidence"),
+    ],
+    "Friday": [
+        ("10:00 AM – 11:30 AM", "Access", "Diagnosing device issues · Installing apps and software", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "Email support · Document uploads", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "Understanding subscriptions · Fact-checking AI outputs", "theme-confidence"),
+    ],
+    "Saturday": [
+        ("10:00 AM – 11:30 AM", "Access", "Finding trustworthy help online · Managing updates", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "Laptop practice · Online forms", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "Deepfakes and misinformation · Supporting children’s online learning", "theme-confidence"),
+    ],
+    "Sunday": [
+        ("10:00 AM – 11:30 AM", "Access", "Drop-in device help · Password support", "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", "Everyday digital skills practice", "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", "School platforms · Online safety questions", "theme-confidence"),
+    ],
+}
 
-if st.session_state.registered:
-    name = st.session_state.get("reg_name", "")
+with left:
+    st.markdown('<h2 class="schedule-main-title">Weekly Workshop Schedule</h2>', unsafe_allow_html=True)
+    st.markdown('<p class="schedule-note">Workshops from all three themes are available every day.</p>', unsafe_allow_html=True)
+
+    for day, sessions in days.items():
+        with st.expander(f"{day}", expanded=(day == "Friday")):
+            for time, theme, text, css_class in sessions:
+                st.markdown(
+                    f"""
+                    <div class="compact-theme-row {css_class}">
+                        <div>
+                            <div class="theme-title">{theme}</div>
+                            <div class="theme-text">{text}</div>
+                        </div>
+                        <div class="theme-time">🕒 {time}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+with right:
     st.markdown(f"""
-    <div class="success-box">
-        <div class="success-icon">🎉</div>
-        <div class="success-title">{t("ws_success_title", lang).format(name=name)}</div>
-        <div class="success-text">{t("ws_success_text", lang)}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    if st.button(t("ws_register_another", lang)):
-        st.session_state.registered = False
-        st.rerun()
-else:
-    st.markdown(f"""
-    <div class="form-section">
-        <div class="form-title">{t("ws_register_title", lang)}</div>
-        <div class="form-subtitle">{t("ws_register_sub", lang)}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    with st.form("registration_form"):
-        col1, col2 = st.columns(2)
-        with col1:
-            first_name = st.text_input(t("ws_first_name", lang))
-        with col2:
-            last_name = st.text_input(t("ws_last_name", lang))
-        phone = st.text_input(t("ws_phone", lang))
-        email = st.text_input(t("ws_email", lang))
-
-        st.markdown("""
-        <div class="privacy-notice">
-            <div class="privacy-notice-title">🔒 Your Privacy Matters</div>
-            <p>We only collect the information you share here.</p>
-            <ul>
-                <li><strong>Name & phone number</strong> — used only to confirm your place.</li>
-                <li><strong>Email</strong> — optional, used only for reminders.</li>
-                <li>Your details are <strong>never shared</strong> with third parties.</li>
-                <li>You can ask us to <strong>delete your details</strong> at any time.</li>
-            </ul>
-            <p style="margin-top:0.5rem;color:#888;">This service follows GDPR principles.</p>
+    <div class="side-card soft-card">
+        <div class="side-icon">🚌</div>
+        <div>
+            <h3>Community Bus</h3>
+            <p>The bus is currently at:</p>
+            <strong>Chamberlain Gardens, Ladywood, Birmingham B16 8XN</strong>
+            <br><br>
+            <a href="bus?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
+                Go to Bus page →
+            </a>
         </div>
-        """, unsafe_allow_html=True)
+    </div>
 
-        submitted = st.form_submit_button(t("ws_submit", lang))
-        if submitted:
-            if not first_name.strip() or not last_name.strip() or not phone.strip():
-                st.error(t("ws_error", lang))
-            else:
-                st.session_state.registered = True
-                st.session_state.reg_name = first_name.strip()
-                st.rerun()
+    <div class="side-card soft-card">
+        <div class="side-icon help-icon">🤝</div>
+        <div>
+            <h3>Need extra help?</h3>
+            <p>Drop in for small questions. If you need support that we cannot assist with, please visit Civic Square.</p>
+            <strong>
+                Civic Square Birmingham CIC<br>
+                Tubeworks, Canalside House<br>
+                Rotton Park Street<br>
+                Birmingham B16 0AF
+            </strong>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.markdown("---")
+### WORKSHOP REGISTRATION
+with st.form("workshop_registration_form"):
+    st.markdown('<div class="registration-title">Register for a workshop</div>', unsafe_allow_html=True)
+    workshop_choice = st.selectbox(
+        "Which workshop would you like to join?",
+        [
+            "Select a workshop",
+            "Monday · Access: Using the app and settings",
+            "Tuesday · Access: Troubleshooting and updates",
+            "Wednesday · Opportunity: Laptop and email basics",
+            "Thursday · Opportunity: Online forms and NHS/council services",
+            "Friday · Confidence: CV creation and job searching",
+            "Saturday · Confidence: Online banking and avoiding scams",
+            "Sunday · Drop-in help"
+        ]
+    )
 
-print_html = """<!DOCTYPE html><html><head>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-body{margin:0;padding:1.5rem 2rem;background:white;font-family:'DM Sans',sans-serif;color:#1a1a1a;}
-.print-btn{background:#1a1a1a;color:white;border:none;border-radius:50px;padding:0.65rem 1.6rem;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:1.5rem;}
-.flyer{border:2px solid #1a1a1a;border-radius:16px;padding:2rem 2.5rem;max-width:720px;}
-.flyer-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem;}
-.flyer-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;line-height:1.1;margin:0;}
-.flyer-title span{color:#f7679a;}
-.flyer-meta{text-align:right;font-size:0.8rem;color:#555;line-height:1.7;}
-.flyer-tagline{font-size:0.95rem;color:#555;margin-bottom:1.5rem;line-height:1.6;}
-.workshops-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.5rem;}
-.workshop-item{border:1.5px solid #e5e5e5;border-radius:12px;padding:0.8rem 1rem;display:flex;align-items:flex-start;gap:0.7rem;}
-.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;margin-top:4px;}
-.dot-pink{background:#f7679a;}.dot-sage{background:#c8d5b9;}.dot-amber{background:#f7c45e;}.dot-lavender{background:#c4b5e8;}.dot-mint{background:#a8d8a0;}
-.w-name{font-weight:700;font-size:0.88rem;margin-bottom:0.15rem;}.w-org{font-size:0.75rem;color:#888;}
-.reg-strip{background:#1a1a1a;color:white;border-radius:12px;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem;}
-.reg-strip-left{font-size:0.95rem;font-weight:600;}.reg-strip-sub{font-size:0.75rem;color:#aaa;margin-top:0.15rem;}
-.reg-fields{display:flex;gap:1rem;flex-wrap:wrap;}
-.reg-field-label{font-size:0.65rem;color:#aaa;margin-bottom:0.2rem;}.reg-field-line{border-bottom:1px solid #555;width:110px;height:16px;}
-.privacy{border:1px solid #c4b5e8;border-radius:10px;padding:0.8rem 1rem;font-size:0.72rem;color:#555;line-height:1.6;background:#f8f5ff;}
-.flyer-footer{border-top:1px solid #e5e5e5;margin-top:1.2rem;padding-top:0.8rem;font-size:0.72rem;color:#aaa;text-align:center;}
-@media print{.print-btn{display:none!important;}}
-</style></head><body>
-<button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
-<div class="flyer">
-<div class="flyer-header"><h1 class="flyer-title">Community<br><span>Workshops</span></h1><div class="flyer-meta"><strong>Ladywood, Birmingham</strong><br>Free to attend<br>No account needed<br>All skill levels welcome</div></div>
-<p class="flyer-tagline">Build confidence with language, technology, and digital skills. All workshops are free, beginner-friendly, and open to everyone.</p>
-<div class="workshops-grid">
-<div class="workshop-item"><span class="dot dot-pink"></span><div><div class="w-name">🗣️ Language Bridges</div><div class="w-org">Saathi House</div></div></div>
-<div class="workshop-item"><span class="dot dot-sage"></span><div><div class="w-name">💻 Digital Inclusion</div><div class="w-org">Digital NNS</div></div></div>
-<div class="workshop-item"><span class="dot dot-amber"></span><div><div class="w-name">🔒 Online Safety</div><div class="w-org">Digital NNS</div></div></div>
-<div class="workshop-item"><span class="dot dot-lavender"></span><div><div class="w-name">📱 Everyday Tech</div><div class="w-org">Birmingham Settlement</div></div></div>
-<div class="workshop-item"><span class="dot dot-mint"></span><div><div class="w-name">🤝 Community Connect</div><div class="w-org">Birmingham Settlement</div></div></div>
-</div>
-<div class="reg-strip"><div><div class="reg-strip-left">Register here — no account needed</div><div class="reg-strip-sub">Fill in your details or speak to a member of staff</div></div>
-<div class="reg-fields">
-<div><div class="reg-field-label">FIRST NAME</div><div class="reg-field-line"></div></div>
-<div><div class="reg-field-label">LAST NAME</div><div class="reg-field-line"></div></div>
-<div><div class="reg-field-label">PHONE NUMBER</div><div class="reg-field-line"></div></div>
-<div><div class="reg-field-label">EMAIL (OPTIONAL)</div><div class="reg-field-line"></div></div>
-</div></div>
-<div class="privacy"><strong>🔒 Your Privacy (GDPR)</strong> — We only collect what you write here. Never shared with third parties.</div>
-<div class="flyer-footer">Digital Inclusion Community Support System | Ladywood, Birmingham | Free & Open to All</div>
-</div></body></html>"""
-show_html_as_iframe(print_html, height=820)
+    col1, col2 = st.columns(2)
+
+    with col1:
+        first_name = st.text_input("First name")
+
+    with col2:
+        last_name = st.text_input("Last name")
+
+    phone = st.text_input("Phone number")
+    notes = st.text_area("Anything we should know? (optional)", height=120)
+
+    submitted = st.form_submit_button("➤ Register")
+
+    if submitted:
+        if workshop_choice == "Select a workshop" or not first_name.strip() or not phone.strip():
+            st.error("Please choose a workshop and enter at least your first name and phone number.")
+        else:
+            st.success("Thank you — your workshop registration has been received.")
