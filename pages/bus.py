@@ -1,10 +1,14 @@
 ### IMPORTS
+### IMPORTS
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
 from translations import t, apply_rtl_css
+
+import translations
+print("LOADED translations from:", translations.__file__)   # ← temporary check
 
 st.set_page_config(page_title="Bus - Ladywood Connect", layout="wide")
 
@@ -262,4 +266,3 @@ for i, (day_key, time_str, closed) in enumerate(days):
     rows_html += f'<div class="day-row" style="{border}"><span class="day-name">{t(day_key, lang)}</span>{time_html}</div>'
 
 st.markdown(f'<div class="schedule-box">{rows_html}</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="tip-box">{t("bus_tip", lang)}</div>', unsafe_allow_html=True)
