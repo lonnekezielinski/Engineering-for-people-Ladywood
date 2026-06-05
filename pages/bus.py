@@ -8,7 +8,7 @@ from streamlit_folium import st_folium
 from translations import t, apply_rtl_css
 
 import translations
-print("LOADED translations from:", translations.__file__)   # ← temporary check
+print("LOADED translations from:", translations.__file__)  
 
 st.set_page_config(page_title="Bus - Ladywood Connect", layout="wide")
 
