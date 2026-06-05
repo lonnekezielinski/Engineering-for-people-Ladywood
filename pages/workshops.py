@@ -518,12 +518,10 @@ with right:
 with st.form("workshop_registration_form"):
     st.markdown(f'<div class="registration-title">{t("ws_register_title", lang)}</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div style="background:#FFFFFF; border-radius:12px; padding:12px 16px; '
-        'margin-bottom:16px; color:#5C5347; font-size:0.95rem; line-height:1.5;">'
-        '📝 <strong>A quick note:</strong> we keep track of your workshop progress only '
-        'so we know what to teach you next. That way you won\'t have to learn the same '
-        'thing twice, and each session can pick up where you left off.'
-        '</div>',
+        f'<div style="background:#FFFFFF; border-radius:12px; padding:12px 16px; '
+        f'margin-bottom:16px; color:#5C5347; font-size:0.95rem; line-height:1.5;">'
+        f'📝 {t("ws_quick_note", lang)}'
+        f'</div>',
         unsafe_allow_html=True
     )
     workshop_choice = st.selectbox(

@@ -103,6 +103,7 @@ TRANSLATIONS = {
         "ws_register_title": "Register for a workshop",
         "ws_notes": "Anything we should know? (optional)",
         "ws_success": "Thank you. Your workshop registration has been received.",
+        "ws_quick_note": "A quick note:we keep track of your workshop progress only so we know what to teach you next. That way you won't have to learn the same thing twice, and each session can pick up where you left off.",
     },
 
     "Urdu": {
@@ -208,6 +209,7 @@ TRANSLATIONS = {
         "ws_schedule_note": "تینوں موضوعات کی ورکشاپس ہر روز دستیاب ہیں۔",
         "ws_notes": "کیا ہمیں کچھ جاننا چاہیے؟ (اختیاری)",
         "ws_success": "شکریہ — آپ کی ورکشاپ رجسٹریشن موصول ہو گئی ہے۔",
+        "ws_quick_note": "ایک فوری نوٹ: ہم آپ کی ورکشاپ کی پیشرفت کا صرف اس لیے ریکارڈ رکھتے ہیں تاکہ ہمیں معلوم ہو کہ آپ کو اگلے کیا سکھانا ہے۔ اس طرح آپ کو ایک ہی چیز دو بار سیکھنے کی ضرورت نہیں ہوگی، اور ہر سیشن وہاں سے شروع ہو سکتا ہے جہاں آپ نے چھوڑا تھا۔",
     },
 
     "Punjabi": {
@@ -313,6 +315,7 @@ TRANSLATIONS = {
         "ws_schedule_note": "ਤਿੰਨਾਂ ਥੀਮਾਂ ਦੀਆਂ ਵਰਕਸ਼ਾਪਾਂ ਹਰ ਰੋਜ਼ ਉਪਲਬਧ ਹਨ।",
         "ws_notes": "ਕੀ ਸਾਨੂੰ ਕੁਝ ਜਾਣਨਾ ਚਾਹੀਦਾ ਹੈ? (ਵਿਕਲਪਿਕ)", 
         "ws_success": "ਧੰਨਵਾਦ — ਤੁਹਾਡੀ ਵਰਕਸ਼ਾਪ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਮਿਲ ਗਈ ਹੈ।",
+        "ws_quick_note": "ਇੱਕ ਫੁਰੀ ਨੋਟ: ਅਸੀਂ ਤੁਹਾਡੀ ਵਰਕਸ਼ਾਪ ਪ੍ਰੋਗਰੈਸ ਦੀ ਸਿਰਫ ਹੀ ਟਰੈਕ ਰੱਖਦੇ ਹਾਂ ਤાਂ ਕਿ ਅਸੀਂਜਾਣਯਜਬ ہون ہیں।"
     },
 
     "Arabic": {
@@ -418,6 +421,7 @@ TRANSLATIONS = {
         "ws_schedule_note": "تتوفر ورش العمل من جميع المحاور الثلاثة كل يوم.",
         "ws_notes": "هل هناك شيء يجب أن نعرفه؟ (اختياري)",
         "ws_success": "شكراً لك — تم استلام تسجيلك في ورشة العمل.",
+        "ws_quick_note": "ملاحظة سريعة: نحن نتتبع تقدمك في ورشة العمل فقط حتى نعرف ما الذي نعلمك إياه بعد ذلك. بهذه الطريقة، لن تضطر إلى تعلم نفس الشيء مرتين، ويمكن لكل جلسة أن تبدأ من حيث توقفت.",
     },
 
     # ── Bengali (Standard) ─────────────────────────────────────────────────────
@@ -525,6 +529,7 @@ TRANSLATIONS = {
         "ws_schedule_note": "তিনটি থিমের ওয়ার্কশপ প্রতিদিন পাওয়া যায়।",
         "ws_notes": "আমাদের কিছু জানা দরকার? (ঐচ্ছিক)",
         "ws_success": "ধন্যবাদ — আপনার ওয়ার্কশপ নিবন্ধন গ্রহণ করা হয়েছে।",
+        "ws_quick_note": "একটি দ্রুত নোট: আমরা আপনার ওয়ার্কশপ অগ্রগতি শুধুমাত্র ট্র্যাক করি যাতে আমরা জানি পরবর্তী কী শেখাতে হবে। এইভাবে, আপনাকে একই জিনিস দুইবার শিখতে হবে না, এবং প্রতিটি সেশন সেখানে শুরু হতে পারে যেখানে আপনি শেষ করেছিলেন।",
 
     },
 
@@ -637,6 +642,7 @@ TRANSLATIONS = {
         "ws_schedule_note": "তিনটা থিমর ওয়ার্কশপ প্রতিদিন পাওয়া যায়।",
         "ws_notes": "আমরার কিছু জানা দরকার? (ইচ্ছামতো)",
         "ws_success": "শুকরিয়া — আপনার ওয়ার্কশপ নিবন্ধন জমা হইছে।",
+        "ws_quick_note": "একটি দ্রুত নোট: আমরা আপনার ওয়ার্কশপ অগ্রগতি শুধুমাত্র ট্র্যাক করি যাতে আমরা জানি পরবর্তী কী শেখাতে হবে। এইভাবে, আপনাকে একই জিনিস দুইবার শিখতে হবে না, एবং प्रतिटি सेशन सेहाने से शुरू हो सकता है जहाँ आपने छोड़ा था।"
     },
 
     # ── Chittagonian (Chatgaya) Bengali ────────────────────────────────────────
@@ -744,7 +750,8 @@ TRANSLATIONS = {
         "ws_schedule_title": "সাপ্তাহিক ওয়ার্কশপ সূচি",
         "ws_schedule_note": "তিনডা থিমের ওয়ার্কশপ প্রতিদিন পাওয়া যায়।",
         "ws_notes": "আমাগো কিছু জানা দরকার? (ইচ্ছামতো)",
-        "ws_success": "শুকরিয়া — আপনার ওয়ার্কশপ নিবন্ধন জমা হইছে।"
+        "ws_success": "শুকরিয়া — আপনার ওয়ার্কশপ নিবন্ধন জমা হইছে।",
+        "ws_quick_note": "একটা দ্রুত নোট: আমরা আপনার ওয়ার্কশপ অগ্রগতি শুধুমাত্র ট্র্যাক করি যাতে আমরা জানি পরবর্তী কী শেখাতে হবে। এইভাবে, আপনাকে একই জিনিস দুইবার শিখতে হবে না, আর প্রতিটা সেশন সেখানে শুরু হতে পারে যেখানে আপনি শেষ করেছিলেন।"
     },
 
     # ── Polish ─────────────────────────────────────────────────────────────────
@@ -851,6 +858,7 @@ TRANSLATIONS = {
         "ws_success_text": "Wkrótce się z Tobą skontaktujemy. Do zobaczenia na warsztatach!",
         "ws_register_another": "Zarejestruj kolejną osobę",
         "ws_error": "Proszę podać imię, nazwisko i numer telefonu.",
+        "ws_quick_note": "Szybka uwaga: Śledzimy Twój postęp w warsztatach tylko po to, aby wiedzieć, czego uczyć dalej. W ten sposób nie będziesz musiał/a uczyć się tego samego dwa razy, a każda sesja może zaczynać się tam, gdzie skończyłeś/aś."
     },
 }
 
