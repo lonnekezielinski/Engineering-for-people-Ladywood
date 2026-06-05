@@ -469,7 +469,7 @@ with left:
     st.markdown('<p class="schedule-note">Workshops from all three themes are available every day.</p>', unsafe_allow_html=True)
 
     for day, sessions in days.items():
-        with st.expander(f"{day}", expanded=(day == "Monday")):
+        with st.expander(f"{day}", expanded=(day == "Friday")):
             for time, theme, text, css_class in sessions:
                 st.markdown(
                     f"""
@@ -491,7 +491,7 @@ with right:
         <div>
             <h3>Community Bus</h3>
             <p>The bus is currently at:</p>
-            <strong>Ladywood Community Centre, St Vincent Street West, Birmingham B16</strong>
+            <strong>Chamberlain Gardens, Ladywood, Birmingham B16 8XN</strong>
             <br><br>
             <a href="bus?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
                 Go to Bus page →
