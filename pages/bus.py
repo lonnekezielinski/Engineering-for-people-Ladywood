@@ -7,8 +7,6 @@ import folium
 from streamlit_folium import st_folium
 from translations import t, apply_rtl_css
 
-import translations
-print("LOADED translations from:", translations.__file__)  
 
 st.set_page_config(page_title="Bus - Ladywood Connect", layout="wide")
 
@@ -229,14 +227,14 @@ m = folium.Map(location=[bus_lat, bus_lon], zoom_start=16, tiles="OpenStreetMap"
 folium.CircleMarker(location=[bus_lat, bus_lon], radius=30, color="#DDB8E8", fill=True, fill_color="#DDB8E8", fill_opacity=0.5).add_to(m)
 folium.Marker(
     location=[bus_lat, bus_lon],
-    popup=folium.Popup("""
-        <div style='font-family:sans-serif;text-align:center;padding:5px;'>
-            <h3 style='color:#6a0dad;margin:0;'>🚌 Community Bus</h3>
-            <p style='margin:5px 0;'>📍 Chamberlain Gardens</p>
-            <p style='margin:5px 0;'>⏰ Mon–Sun: 9:00–17:00</p>
-        </div>
-    """, max_width=220),
-    tooltip="🚌 Community Bus — click for info!",
+    popup=folium.Popup(f"""
+    <div style='font-family:sans-serif;text-align:center;padding:5px;'>
+        <h3 style='color:#6a0dad;margin:0;'>{t("bus_map_title", lang)}</h3>
+        <p style='margin:5px 0;'>{t("bus_map_place", lang)}</p>
+        <p style='margin:5px 0;'>{t("bus_map_hours", lang)}</p>
+    </div>
+""", max_width=220),
+tooltip=t("bus_map_tooltip", lang),
     icon=folium.Icon(color="purple", icon="bus", prefix="fa")
 ).add_to(m)
 st_folium(m, width="100%", height=420)

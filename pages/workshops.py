@@ -465,8 +465,8 @@ days = {
 }
 
 with left:
-    st.markdown('<h2 class="schedule-main-title">Weekly Workshop Schedule</h2>', unsafe_allow_html=True)
-    st.markdown('<p class="schedule-note">Workshops from all three themes are available every day.</p>', unsafe_allow_html=True)
+    st.markdown(f'<h2 class="schedule-main-title">{t("ws_schedule_title", lang)}</h2>', unsafe_allow_html=True)
+    st.markdown(f'<p class="schedule-note">{t("ws_schedule_note", lang)}</p>', unsafe_allow_html=True)
 
     for day, sessions in days.items():
         with st.expander(f"{day}", expanded=(day == "Friday")):
@@ -516,7 +516,7 @@ with right:
 
 ### WORKSHOP REGISTRATION
 with st.form("workshop_registration_form"):
-    st.markdown('<div class="registration-title">Register for a workshop</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="registration-title">{t("ws_register_title", lang)}</div>', unsafe_allow_html=True)
     st.markdown(
         '<div style="background:#FFFFFF; border-radius:12px; padding:12px 16px; '
         'margin-bottom:16px; color:#5C5347; font-size:0.95rem; line-height:1.5;">'
@@ -543,18 +543,18 @@ with st.form("workshop_registration_form"):
     col1, col2 = st.columns(2)
 
     with col1:
-        first_name = st.text_input("First name")
+        first_name = st.text_input(t("ws_first_name",lang))
 
     with col2:
-        last_name = st.text_input("Last name")
+        last_name = st.text_input(t("ws_last_name", lang))
 
-    phone = st.text_input("Phone number")
-    notes = st.text_area("Anything we should know? (optional)", height=120)
+    phone = st.text_input(t("ws_phone", lang))
+    notes = st.text_area(t("ws_notes", lang), height=120)
 
-    submitted = st.form_submit_button("➤ Register")
+    submitted = st.form_submit_button(t("ws_submit",lang))
 
     if submitted:
         if workshop_choice == "Select a workshop" or not first_name.strip() or not phone.strip():
-            st.error("Please choose a workshop and enter at least your first name and phone number.")
+            st.error(t("ws_error", lang)) 
         else:
-            st.success("Thank you — your workshop registration has been received.")
+            st.success(t("ws_success",lang))

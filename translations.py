@@ -9,6 +9,7 @@ TRANSLATIONS = {
         "nav_feedback": "Feedback & Requests",
         "label_language": "🌐 Language",
         "label_textsize": "🔠 Text size",
+        
 
         # --- announcements.py ---
         "ann_title": "📢 Announcements",
@@ -41,7 +42,11 @@ TRANSLATIONS = {
         "bus_sunday": "Sunday",
         "bus_closed": "❌ Closed",
         "bus_tip": "💡 <strong>Good to know!</strong> The bus internet is completely free — just show up and connect! No registration or ID needed. 🎉",
-
+        "bus_map_title": "Community Bus",
+        "bus_map_place": "Chamberlain Gardens",
+        "bus_map_hours": "Mon-Sun: 9:00-17:00",
+        "bus_map_tooltip": "Community Bus - click for info",
+        "bus_hours_time": "9:00 - 17:00",
         # --- feedback.py ---
         "fb_title": "💬 Feedback & Requests",
         "fb_back": "← Back to dashboard",
@@ -93,6 +98,11 @@ TRANSLATIONS = {
         "ws_success_text": "We'll be in touch soon. See you at the workshop!",
         "ws_register_another": "Register another person",
         "ws_error": "Please fill in your first name, last name, and phone number.",
+        "ws_schedule_title": "Weekly Workshop Schedule",
+        "ws_schedule_note": "Workshops from all three themes are available every day.",
+        "ws_register_title": "Register for a workshop",
+        "ws_notes": "Anything we should know? (optional)",
+        "ws_success": "Thank you. Your workshop registration has been received.",
     },
 
     "Urdu": {
@@ -137,6 +147,11 @@ TRANSLATIONS = {
         "bus_sunday": "اتوار",
         "bus_closed": "❌ بند",
         "bus_tip": "💡 <strong>جاننا ضروری ہے!</strong> بس کا انٹرنیٹ بالکل مفت ہے — بس آئیں اور جڑیں! کوئی رجسٹریشن یا شناختی کارڈ درکار نہیں۔ 🎉",
+        "bus_map_title": "🚌 کمیونٹی بس",
+        "bus_map_place": "📍 چیمبرلین گارڈنز",
+        "bus_map_hours": "⏰ پیر–اتوار: 9:00–17:00",
+        "bus_map_tooltip": "🚌 کمیونٹی بس — معلومات کے لیے کلک کریں!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
 
         # --- feedback.py ---
         "fb_title": "💬 رائے اور درخواستیں",
@@ -189,6 +204,10 @@ TRANSLATIONS = {
         "ws_success_text": "ہم جلد رابطہ کریں گے۔ ورکشاپ میں ملتے ہیں!",
         "ws_register_another": "کسی اور کو رجسٹر کریں",
         "ws_error": "براہ کرم پہلا نام، آخری نام اور فون نمبر درج کریں۔",
+        "ws_schedule_title": "ہفتہ وار ورکشاپ شیڈول",
+        "ws_schedule_note": "تینوں موضوعات کی ورکشاپس ہر روز دستیاب ہیں۔",
+        "ws_notes": "کیا ہمیں کچھ جاننا چاہیے؟ (اختیاری)",
+        "ws_success": "شکریہ — آپ کی ورکشاپ رجسٹریشن موصول ہو گئی ہے۔",
     },
 
     "Punjabi": {
@@ -233,11 +252,16 @@ TRANSLATIONS = {
         "bus_sunday": "ਐਤਵਾਰ",
         "bus_closed": "❌ ਬੰਦ",
         "bus_tip": "💡 <strong>ਚੰਗੀ ਗੱਲ!</strong> ਬੱਸ ਦਾ ਇੰਟਰਨੈੱਟ ਬਿਲਕੁਲ ਮੁਫ਼ਤ ਹੈ — ਬੱਸ ਆਓ ਅਤੇ ਜੁੜੋ! ਕੋਈ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਜਾਂ ID ਦੀ ਲੋੜ ਨਹੀਂ। 🎉",
+        "bus_map_title": "🚌 ਕਮਿਊਨਿਟੀ ਬੱਸ",
+        "bus_map_place": "📍 ਚੈਂਬਰਲੈਨ ਗਾਰਡਨਜ਼",
+        "bus_map_hours": "⏰ ਸੋਮ–ਐਤ: 9:00–17:00",
+        "bus_map_tooltip": "🚌 ਕਮਿਊਨਿਟੀ ਬੱਸ — ਜਾਣਕਾਰੀ ਲਈ ਕਲਿੱਕ ਕਰੋ!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
 
         # --- feedback.py ---
         "fb_title": "💬 ਰਾਏ ਅਤੇ ਬੇਨਤੀਆਂ",
         "fb_back": "← ਡੈਸ਼ਬੋਰਡ ਤੇ ਵਾਪਸ",
-        "fb_intro": "<strong>🧡 ਤੁਹਾਡੀ ਆਵਾਜ਼ ਮਹੱਤਵਪੂਰਨ ਹੈ।</strong><br>ਆਪਣੀ ਰਾਏ ਦਿਓ ਜਾਂ ਸੇਵਾ ਦੀ ਬੇਨਤੀ ਕਰੋ। ਮਿਲ ਕੇ ਅਸੀਂ ਲੇਡੀਵੁੱਡ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਂਦੇ ਹਾਂ।",
+        "fb_intro": "<strong>🧡 ਤੁਹਾਡੀ ਆਵਾਜ़ ਮਹੱਤਵਪੂਰਨ ਹੈ।</strong><br>ਆਪਣੀ ਰਾਏ ਦਿਓ ਜਾਂ ਸੇਵਾ ਦੀ ਬੇਨਤੀ ਕਰੋ। ਮਿલ ਕੇ અਸીં લેડીવુડ નું બેટર બનાવી રહ્યાં છીએ।",
         "fb_tab_feedback": "💬 ਰਾਏ",
         "fb_tab_requests": "📝 ਬੇਨਤੀਆਂ",
         "fb_form_title": "ਸਾਨੂੰ ਆਪਣੀ ਰਾਏ ਭੇਜੋ",
@@ -285,6 +309,10 @@ TRANSLATIONS = {
         "ws_success_text": "ਅਸੀਂ ਜਲਦੀ ਸੰਪਰਕ ਕਰਾਂਗੇ। ਵਰਕਸ਼ਾਪ ਵਿੱਚ ਮਿਲਾਂਗੇ!",
         "ws_register_another": "ਕਿਸੇ ਹੋਰ ਨੂੰ ਰਜਿਸਟਰ ਕਰੋ",
         "ws_error": "ਕਿਰਪਾ ਕਰਕੇ ਪਹਿਲਾ ਨਾਮ, ਆਖਰੀ ਨਾਮ ਅਤੇ ਫ਼ੋਨ ਨੰਬਰ ਦਰਜ ਕਰੋ।",
+        "ws_schedule_title": "ਹਫ਼ਤਾਵਾਰੀ ਵਰਕਸ਼ਾਪ ਸ਼ੈਡਿਊਲ",
+        "ws_schedule_note": "ਤਿੰਨਾਂ ਥੀਮਾਂ ਦੀਆਂ ਵਰਕਸ਼ਾਪਾਂ ਹਰ ਰੋਜ਼ ਉਪਲਬਧ ਹਨ।",
+        "ws_notes": "ਕੀ ਸਾਨੂੰ ਕੁਝ ਜਾਣਨਾ ਚਾਹੀਦਾ ਹੈ? (ਵਿਕਲਪਿਕ)", 
+        "ws_success": "ਧੰਨਵਾਦ — ਤੁਹਾਡੀ ਵਰਕਸ਼ਾਪ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਮਿਲ ਗਈ ਹੈ।",
     },
 
     "Arabic": {
@@ -329,6 +357,11 @@ TRANSLATIONS = {
         "bus_sunday": "الأحد",
         "bus_closed": "❌ مغلق",
         "bus_tip": "💡 <strong>معلومة مفيدة!</strong> إنترنت الحافلة مجاني تماماً — فقط تعال واتصل! لا حاجة للتسجيل أو الهوية. 🎉",
+        "bus_map_title": "🚌 الحافلة المجتمعية",
+        "bus_map_place": "📍 حدائق تشامبرلين",
+        "bus_map_hours": "⏰ الاثنين–الأحد: 9:00–17:00",
+        "bus_map_tooltip": "🚌 الحافلة المجتمعية — اضغط للمعلومات!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
 
         # --- feedback.py ---
         "fb_title": "💬 الملاحظات والطلبات",
@@ -381,6 +414,10 @@ TRANSLATIONS = {
         "ws_success_text": "سنتواصل معك قريباً. نراك في ورشة العمل!",
         "ws_register_another": "تسجيل شخص آخر",
         "ws_error": "يرجى ملء الاسم الأول واسم العائلة ورقم الهاتف.",
+        "ws_schedule_title": "جدول ورش العمل الأسبوعي",
+        "ws_schedule_note": "تتوفر ورش العمل من جميع المحاور الثلاثة كل يوم.",
+        "ws_notes": "هل هناك شيء يجب أن نعرفه؟ (اختياري)",
+        "ws_success": "شكراً لك — تم استلام تسجيلك في ورشة العمل.",
     },
 
     # ── Bengali (Standard) ─────────────────────────────────────────────────────
@@ -426,6 +463,12 @@ TRANSLATIONS = {
         "bus_sunday": "রবিবার",
         "bus_closed": "❌ বন্ধ",
         "bus_tip": "💡 <strong>জেনে রাখুন!</strong> বাসের ইন্টারনেট সম্পূর্ণ বিনামূল্যে — শুধু আসুন এবং সংযুক্ত হন! কোনো নিবন্ধন বা পরিচয়পত্র দরকার নেই। 🎉",
+        "bus_map_title": "🚌 কমিউনিটি বাস",
+        "bus_map_place": "📍 চেম্বারলেইন গার্ডেনস",
+        "bus_map_hours": "⏰ সোম–রবি: 9:00–17:00",
+        "bus_map_tooltip": "🚌 কমিউনিটি বাস — তথ্যের জন্য ক্লিক করুন!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
+
 
         # --- feedback.py ---
         "fb_title": "💬 মতামত ও অনুরোধ",
@@ -478,6 +521,11 @@ TRANSLATIONS = {
         "ws_success_text": "আমরা শীঘ্রই যোগাযোগ করব। ওয়ার্কশপে দেখা হবে!",
         "ws_register_another": "আরেকজনকে নিবন্ধন করুন",
         "ws_error": "অনুগ্রহ করে প্রথম নাম, শেষ নাম এবং ফোন নম্বর পূরণ করুন।",
+        "ws_schedule_title": "সাপ্তাহিক ওয়ার্কশপ সূচি",
+        "ws_schedule_note": "তিনটি থিমের ওয়ার্কশপ প্রতিদিন পাওয়া যায়।",
+        "ws_notes": "আমাদের কিছু জানা দরকার? (ঐচ্ছিক)",
+        "ws_success": "ধন্যবাদ — আপনার ওয়ার্কশপ নিবন্ধন গ্রহণ করা হয়েছে।",
+
     },
 
     # ── Sylheti Bengali ────────────────────────────────────────────────────────
@@ -527,6 +575,12 @@ TRANSLATIONS = {
         "bus_sunday": "রবিবার",
         "bus_closed": "❌ বন্ধ",
         "bus_tip": "💡 <strong>মনে রাখবেন!</strong> বাসের ইন্টারনেট একদম ফ্রি — শুধু আইসেন আর যুক্ত হন! কোনো নিবন্ধন বা পরিচয়পত্র লাগবো না। 🎉",
+        "bus_map_title": "🚌 কমিউনিটি বাস",
+        "bus_map_place": "📍 চেম্বারলেইন গার্ডেনস",
+        "bus_map_hours": "⏰ সোম–রবি: 9:00–17:00",
+        "bus_map_tooltip": "🚌 কমিউনিটি বাস — তথ্যর লাগি ক্লিক করেন!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
+
 
         # --- feedback.py ---
         "fb_title": "💬 মতামত আর আরজি",
@@ -579,6 +633,10 @@ TRANSLATIONS = {
         "ws_success_text": "আমরা শীঘ্রই যোগাযোগ করমু। ওয়ার্কশপে দেখা হইবো!",
         "ws_register_another": "আরেকজনরে নিবন্ধন করেন",
         "ws_error": "অনুগ্রহ কইরা প্রথম নাম, শেষ নাম আর ফোন নম্বর দেন।",
+        "ws_schedule_title": "সাপ্তাহিক ওয়ার্কশপ সূচি",
+        "ws_schedule_note": "তিনটা থিমর ওয়ার্কশপ প্রতিদিন পাওয়া যায়।",
+        "ws_notes": "আমরার কিছু জানা দরকার? (ইচ্ছামতো)",
+        "ws_success": "শুকরিয়া — আপনার ওয়ার্কশপ নিবন্ধন জমা হইছে।",
     },
 
     # ── Chittagonian (Chatgaya) Bengali ────────────────────────────────────────
@@ -626,6 +684,11 @@ TRANSLATIONS = {
         "bus_sunday": "রবিবার",
         "bus_closed": "❌ বন্ধ",
         "bus_tip": "💡 <strong>মনে রাখবেন!</strong> বাসর ইন্টারনেট একদম ফ্রি — শুধু আইয়েন আর যুক্ত হন! কোনো নিবন্ধন বা পরিচয়পত্র লাগবো না। 🎉",
+        "bus_map_title": "🚌 কমিউনিটি বাস",
+        "bus_map_place": "📍 চেম্বারলেইন গার্ডেনস",
+        "bus_map_hours": "⏰ সোম–রবি: 9:00–17:00",
+        "bus_map_tooltip": "🚌 কমিউনিটি বাস — তথ্যর লাই ক্লিক করেন!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
 
         # --- feedback.py ---
         "fb_title": "💬 মত আর দরখাস্ত",
@@ -678,6 +741,10 @@ TRANSLATIONS = {
         "ws_success_text": "আমরা শীঘ্রই যোগাযোগ করমু। ওয়ার্কশপে দেখা হইবো!",
         "ws_register_another": "আরেকজনরে নিবন্ধন করেন",
         "ws_error": "অনুগ্রহ কইরা প্রথম নাম, শেষ নাম আর ফোন নম্বর দেন।",
+        "ws_schedule_title": "সাপ্তাহিক ওয়ার্কশপ সূচি",
+        "ws_schedule_note": "তিনডা থিমের ওয়ার্কশপ প্রতিদিন পাওয়া যায়।",
+        "ws_notes": "আমাগো কিছু জানা দরকার? (ইচ্ছামতো)",
+        "ws_success": "শুকরিয়া — আপনার ওয়ার্কশপ নিবন্ধন জমা হইছে।"
     },
 
     # ── Polish ─────────────────────────────────────────────────────────────────
@@ -723,6 +790,15 @@ TRANSLATIONS = {
         "bus_sunday": "Niedziela",
         "bus_closed": "❌ Zamknięte",
         "bus_tip": "💡 <strong>Warto wiedzieć!</strong> Internet w autobusie jest całkowicie bezpłatny — po prostu przyjdź i połącz się! Nie potrzeba rejestracji ani dowodu tożsamości. 🎉",
+        "bus_map_title": "🚌 Autobus społecznościowy",
+        "bus_map_place": "📍 Chamberlain Gardens",
+        "bus_map_hours": "⏰ Pon–Ndz: 9:00–17:00",
+        "bus_map_tooltip": "🚌 Autobus społecznościowy — kliknij po informacje!",
+        "bus_hours_time": "⏰ 9:00 – 17:00",
+        "ws_schedule_title": "Tygodniowy harmonogram warsztatów",
+        "ws_schedule_note": "Warsztaty ze wszystkich trzech tematów są dostępne każdego dnia.",
+        "ws_notes": "Czy powinniśmy coś wiedzieć? (opcjonalnie)",
+        "ws_success": "Dziękujemy — Twoja rejestracja na warsztat została przyjęta.",
 
         # --- feedback.py ---
         "fb_title": "💬 Opinie i wnioski",
