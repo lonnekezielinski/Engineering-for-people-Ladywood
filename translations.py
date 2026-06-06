@@ -16,14 +16,14 @@ TRANSLATIONS = {
         "ann_subtitle": "Stay connected with your community! Discover local events, important updates, services,transport updates, and opportunities happening across Ladywood.",
         "ann_back": "← Back to dashboard",
         "ann_view_all": "View All Announcements",
-        "ann_1_title": "Community Clean-Up Event",
-        "ann_1_text": "Join the neighbourhood clean-up this Saturday at Ladywood Park. Everyone is welcome.",
-        "ann_2_title": "Bus Route Changes",
-        "ann_2_text": "Route 11 will have updated timings from next week. Check the Bus page for details.",
-        "ann_3_title": "Roadworks on Richmond Road",
-        "ann_3_text": "Temporary roadworks will take place from 25 May until 5 June.",
-        "ann_4_title": "Free Health Check Event",
-        "ann_4_text": "Free health checks available at the Neighbourhood Hub on 30 May.",
+        "ann_1_title": "Community Bus",
+        "ann_1_text": "Visit us at Chamberlain Gardens this week for free digital support, advice and community activities. For more information go to the Workshop page.",
+        "ann_2_title": "Re_Club at Retrofit house",
+        "ann_2_text": "Join us this June to repair, reuse, learn new skills and connect with your community.",
+        "ann_3_title": "National Emergency Briefing (16+)",
+        "ann_3_text": "A powerful film exploring how climate change and nature challenges affects everyday life.",
+        "ann_4_title": "Neighbourhood Supper Club",
+        "ann_4_text": "Share a meal, meet neighbours and explore ideas for a stronger local community.",
 
         # --- bus.py ---
         "bus_title": "🚌 Community Bus",
@@ -103,7 +103,7 @@ TRANSLATIONS = {
         "ws_register_title": "Register for a workshop",
         "ws_notes": "Anything we should know? (optional)",
         "ws_success": "Thank you. Your workshop registration has been received.",
-        "ws_quick_note": "A quick note:we keep track of your workshop progress only so we know what to teach you next. That way you won't have to learn the same thing twice, and each session can pick up where you left off.",
+        "ws_quick_note": "We keep track of your workshop progress only so we know what to teach you next. That way you won't have to learn the same thing twice, and each session can pick up where you left off.",
     },
 
     "Urdu": {

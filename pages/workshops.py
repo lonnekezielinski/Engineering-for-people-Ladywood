@@ -365,6 +365,31 @@ st.markdown(f"""
         padding-top: 8px !important;
         padding-bottom: 8px !important;
     }}
+
+    .quick-note {{
+        background: #F5F2EA;
+        border: 2px solid #EEE7DC;
+        border-radius: 20px;
+        padding: 18px 22px;
+        margin: 18px 0 28px 0;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        color: #0D1B3D;
+        font-size: 18px;
+        line-height: 1.5;
+    }}
+
+    .quick-note-icon {{
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #D9ECFA;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
@@ -518,12 +543,16 @@ with right:
 with st.form("workshop_registration_form"):
     st.markdown(f'<div class="registration-title">{t("ws_register_title", lang)}</div>', unsafe_allow_html=True)
     st.markdown(
-        f'<div style="background:#FFFFFF; border-radius:12px; padding:12px 16px; '
-        f'margin-bottom:16px; color:#5C5347; font-size:0.95rem; line-height:1.5;">'
-        f'📝 {t("ws_quick_note", lang)}'
-        f'</div>',
-        unsafe_allow_html=True
-    )
+        f"""
+        <div class="quick-note">
+            <div class="quick-note-icon">📝</div>
+            <div>
+                <strong>Quick note</strong><br>
+                {t("ws_quick_note", lang)}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True)
     workshop_choice = st.selectbox(
         "Which workshop would you like to join?",
         [

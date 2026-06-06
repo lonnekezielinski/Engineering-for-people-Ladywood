@@ -110,6 +110,50 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
 [data-baseweb="select"] span {{ color: #222 !important; font-weight: 500; }}
 
+.workshop-redirect-box {{
+    background: white;
+    border: 2px solid rgba(0,0,0,0.06);
+    border-radius: 28px;
+    padding: 26px 30px;
+    margin: 18px 0 28px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    color: #0D1B3D;
+    font-size: 18px;
+}}
+
+.workshop-redirect-icon {{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #D9ECFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-shrink: 0;
+}}
+
+.workshop-redirect-box h3 {{
+    margin: 0 0 8px 0;
+    color: #0D1B3D;
+    font-size: 28px;
+    font-weight: 900;
+}}
+
+.workshop-redirect-box p {{
+    margin: 0 0 14px 0;
+    color: #0D1B3D;
+}}
+
+.workshop-redirect-box a {{
+    color: #285C7A !important;
+    font-weight: 900;
+    text-decoration: underline !important;
+}}
+
 /* ---MOBILE FIXES--- */
 @media (max-width: 768px) {{
     html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
@@ -160,6 +204,7 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     .day-row, .day-name, .day-time {{ font-size: {mobile_body_size} !important; }}
 
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+    
 }}
 
 </style>
@@ -240,6 +285,18 @@ tooltip=t("bus_map_tooltip", lang),
 st_folium(m, width="100%", height=420)
 
 st.markdown(f'<div class="info-box" style="background:#CFEAC2;border-color:#a8d8a0;color:#1a3e1a;">{t("bus_address", lang)}</div>', unsafe_allow_html=True)
+st.markdown(f"""
+<div class="workshop-redirect-box">
+    <div class="workshop-redirect-icon">🧑‍💻</div>
+    <div>
+        <h3>Want to join a workshop?</h3>
+        <p>See what the community bus is offering this week and register for a workshop.</p>
+        <a href="workshops?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
+            View workshops →
+        </a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 ### WEEKLY SCHEDULE
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)

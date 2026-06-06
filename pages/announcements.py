@@ -113,7 +113,7 @@ st.markdown(f"""
 .icon-box {{ width:110px; height:110px; border-radius:25px; display:flex; align-items:center; justify-content:center; font-size:45px; flex-shrink:0; }}
 .green  {{ background:#D8EBCF; }}
 .purple {{ background:#E5D8F2; }}
-.orange {{ background:#F7DFC8; }}
+.blue {{ background:#D9ECFA; }}
 .pink   {{ background:#F7D7DD; }}
 .card-content {{ display:flex; flex-direction:column; justify-content:center; width:100%; margin:0; padding:0; }}
 .card-content * {{ margin-left:0; }}
@@ -242,10 +242,10 @@ st.markdown(f'<div class="subtitle-box">{t("ann_subtitle", lang)}</div>', unsafe
 
 ### ANNOUNCEMENTS
 announcement_data = [
-    ("🌳", "green",  "ann_1_title", "ann_1_text"),
-    ("🚌", "purple", "ann_2_title", "ann_2_text"),
-    ("🚧", "orange", "ann_3_title", "ann_3_text"),
-    ("❤️", "pink",   "ann_4_title", "ann_4_text"),
+    ("🚌", "purple", "ann_1_title", "ann_1_text"),
+    ("🏠", "green",  "ann_2_title", "ann_2_text"),
+    ("🌍", "blue",   "ann_3_title", "ann_3_text"),
+    ("🍽️", "pink",  "ann_4_title", "ann_4_text"),
 ]
 
 for icon, colour, title_key, text_key in announcement_data:
