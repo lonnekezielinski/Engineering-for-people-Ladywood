@@ -553,19 +553,13 @@ with st.form("workshop_registration_form"):
         </div>
         """,
         unsafe_allow_html=True)
-    workshop_choice = st.selectbox(
-        "Which workshop would you like to join?",
-        [
-            "Select a workshop",
-            "Monday · Access: Using the app and settings",
-            "Tuesday · Access: Troubleshooting and updates",
-            "Wednesday · Opportunity: Laptop and email basics",
-            "Thursday · Opportunity: Online forms and NHS/council services",
-            "Friday · Confidence: CV creation and job searching",
-            "Saturday · Confidence: Online banking and avoiding scams",
-            "Sunday · Drop-in help"
-        ]
-    )
+    
+    day_col, workshop_col = st.columns(2)
+    with day_col:
+        day = st.selectbox("Day *", ["Select a day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+
+    with workshop_col:
+        workshop = st.selectbox("Workshop *", ["Select a workshop", "Access (10:00 AM)", "Opportunity (1:00 PM)", "Confidence (3:00 PM)"])
 
     col1, col2 = st.columns(2)
 
