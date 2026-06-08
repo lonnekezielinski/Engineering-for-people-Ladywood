@@ -290,7 +290,7 @@ st.markdown(f"""
     <div class="workshop-redirect-icon">🧑‍💻</div>
     <div>
         <h3>Want to join a workshop?</h3>
-        <p>See what the community bus is offering this week and register for a workshop.</p>
+        <p>See what the community bus is offering this week.</p>
         <a href="workshops?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
             View workshops →
         </a>
