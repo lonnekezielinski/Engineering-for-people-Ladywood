@@ -505,8 +505,8 @@ with left:
                         </div>
                         <div class="theme-time">🕒 {time}</div>
                     </div>
-                    """,, l
-                    unsafe_allow_html=True
+                    """,
+                    unsafe_allow_html=True,
                 )
 
 with right:
@@ -515,11 +515,11 @@ with right:
         <div class="side-icon">🚌</div>
         <div>
             <h3>Community Bus</h3> 
-            <p>The bus is currently at:</p>
+            <p>{t("ws_communitybus", lang)}</p>
             <strong>Chamberlain Gardens, Ladywood, Birmingham B16 8XN</strong>
             <br><br>
             <a href="bus?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
-                Go to Bus page →
+                {t("ws_go_to_bus_page", lang)}
             </a>
         </div>
     </div>
@@ -527,8 +527,8 @@ with right:
     <div class="side-card soft-card">
         <div class="side-icon help-icon">🤝</div>
         <div>
-            <h3>Need extra help?</h3>
-            <p>Drop in for small questions. If you need support that we cannot assist with, please visit Civic Square.</p>
+            <h3>{t("ws_need_extra_help", lang)}</h3>
+            <p>{t("ws_need_extra_help_text", lang)}</p>
             <strong>
                 Civic Square Birmingham CIC<br>
                 Tubeworks, Canalside House<br>

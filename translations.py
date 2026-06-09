@@ -142,10 +142,12 @@ TRANSLATIONS = {
         "ws_sundayopportunity": "Everyday digital skills practice",
         "ws_sundayconfidence": "School platforms · Online safety questions",
         "ws_label_day_select": "Day*",
-        "ws_select_a_day": "Select a day"
-
-
-
+        "ws_select_a_day": "Select a day",
+        "ws_communitybus": "Community bus",
+        "ws_go_to_bus_page": "Go to Bus page →",
+        "ws_need_extra_help": "Need extra help?",
+        "ws_need_extra_help_text": "Drop in for small questions. If you need support that we cannot assist with, please visit Civic Square.",
+        "ws_workshop_select" : "Select a workshop"
 
     },
 
@@ -291,8 +293,12 @@ TRANSLATIONS = {
         "ws_opportunity": "موقع",
         "ws_confidence": "اعتماد",
         "ws_label_day_select":"دن*",
-        "ws_select_a_day": "ایک دن منتخب کریں"
-
+        "ws_select_a_day": "ایک دن منتخب کریں",
+        "ws_communitybus": "کمیونٹی بس",
+        "ws_go_to_bus_page": "بس کے صفحے پر جائیں →",
+        "ws_need_extra_help": "کیا آپ کو اضافی مدد کی ضرورت ہے؟",
+        "ws_need_extra_help_text": "چھوٹے سوالات کے لیے ڈراپ ان کریں۔ اگر آپ کو ایسی مدد کی ضرورت ہے جس میں ہم مدد نہیں کر سکتے، تو براہ کرم سیوک اسکوائر پر جائیں۔",
+        "ws_workshop_select" : "ورکشاپ منتخب کریں"
     },
 
     "Punjabi": {
@@ -436,7 +442,12 @@ TRANSLATIONS = {
         "ws_opportunity": "ਮੌਕਾ",
         "ws_confidence": "ਆਤਮ-ਵਿਸ਼ਵਾਸ",
         "ws_label_day_select": "ਦਿਨ*",
-        "ws_select_a_day": "ਦਿਨ ਚੁਣੋ"
+        "ws_select_a_day": "ਦਿਨ ਚੁਣੋ",
+        "ws_communitybus": "ਕਮਿਊਨਿਟੀ ਬੱਸ",
+        "ws_go_to_bus_page": "ਬੱਸ ਪੰਨੇ ਤੇ ਜਾਓ →",
+        "ws_need_extra_help": "ਕੀ ਤੁਹਾਨੂੰ अतिरिक्त मदद की ज़रूरत है?",
+        "ws_need_extra_help_text": "छोटे सवालों के लिए ड्रॉप इन करें। अगर आपको ऐसी मदद की ज़रूरत है जिसमें हम मदद नहीं कर सकते, तो कृपया सिविक स्क्वायर पर जाएं।",
+        "ws_workshop_select" : "ਵਰਕਸ਼ਾਪ ਚੁਣੋ"
     },
 
     "Arabic": {
@@ -581,7 +592,12 @@ TRANSLATIONS = {
         "ws_confidence": "الثقة",
         "ws_sundayconfidence": "منصات المدارس · أسئلة حول السلامة على الإنترنت",
         "ws_label_day_select": "يوم*",
-        "ws_select_a_day": "اختر يوم"
+        "ws_select_a_day": "اختر يوم",
+        "ws_communitybus": "الحافلة المجتمعية",
+        "ws_go_to_bus_page": "اذهب إلى صفحة الحافلة →",
+        "ws_need_extra_help": "هل تحتاج إلى مساعدة إضافية؟",
+        "ws_need_extra_help_text": "تفضل بزيارة جلسات الدعم المفتوحة لدينا للإجابة على أسئلتك الصغيرة. إذا كنت بحاجة إلى مساعدة لا يمكننا تقديمها، يرجى زيارة Civic Square.",
+        "ws_workshop_select" : "اختر ورشة العمل"
     },
 
     # ── Bengali (Standard) ─────────────────────────────────────────────────────
@@ -728,7 +744,12 @@ TRANSLATIONS = {
         "ws_opportunity": "সুযোগ",
         "ws_confidence": "আত্ম-বিশ্বাস",
         "ws_label_day_select": "দিন*",
-        "ws_select_a_day": "একটি দিন নির্বাচন করুন"
+        "ws_select_a_day": "একটি দিন নির্বাচন করুন",
+        "ws_communitybus": "কমিউনিটি বাস",
+        "ws_go_to_bus_page": "বাস পৃষ্ঠায় যান →",
+        "ws_need_extra_help": "আপনাকে অতিরিক্ত সাহায্যের প্রয়োজন?",
+        "ws_need_extra_help_text": "আমাদের ড্রপ-ইন সাপোর্ট সেশনগুলিতে আসুন আপনার ছোট প্রশ্নগুলির উত্তর পেতে। যদি আপনাকে এমন সাহায্যের প্রয়োজন হয় যা আমরা প্রদান করতে পারি না, তাহলে দয়া করে Civic Square-এ যান।",
+        "ws_workshop_select" : "ওয়ার্কশপ নির্বাচন করুন"
 
     },
 
@@ -880,7 +901,12 @@ TRANSLATIONS = {
         "ws_opportunity": "সুযোগ",
         "ws_confidence": "আত্ম-বিশ্বাস",
         "ws_label_day_select": "দিন*",
-        "ws_select_a_day": "একটা দিন বাছুন"
+        "ws_select_a_day": "একটা দিন বাছুন",
+        "ws_communitybus": "কমিউনিটি বাস",
+        "ws_go_to_bus_page": "বাস পেইজে যান →",
+        "ws_need_extra_help": "আপনাকে অতিরিক্ত সাহায্যের দরকার?",
+        "ws_need_extra_help_text": "আমাদের ড্রপ-ইন সাপোর্ট সেশনগুলিতে আসুন আপনার ছোট প্রশ্নগুলির উত্তর পেতে। যদি আপনাকে এমন সাহায্যের প্রয়োজন হয় যা আমরা প্রদান করতে পারি না, তাহলে দয়া করে Civic Square-এ যান।",
+        "ws_workshop_select" : "ওয়ার্কশপ বাছুন"
     },
 
     # ── Chittagonian (Chatgaya) Bengali ────────────────────────────────────────
@@ -1028,7 +1054,12 @@ TRANSLATIONS = {
         "ws_opportunity": "সুযোগ",
         "ws_confidence": "আত্ম-বিশ্বাস",
         "ws_label_day_select": "দিন*",
-        "ws_select_a_day": "একটা দিন বাছুন"
+        "ws_select_a_day": "একটা দিন বাছুন",
+        "ws_communitybus": "কমিউনিটি বাস",
+        "ws_go_to_bus_page": "বাস পেইজে যান →",
+        "ws_need_extra_help": "আপনাকে অতিরিক্ত সাহায্যের দরকার?",
+        "ws_need_extra_help_text": "আমাদের ড্রপ-ইন সাপোর্ট সেশনগুলিতে আসুন আপনার ছোট প্রশ্নগুলির উত্তর পেতে। যদি আপনাকে এমন সাহায্যের প্রয়োজন হয় যা আমরা প্রদান করতে পারি না, তাহলে দয়া করে Civic Square-এ যান।",
+        "ws_workshop_select" : "ওয়ার্কশপ বাছুন"
     },
 
     # ── Polish ─────────────────────────────────────────────────────────────────
@@ -1174,7 +1205,12 @@ TRANSLATIONS = {
         "ws_opportunity": "Szybkość",
         "ws_confidence": "Pewność siebie",
         "ws_label_day_select": "Dzień*",
-        "ws_select_a_day": "Wybierz dzień"
+        "ws_select_a_day": "Wybierz dzień",
+        "ws_communitybus": "Autobus społecznościowy",
+        "ws_go_to_bus_page": "Przejdź do strony autobusu →",
+        "ws_need_extra_help": "Potrzebujesz dodatkowej pomocy?",
+        "ws_need_extra_help_text": "Dołącz do naszych sesji wsparcia typu drop-in, aby uzyskać odpowiedzi na swoje krótkie pytania. Jeśli potrzebujesz pomocy, której nie możemy zapewnić, odwiedź Civic Square.",
+        "ws_workshop_select" : "Wybierz warsztat"
     },
 }
 
