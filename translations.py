@@ -138,6 +138,7 @@ TRANSLATIONS = {
         "ws_sundayaccess": "Drop-in device help · Password support",
         "ws_sundayopportunity": "Everyday digital skills practice",
         "ws_sundayconfidence": "School platforms · Online safety questions",
+        "ws_label_day_select": "Day*",
 
 
 
@@ -281,7 +282,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "ڈیپ فیکس اور غلط معلومات · بچوں کی آن لائن تعلیم میں معاونت",
         "ws_sundayaccess": "بغیر پیشگی وقت کے ڈیوائس مدد · پاس ورڈ سپورٹ",
         "ws_sundayopportunity": "روزمرہ ڈیجیٹل مہارتوں کی مشق",
-        "ws_sundayconfidence": "اسکول پلیٹ فارمز · آن لائن حفاظت سے متعلق سوالات"
+        "ws_sundayconfidence": "اسکول پلیٹ فارمز · آن لائن حفاظت سے متعلق سوالات",
+        "ws_label_day_select":"دن*"
 
     },
 
@@ -421,7 +423,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "ਡੀਪਫੇਕਸ ਅਤੇ ਗਲਤ ਜਾਣਕਾਰੀ · ਬੱਚਿਆਂ ਦੀ ਔਨਲਾਈਨ ਸਿੱਖਿਆ ਵਿੱਚ ਸਹਾਇਤਾ",
         "ws_sundayaccess": "ਡ੍ਰਾਪ-ਇਨ ਡਿਵਾਈਸ ਮਦਦ · ਪਾਸਵਰਡ ਸਹਾਇਤਾ",
         "ws_sundayopportunity": "ਰੋਜ਼ਾਨਾ ਡਿਜ਼ਿਟਲ ਹੁਨਰਾਂ ਦਾ ਅਭਿਆਸ",
-        "ws_sundayconfidence": "ਸਕੂਲ ਪਲੇਟਫਾਰਮ · ਔਨਲਾਈਨ ਸੁਰੱਖਿਆ ਸੰਬੰਧੀ ਸਵਾਲ"
+        "ws_sundayconfidence": "ਸਕੂਲ ਪਲੇਟਫਾਰਮ · ਔਨਲਾਈਨ ਸੁਰੱਖਿਆ ਸੰਬੰਧੀ ਸਵਾਲ",
+        "ws_label_day_select": "ਦਿਨ*"
     },
 
     "Arabic": {
@@ -561,7 +564,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "التزييف العميق والمعلومات المضللة · دعم تعلم الأطفال عبر الإنترنت",
         "ws_sundayaccess": "مساعدة فورية للأجهزة · دعم كلمات المرور",
         "ws_sundayopportunity": "التدرب على المهارات الرقمية اليومية",
-        "ws_sundayconfidence": "منصات المدارس · أسئلة حول السلامة على الإنترنت"
+        "ws_sundayconfidence": "منصات المدارس · أسئلة حول السلامة على الإنترنت",
+        "ws_label_day_select": "يوم*"
     },
 
     # ── Bengali (Standard) ─────────────────────────────────────────────────────
@@ -703,7 +707,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "ডিপফেক ও ভ্রান্ত তথ্য · শিশুদের অনলাইন শিক্ষায় সহায়তা",
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "দৈনন্দিন ডিজিটাল দক্ষতার অনুশীলন",
-        "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা বিষয়ক প্রশ্ন"
+        "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা বিষয়ক প্রশ্ন",
+        "ws_label_day_select": "দিন*"
 
     },
 
@@ -850,7 +855,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "ডিপফেক আর ভুল তথ্য · পোলাপাইনের অনলাইন পড়ালেখায় সহায়তা",
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "দৈনন্দিন डिजिटाल दक्षतार अनुशीलन",
-        "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · अनलाइन निरापत्ता बिषयक प्रश्न"
+        "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · अनलाइन निरापत्ता बिषयक प्रश्न",
+        "ws_label_day_select": "দিন*"
     },
 
     # ── Chittagonian (Chatgaya) Bengali ────────────────────────────────────────
@@ -993,7 +999,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "ডিপফেক আর ভুল তথ্য · পোলাপাইনের অনলাইন পড়ালেখায় সহায়তা",
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "রোজকার ডিজিটাল দক্ষতার অনুশীলন",
-        "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা সম্পর্কিত প্রশ্ন"
+        "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা সম্পর্কিত প্রশ্ন",
+        "ws_label_day_select": "দিন*"
     },
 
     # ── Polish ─────────────────────────────────────────────────────────────────
@@ -1134,7 +1141,8 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "Deepfake'i i dezinformacja · Wspieranie nauki dzieci online",
         "ws_sundayaccess": "Doraźna pomoc z urządzeniami · Pomoc dotycząca haseł",
         "ws_sundayopportunity": "Ćwiczenie codziennych umiejętności cyfrowych",
-        "ws_sundayconfidence": "Platformy szkolne · Pytania dotyczące bezpieczeństwa w internecie"
+        "ws_sundayconfidence": "Platformy szkolne · Pytania dotyczące bezpieczeństwa w internecie",
+        "ws_label_day_select": "Dzień*"
     },
 }
 
