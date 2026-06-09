@@ -139,6 +139,7 @@ TRANSLATIONS = {
         "ws_sundayopportunity": "Everyday digital skills practice",
         "ws_sundayconfidence": "School platforms · Online safety questions",
         "ws_label_day_select": "Day*",
+        "ws_select_a_day": "Select a day"
 
 
 
@@ -424,7 +425,8 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ਡ੍ਰਾਪ-ਇਨ ਡਿਵਾਈਸ ਮਦਦ · ਪਾਸਵਰਡ ਸਹਾਇਤਾ",
         "ws_sundayopportunity": "ਰੋਜ਼ਾਨਾ ਡਿਜ਼ਿਟਲ ਹੁਨਰਾਂ ਦਾ ਅਭਿਆਸ",
         "ws_sundayconfidence": "ਸਕੂਲ ਪਲੇਟਫਾਰਮ · ਔਨਲਾਈਨ ਸੁਰੱਖਿਆ ਸੰਬੰਧੀ ਸਵਾਲ",
-        "ws_label_day_select": "ਦਿਨ*"
+        "ws_label_day_select": "ਦਿਨ*",
+        "ws_select_a_day": "ਦਿਨ ਚੁਣੋ"
     },
 
     "Arabic": {
@@ -708,7 +710,8 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "দৈনন্দিন ডিজিটাল দক্ষতার অনুশীলন",
         "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা বিষয়ক প্রশ্ন",
-        "ws_label_day_select": "দিন*"
+        "ws_label_day_select": "দিন*",
+        "ws_select_a_day": "একটি দিন নির্বাচন করুন"
 
     },
 
@@ -856,7 +859,8 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "দৈনন্দিন डिजिटाल दक्षतार अनुशीलन",
         "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · अनलाइन निरापत्ता बिषयक प्रश्न",
-        "ws_label_day_select": "দিন*"
+        "ws_label_day_select": "দিন*",
+        "ws_select_a_day": "একটা দিন বাছুন"
     },
 
     # ── Chittagonian (Chatgaya) Bengali ────────────────────────────────────────
@@ -1000,7 +1004,8 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "রোজকার ডিজিটাল দক্ষতার অনুশীলন",
         "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা সম্পর্কিত প্রশ্ন",
-        "ws_label_day_select": "দিন*"
+        "ws_label_day_select": "দিন*",
+        "ws_select_a_day": "একটা দিন বাছুন"
     },
 
     # ── Polish ─────────────────────────────────────────────────────────────────
@@ -1142,7 +1147,8 @@ TRANSLATIONS = {
         "ws_sundayaccess": "Doraźna pomoc z urządzeniami · Pomoc dotycząca haseł",
         "ws_sundayopportunity": "Ćwiczenie codziennych umiejętności cyfrowych",
         "ws_sundayconfidence": "Platformy szkolne · Pytania dotyczące bezpieczeństwa w internecie",
-        "ws_label_day_select": "Dzień*"
+        "ws_label_day_select": "Dzień*",
+        "ws_select_a_day": "Wybierz dzień"
     },
 }
 
