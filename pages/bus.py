@@ -302,13 +302,13 @@ st.markdown(f"""
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)
 
 days = [
-    ("bus_monday",    "⏰ 9:00 – 17:00", False),
-    ("bus_tuesday",   "⏰ 9:00 – 17:00", False),
-    ("bus_wednesday", "⏰ 9:00 – 17:00", False),
-    ("bus_thursday",  "⏰ 9:00 – 17:00", False),
-    ("bus_friday",    "⏰ 9:00 – 17:00", False),
-    ("bus_saturday",  "⏰ 9:00 – 17:00", False),
-    ("bus_sunday",    "⏰ 9:00 – 17:00", False),
+    ("bus_monday",    "⏰ 7AM – 12PM & 1PM - 6PM", False),
+    ("bus_tuesday",   "⏰ 7AM – 12PM & 1PM - 6PM", False),
+    ("bus_wednesday", "⏰ 7AM – 12PM & 1PM - 6PM", False),
+    ("bus_thursday",  "⏰ 7AM – 12PM & 1PM - 6PM", False),
+    ("bus_friday",    "⏰ 7AM – 12PM & 1PM - 6PM", False),
+    ("bus_saturday",  "⏰ 7AM – 12PM & 1PM - 6PM", False),
+    ("bus_sunday",    "⏰ 7AM – 12PM & 1PM - 6PM", False),
 ]
 
 rows_html = ""
