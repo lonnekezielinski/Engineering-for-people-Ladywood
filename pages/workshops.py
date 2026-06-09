@@ -453,39 +453,39 @@ left, right = st.columns([2.2, 1])
 
 days = {
     "Monday": [
-        ("10:00 AM – 11:30 AM", "Access", "Using the app · Understanding settings", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "Laptop fundamentals · Email and professional communication", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "CV creation · Job searching", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_mondayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_mondayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_mondayconfidence", lang), "theme-confidence"),
     ],
     "Tuesday": [
-        ("10:00 AM – 11:30 AM", "Access", "Troubleshooting common issues · Updating apps", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "Word processing · Spreadsheet basics", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "Online banking safely · Budgeting apps", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_tuesdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_tuesdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_tuesdayconfidence", lang), "theme-confidence"),
     ],
     "Wednesday": [
-        ("10:00 AM – 11:30 AM", "Access", "Managing storage · Managing files and photos", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "Online meetings · Online forms and document uploads", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "Avoiding financial scams · Comparing utility providers", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_wednesdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_wednesdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_wednesdayconfidence", lang), "theme-confidence"),
     ],
     "Thursday": [
-        ("10:00 AM – 11:30 AM", "Access", "Recovering forgotten passwords · Cloud storage", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "AI tools for everyday tasks · NHS and council services", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "Online shopping safely · Consumer rights", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_thursdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_thursdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_thursdayconfidence", lang), "theme-confidence"),
     ],
     "Friday": [
-        ("10:00 AM – 11:30 AM", "Access", "Diagnosing device issues · Installing apps and software", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "Email support · Document uploads", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "Understanding subscriptions · Fact-checking AI outputs", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_fridayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_fridayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_fridayconfidence", lang), "theme-confidence"),
     ],
     "Saturday": [
-        ("10:00 AM – 11:30 AM", "Access", "Finding trustworthy help online · Managing updates", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "Laptop practice · Online forms", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "Deepfakes and misinformation · Supporting children’s online learning", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_saturdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_saturdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_saturdayconfidence", lang), "theme-confidence"),
     ],
     "Sunday": [
-        ("10:00 AM – 11:30 AM", "Access", "Drop-in device help · Password support", "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", "Everyday digital skills practice", "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", "School platforms · Online safety questions", "theme-confidence"),
+        ("10:00 AM – 11:30 AM", "Access", t("ws_sundayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_sundayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", "Confidence", t("ws_sundayconfidence", lang), "theme-confidence"),
     ],
 }
 
@@ -556,10 +556,26 @@ with st.form("workshop_registration_form"):
     
     day_col, workshop_col = st.columns(2)
     with day_col:
-        day = st.selectbox("Day *", ["Select a day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+        day = st.selectbox(
+            "Day *",
+            ["Select a day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            key="ws_day_select",
+        )
 
     with workshop_col:
-        workshop = st.selectbox("Workshop *", ["Select a workshop", "Access (10:00 AM)", "Opportunity (1:00 PM)", "Confidence (3:00 PM)"])
+        workshop_options = [
+            t("ws_option_button", lang),
+            t("ws_option_access", lang),
+            t("ws_option_opportunity", lang),
+            t("ws_option_confidence", lang),
+        ]
+        workshop = st.selectbox(
+            t("ws_label_option_button", lang),
+            workshop_options,
+            key="ws_workshop_select",
+        )
+
+
 
     col1, col2 = st.columns(2)
 
@@ -575,7 +591,7 @@ with st.form("workshop_registration_form"):
     submitted = st.form_submit_button(t("ws_submit",lang))
 
     if submitted:
-        if workshop_choice == "Select a workshop" or not first_name.strip() or not phone.strip():
-            st.error(t("ws_error", lang)) 
+        if workshop == t("ws_option_button", lang) or not first_name.strip() or not phone.strip():
+            st.error(t("ws_error", lang))
         else:
-            st.success(t("ws_success",lang))
+            st.success(t("ws_success", lang))
