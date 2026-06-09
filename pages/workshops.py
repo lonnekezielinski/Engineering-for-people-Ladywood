@@ -506,7 +506,7 @@ with left:
                         <div class="theme-time">🕒 {time}</div>
                     </div>
                     """,
-                    unsafe_allow_html=True,
+                    unsafe_allow_html=True
                 )
 
 with right:
