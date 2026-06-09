@@ -557,8 +557,8 @@ with st.form("workshop_registration_form"):
     day_col, workshop_col = st.columns(2)
     with day_col:
         day = st.selectbox(
-            "Day *", #t("ws_label_day_select", lang),
-            ["Select a day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            t("ws_label_day_select", lang),
+            [t("ws_select_a_day", lang), t("ws_option_day_monday", lang), t("ws_option_day_tuesday", lang), t("ws_option_day_wednesday", lang), t("ws_option_day_thursday", lang), t("ws_option_day_friday", lang), t("ws_option_day_saturday", lang), t("ws_option_day_sunday", lang)],
             key="ws_day_select",
         )
 
