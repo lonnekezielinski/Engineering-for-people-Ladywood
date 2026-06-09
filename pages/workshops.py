@@ -505,7 +505,7 @@ with left:
                         </div>
                         <div class="theme-time">🕒 {time}</div>
                     </div>
-                    """,, l
+                    """,
                     unsafe_allow_html=True
                 )
 
