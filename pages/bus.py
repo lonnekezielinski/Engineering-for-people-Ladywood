@@ -265,7 +265,6 @@ st.markdown(f'<div class="info-box">{t("bus_info", lang)}</div>', unsafe_allow_h
 
 ### LIVE LOCATION
 st.markdown(f'<div class="section-title">{t("bus_where", lang)}</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="live-badge">{t("bus_live_badge", lang)}</div>', unsafe_allow_html=True)
 
 bus_lat, bus_lon = 52.475583, -1.928278 
 m = folium.Map(location=[bus_lat, bus_lon], zoom_start=16, tiles="OpenStreetMap")
@@ -284,7 +283,13 @@ tooltip=t("bus_map_tooltip", lang),
 ).add_to(m)
 st_folium(m, width="100%", height=420)
 
-st.markdown(f'<div class="info-box" style="background:#CFEAC2;border-color:#a8d8a0;color:#1a3e1a;">{t("bus_address", lang)}</div>', unsafe_allow_html=True)
+st.markdown(
+    f'''<div class="info-box" style="background:#CFEAC2;border-color:#a8d8a0;color:#1a3e1a;">
+    <span class="live-badge">{t("bus_live_badge", lang)}</span><br>
+    {t("bus_address", lang)}
+    </div>''',
+    unsafe_allow_html=True
+)
 st.markdown(f"""
 <div class="workshop-redirect-box">
     <div class="workshop-redirect-icon">🧑‍💻</div>
