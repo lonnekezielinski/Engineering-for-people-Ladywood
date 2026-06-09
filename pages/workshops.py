@@ -453,39 +453,39 @@ left, right = st.columns([2.2, 1])
 
 days = {
     "Monday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_mondayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_mondayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_mondayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_mondayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_mondayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_mondayconfidence", lang), "theme-confidence"),
     ],
     "Tuesday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_tuesdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_tuesdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_tuesdayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_tuesdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_tuesdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_tuesdayconfidence", lang), "theme-confidence"),
     ],
     "Wednesday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_wednesdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_wednesdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_wednesdayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_wednesdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_wednesdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_wednesdayconfidence", lang), "theme-confidence"),
     ],
     "Thursday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_thursdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_thursdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_thursdayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_thursdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_thursdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_thursdayconfidence", lang), "theme-confidence"),
     ],
     "Friday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_fridayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_fridayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_fridayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_fridayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_fridayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_fridayconfidence", lang), "theme-confidence"),
     ],
     "Saturday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_saturdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_saturdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_saturdayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_saturdayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_saturdayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_saturdayconfidence", lang), "theme-confidence"),
     ],
     "Sunday": [
-        ("10:00 AM – 11:30 AM", "Access", t("ws_sundayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", "Opportunity", t("ws_sundayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", "Confidence", t("ws_sundayconfidence", lang), "theme-confidence"),
+        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_sundayaccess", lang), "theme-access"),
+        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_sundayopportunity", lang), "theme-opportunity"),
+        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_sundayconfidence", lang), "theme-confidence"),
     ],
 }
 
@@ -505,7 +505,7 @@ with left:
                         </div>
                         <div class="theme-time">🕒 {time}</div>
                     </div>
-                    """,
+                    """,, l
                     unsafe_allow_html=True
                 )
 
@@ -514,7 +514,7 @@ with right:
     <div class="side-card soft-card">
         <div class="side-icon">🚌</div>
         <div>
-            <h3>Community Bus</h3>
+            <h3>Community Bus</h3> 
             <p>The bus is currently at:</p>
             <strong>Chamberlain Gardens, Ladywood, Birmingham B16 8XN</strong>
             <br><br>

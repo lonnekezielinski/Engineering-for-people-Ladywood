@@ -107,6 +107,9 @@ TRANSLATIONS = {
         "ws_label_option_button": "Workshop*",
         "ws_option_button" : "Select a workshop",
         "ws_option_access" : "Access (10.00 AM)",
+        "ws_access" : "Access",
+        "ws_opportunity": "Opportunity",
+        "ws_confidence": "Confidence",
         "ws_option_opportunity": "Opportunity (1:00 PM)",
         "ws_option_confidence": "Confidence (3:00 PM)",
         "ws_option_day_label": "Day*",
@@ -284,7 +287,11 @@ TRANSLATIONS = {
         "ws_sundayaccess": "بغیر پیشگی وقت کے ڈیوائس مدد · پاس ورڈ سپورٹ",
         "ws_sundayopportunity": "روزمرہ ڈیجیٹل مہارتوں کی مشق",
         "ws_sundayconfidence": "اسکول پلیٹ فارمز · آن لائن حفاظت سے متعلق سوالات",
-        "ws_label_day_select":"دن*"
+        "ws_access" : "رسائی",
+        "ws_opportunity": "موقع",
+        "ws_confidence": "اعتماد",
+        "ws_label_day_select":"دن*",
+        "ws_select_a_day": "ایک دن منتخب کریں"
 
     },
 
@@ -425,6 +432,9 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ਡ੍ਰਾਪ-ਇਨ ਡਿਵਾਈਸ ਮਦਦ · ਪਾਸਵਰਡ ਸਹਾਇਤਾ",
         "ws_sundayopportunity": "ਰੋਜ਼ਾਨਾ ਡਿਜ਼ਿਟਲ ਹੁਨਰਾਂ ਦਾ ਅਭਿਆਸ",
         "ws_sundayconfidence": "ਸਕੂਲ ਪਲੇਟਫਾਰਮ · ਔਨਲਾਈਨ ਸੁਰੱਖਿਆ ਸੰਬੰਧੀ ਸਵਾਲ",
+        "ws_access" : "ਪਹੁੰਚ",
+        "ws_opportunity": "ਮੌਕਾ",
+        "ws_confidence": "ਆਤਮ-ਵਿਸ਼ਵਾਸ",
         "ws_label_day_select": "ਦਿਨ*",
         "ws_select_a_day": "ਦਿਨ ਚੁਣੋ"
     },
@@ -566,8 +576,12 @@ TRANSLATIONS = {
         "ws_saturdayconfidence": "التزييف العميق والمعلومات المضللة · دعم تعلم الأطفال عبر الإنترنت",
         "ws_sundayaccess": "مساعدة فورية للأجهزة · دعم كلمات المرور",
         "ws_sundayopportunity": "التدرب على المهارات الرقمية اليومية",
+        "ws_access" : "الوصول",
+        "ws_opportunity": "الموقع",
+        "ws_confidence": "الثقة",
         "ws_sundayconfidence": "منصات المدارس · أسئلة حول السلامة على الإنترنت",
-        "ws_label_day_select": "يوم*"
+        "ws_label_day_select": "يوم*",
+        "ws_select_a_day": "اختر يوم"
     },
 
     # ── Bengali (Standard) ─────────────────────────────────────────────────────
@@ -710,6 +724,9 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "দৈনন্দিন ডিজিটাল দক্ষতার অনুশীলন",
         "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা বিষয়ক প্রশ্ন",
+        "ws_access" : "পহুঁচ",
+        "ws_opportunity": "সুযোগ",
+        "ws_confidence": "আত্ম-বিশ্বাস",
         "ws_label_day_select": "দিন*",
         "ws_select_a_day": "একটি দিন নির্বাচন করুন"
 
@@ -859,6 +876,9 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "দৈনন্দিন डिजिटाल दक्षतार अनुशीलन",
         "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · अनलाइन निरापत्ता बिषयक प्रश्न",
+        "ws_access" : "পহুঁচ",
+        "ws_opportunity": "সুযোগ",
+        "ws_confidence": "আত্ম-বিশ্বাস",
         "ws_label_day_select": "দিন*",
         "ws_select_a_day": "একটা দিন বাছুন"
     },
@@ -1004,6 +1024,9 @@ TRANSLATIONS = {
         "ws_sundayaccess": "ড্রপ-ইন ডিভাইস সহায়তা · পাসওয়ার্ড সহায়তা",
         "ws_sundayopportunity": "রোজকার ডিজিটাল দক্ষতার অনুশীলন",
         "ws_sundayconfidence": "স্কুল প্ল্যাটফর্ম · অনলাইন নিরাপত্তা সম্পর্কিত প্রশ্ন",
+        "ws_access" : "পহুঁচ",
+        "ws_opportunity": "সুযোগ",
+        "ws_confidence": "আত্ম-বিশ্বাস",
         "ws_label_day_select": "দিন*",
         "ws_select_a_day": "একটা দিন বাছুন"
     },
@@ -1147,6 +1170,9 @@ TRANSLATIONS = {
         "ws_sundayaccess": "Doraźna pomoc z urządzeniami · Pomoc dotycząca haseł",
         "ws_sundayopportunity": "Ćwiczenie codziennych umiejętności cyfrowych",
         "ws_sundayconfidence": "Platformy szkolne · Pytania dotyczące bezpieczeństwa w internecie",
+        "ws_access" : "Pohod",
+        "ws_opportunity": "Szybkość",
+        "ws_confidence": "Pewność siebie",
         "ws_label_day_select": "Dzień*",
         "ws_select_a_day": "Wybierz dzień"
     },
