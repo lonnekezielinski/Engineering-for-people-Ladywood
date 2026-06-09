@@ -283,20 +283,14 @@ tooltip=t("bus_map_tooltip", lang),
 ).add_to(m)
 st_folium(m, width="100%", height=420)
 
-st.markdown(
-    f'''<div class="info-box" style="background:#CFEAC2;border-color:#a8d8a0;color:#1a3e1a;">
-    <span class="live-badge">{t("bus_live_badge", lang)}</span><br>
-    {t("bus_address", lang)}
-    </div>''',
-    unsafe_allow_html=True
-)
+
 st.markdown(f"""
 <div class="workshop-redirect-box">
     <div class="workshop-redirect-icon">🧑‍💻</div>
     <div>
-        <h3>Want to join a workshop?</h3>
-        <p>See what the community bus is offering this week.</p>
-        <a href="workshops?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
+        <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
+        <p>{t('bus_seecommunityoffers', lang)}</p>
+        <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
             View workshops →
         </a>
     </div>

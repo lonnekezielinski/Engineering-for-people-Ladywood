@@ -47,6 +47,8 @@ TRANSLATIONS = {
         "bus_map_hours": "Mon-Sun: 9:00-17:00",
         "bus_map_tooltip": "Community Bus - click for info",
         "bus_hours_time": "9:00 - 17:00",
+        "bus_wanttojoinaworkshop": "Want to join a workshop?",
+        "bus_seecommunityoffers": "See what the community bus is offering this week.",
         # --- feedback.py ---
         "fb_title": "💬 Feedback & Requests",
         "fb_back": "← Back to dashboard",
