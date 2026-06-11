@@ -213,8 +213,8 @@ with col1:
 with col2:
     st.markdown("""
     <div class='weather-box'>
-        <span>📅 1 June 2026</span>
-        <span>☀️ 20°C</span>
+        <span>📅 19 June 2026</span>
+        <span>⛅ 17°C</span>
     </div>
     """, unsafe_allow_html=True)
 

@@ -452,39 +452,39 @@ left, right = st.columns([2.2, 1])
 
 days = {
     t("ws_option_day_monday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_mondayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_mondayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_mondayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_mondayaccess", lang), "theme-access"),
+        ("13:00 – 14:30 ", t("ws_opportunity", lang), t("ws_mondayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_mondayconfidence", lang), "theme-confidence"),
     ],
     t("ws_option_day_tuesday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_tuesdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_tuesdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_tuesdayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_tuesdayaccess", lang), "theme-access"),
+        ("13:00 – 14:30", t("ws_opportunity", lang), t("ws_tuesdayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_tuesdayconfidence", lang), "theme-confidence"),
     ],
     t("ws_option_day_wednesday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_wednesdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_wednesdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_wednesdayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_wednesdayaccess", lang), "theme-access"),
+        ("13:00 – 14:30", t("ws_opportunity", lang), t("ws_wednesdayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_wednesdayconfidence", lang), "theme-confidence"),
     ],
     t("ws_option_day_thursday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_thursdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_thursdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_thursdayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_thursdayaccess", lang), "theme-access"),
+        ("13:00 – 14:30", t("ws_opportunity", lang), t("ws_thursdayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_thursdayconfidence", lang), "theme-confidence"),
     ],
     t("ws_option_day_friday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_fridayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_fridayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_fridayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_fridayaccess", lang), "theme-access"),
+        ("13:00 – 14:30", t("ws_opportunity", lang), t("ws_fridayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_fridayconfidence", lang), "theme-confidence"),
     ],
     t("ws_option_day_saturday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_saturdayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_saturdayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_saturdayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_saturdayaccess", lang), "theme-access"),
+        ("13:00 – 14:30", t("ws_opportunity", lang), t("ws_saturdayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_saturdayconfidence", lang), "theme-confidence"),
     ],
     t("ws_option_day_sunday", lang): [
-        ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_sundayaccess", lang), "theme-access"),
-        ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_sundayopportunity", lang), "theme-opportunity"),
-        ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_sundayconfidence", lang), "theme-confidence"),
+        ("10:00 – 11:30", t("ws_access", lang), t("ws_sundayaccess", lang), "theme-access"),
+        ("13:00 – 14:30", t("ws_opportunity", lang), t("ws_sundayopportunity", lang), "theme-opportunity"),
+        ("15:00 – 16:30", t("ws_confidence", lang), t("ws_sundayconfidence", lang), "theme-confidence"),
     ],
 }
 
