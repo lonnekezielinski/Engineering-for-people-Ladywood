@@ -200,6 +200,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ پیر–اتوار: 9:00–17:00",
         "bus_map_tooltip": "🚌 کمیونٹی بس — معلومات کے لیے کلک کریں!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "کیا آپ کسی ورکشاپ میں شامل ہونا چاہتے ہیں؟",
+        "bus_seecommunityoffers": "دیکھیں کہ کمیونٹی بس اس ہفتے کیا پیش کر رہی ہے۔",
 
         # --- feedback.py ---
         "fb_title": "💬 رائے اور درخواستیں",
@@ -350,6 +352,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ ਸੋਮ–ਐਤ: 9:00–17:00",
         "bus_map_tooltip": "🚌 ਕਮਿਊਨਿਟੀ ਬੱਸ — ਜਾਣਕਾਰੀ ਲਈ ਕਲਿੱਕ ਕਰੋ!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "ਕੀ ਤੁਸੀਂ ਕਿਸੇ ਵਰਕਸ਼ਾਪ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+        "bus_seecommunityoffers": "ਦੇਖੋ ਕਿ ਕਮਿਊਨਿਟੀ ਬੱਸ ਇਸ ਹਫ਼ਤੇ ਕੀ ਪੇਸ਼ ਕਰ ਰਹੀ ਹੈ।",
 
         # --- feedback.py ---
         "fb_title": "💬 ਰਾਏ ਅਤੇ ਬੇਨਤੀਆਂ",
@@ -499,6 +503,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ الاثنين–الأحد: 9:00–17:00",
         "bus_map_tooltip": "🚌 الحافلة المجتمعية — اضغط للمعلومات!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "هل ترغب في الانضمام إلى ورشة عمل؟",
+        "bus_seecommunityoffers": "اطّلع على ما تقدّمه الحافلة المجتمعية هذا الأسبوع.",
 
         # --- feedback.py ---
         "fb_title": "💬 الملاحظات والطلبات",
@@ -650,6 +656,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ সোম–রবি: 9:00–17:00",
         "bus_map_tooltip": "🚌 কমিউনিটি বাস — তথ্যের জন্য ক্লিক করুন!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "আপনি কি কোনো কর্মশালায় যোগ দিতে চান?",
+        "bus_seecommunityoffers": "এই সপ্তাহে কমিউনিটি বাস কী প্রদান করছে তা দেখুন।",
 
 
         # --- feedback.py ---
@@ -807,6 +815,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ সোম–রবি: 9:00–17:00",
         "bus_map_tooltip": "🚌 কমিউনিটি বাস — তথ্যর লাগি ক্লিক করেন!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "আফনে কোনো কর্মশালাত যোগ দিতা চাইন নি?",
+        "bus_seecommunityoffers": "দেখইন অউ হপ্তাত কমিউনিটি বাসে কিতা দিরা।",
 
 
         # --- feedback.py ---
@@ -961,6 +971,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ সোম–রবি: 9:00–17:00",
         "bus_map_tooltip": "🚌 কমিউনিটি বাস — তথ্যর লাই ক্লিক করেন!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "অনে কোনো কর্মশালাত শামিল অইত চান নে?",
+        "bus_seecommunityoffers": "দেখন অউ হপ্তাত কমিউনিটি বাসে কী দিয়ের।",
 
         # --- feedback.py ---
         "fb_title": "💬 মত আর দরখাস্ত",
@@ -1112,6 +1124,8 @@ TRANSLATIONS = {
         "bus_map_hours": "⏰ Pon–Ndz: 9:00–17:00",
         "bus_map_tooltip": "🚌 Autobus społecznościowy — kliknij po informacje!",
         "bus_hours_time": "⏰ 9:00 – 17:00",
+        "bus_wanttojoinaworkshop": "Chcesz dołączyć do warsztatów?",
+        "bus_seecommunityoffers": "Zobacz, co autobus społecznościowy oferuje w tym tygodniu.",
         "ws_schedule_title": "Tygodniowy harmonogram warsztatów",
         "ws_schedule_note": "Warsztaty ze wszystkich trzech tematów są dostępne każdego dnia.",
         "ws_notes": "Czy powinniśmy coś wiedzieć? (opcjonalnie)",
