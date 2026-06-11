@@ -1,210 +1,100 @@
 # Ladywood Connect Dashboard
 
-Community-focused dashboard prototype designed to improve digital accessibility and reduce reliance on informal support networks in Ladywood.
+A community-focused platform designed to improve digital accessibility, access to local support, and community resources in Ladywood, Birmingham.
+
+### Live application 
+https://ladywood-connect.streamlit.app/
+
+---
+## Authors
+
+**Group 11**
+Multidisciplinary CBL (Engineering for People 2025/2026)  
+Eindhoven University of Technology
+
+---
+## Overview 
+Ladywood Connect was developed by Waypoint to support residents in improving digital literacy, taking opportunities, and accessing local services within the community. This platform brings together information about the Community Bus by Waypoint, workshops at the Community Bus, community announcements, and feedback channels. All of these features in one accessible interface. 
+
+The key focus of the project is digital inclusion. The platform provides multilingual content, adjustable text sizes, and mobile-responsive layouts to support a diverse user base.
 
 ---
 
-# Clone the Repository (VS Code Method)
+## Features
+### Community Bus
+- View the current location of the Community Bus
+- Interactive map of where the Community Bus is
+- View opening hours and location information 
+- Quick navigation to available workshops
 
-## 1. Copy the Repository Link
+### Workshops
+- Weekly workshop schedule
+- Workshops of all three themes: Access, Opportunity, and Confidence
+- Registration form for workshops
+- Quick access to location and opening hours of Community Bus
 
-Go to the GitHub repository and click the green **Code** button.
+### Announcements
+- Local activities and events
+- Relevant updates about Ladywood
+- Updates about the dashboard 
 
-Copy the HTTPS link.
+### Feedback & Requests
+- Submit feedback about the services Waypoint provides
+- Request support, new workshops, additional features, etc.
+- View contact information 
+- Understand how feedback and requests are reviewed and processed
 
----
-
-## 2. Open VS Code
-
-Open Visual Studio Code.
-
-Press:
-
-```bash
-Ctrl + Shift + P
-```
-
-(Mac: `Cmd + Shift + P`)
-
----
-
-## 3. Clone the Repository
-
-Type:
-
-```bash
-Git: Clone
-```
-
-Click:
-
-```bash
-Git: Clone
-```
-
-Paste the repository URL when prompted.
+### Accessibility Features
+- Multiple language options on every page (including right-to-left language support)
+- Adjustable text sizes on every page
+- The application works on both desktop and phone browsers 
 
 ---
 
-## 4. Choose a Folder Location
-
-Select where you want the project folder to be saved on your computer.
-
----
-
-## 5. Open the Repository
-
-After cloning, VS Code will ask:
-
-```bash
-Open cloned repository?
-```
-
-Click:
-
-```bash
-Open
-```
-
----
-
-# Set Up the Virtual Environment
-
-## 1. Open a New Terminal
-
-In VS Code:
-
-```bash
-Terminal > New Terminal
+## Project Structure
+```text
+Ladywood Connect Dashboard
+│
+├── app.py
+├── translations.py
+├── requirements.txt
+├── README.md
+│
+├── assets/
+│
+└── pages/
+    ├── announcements.py
+    ├── bus.py
+    ├── workshops.py
+    └── feedback.py
 ```
 ---
-
-## 2. Create the Virtual Environment
-
-Run:
-
-```bash
-python -m venv venv
-```
-
-This creates a local virtual environment called:
-
-```bash
-venv
-```
-
----
-
-## 3. Activate the Virtual Environment
+## Installation
+1. Extract the project ZIP file 
+2. (Recommended) Create a virtual environment 
 
 ### Windows
-
-In terminal run the following:
-
 ```bash
+python -m venv venv 
 venv\Scripts\activate
-```
+``` 
 
-### Mac/Linux
-
+### Mac / Linux 
 ```bash
+python3 -m venv venv 
 source venv/bin/activate
-```
-
-If successful, you should now see:
-
-```bash
-(venv)
-```
-
-at the beginning of your terminal line. When working on the code always check in your terminal if the environment is activated. If not run the above line in your terminal. 
-
----
-
-# Install Required Packages
-
-Run:
-
+``` 
+3. Open a terminal in the project folder
+4. Install the requirements 
 ```bash
 pip install -r requirements.txt
 ```
-
-This installs all required project dependencies automatically.
-
----
-
-# Run the Dashboard
-
-Start the Streamlit app by running the following in your terminal:
-
+5. Run the application 
 ```bash
 streamlit run app.py
 ```
-
-The dashboard should automatically open in your browser.
-
+6. The application will open automatically. If not, open the local URL that will be displayed in the terminal (http://localhost:8501)
 ---
-
-# Project Structure
-
-## `app.py`
-
-Main dashboard homepage.
-
-Contains:
-- homepage layout
-- navigation buttons
-- accessibility settings
-- dashboard styling
-- links to other pages
-
----
-
-## `pages/`
-
-Contains all additional dashboard pages.
-
-Current pages:
-- `bus.py`
-- `workshops.py`
-- `announcements.py`
-- `feedback.py`
-
----
-
-## `assets/`
-
-Contains all visual assets used in the dashboard. 
-
-Currently stores:
-- PNG icons
-
----
-
-## `requirements.txt`
-
-Contains all required Python packages for the project.
-
-Used to install dependencies with:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# Git Workflow
-
-## Pull latest changes
-
-Before you start coding ALWAYS pull changes first! 
-To do so, go to Source Control in VS code and pull the changes.
-
----
-
-## Save and upload changes
-
-To save and upload your changes: first save your changes (ctrl + S or cmd + S), then describe your changes and push them. 
-
----
-Have fun coding!
+## Deployment 
+This platform was developed using Streamlit and deployed using Streamlit Community Cloud.
+It can be accessed through the link provided above and contains the latest release of the application. 
