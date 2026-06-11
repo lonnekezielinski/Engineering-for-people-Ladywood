@@ -244,7 +244,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 ورکشاپس",
         "ws_back": "← ڈیش بورڈ پر واپس",
-        "ws_subtitle": "📚 کمیونٹی ورکشاپس اور ڈیجیٹل سپورٹ سیشنز۔",
+        "ws_subtitle": "اس ہفتے کی ورکشاپس دریافت کریں اور اپنی ضروریات کے مطابق ایک سیشن منتخب کریں۔ اپنی جگہ محفوظ کرنے کے لیے نیچے رجسٹر کریں۔۔",
         "ws_register_title": "ابھی رجسٹر کریں",
         "ws_register_sub": "شرکت مفت ہے · کوئی اکاؤنٹ درکار نہیں",
         "ws_first_name": "پہلا نام *",
@@ -397,7 +397,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 ਵਰਕਸ਼ਾਪਾਂ",
         "ws_back": "← ਡੈਸ਼ਬੋਰਡ ਤੇ ਵਾਪਸ",
-        "ws_subtitle": "📚 ਕਮਿਊਨਿਟੀ ਵਰਕਸ਼ਾਪਾਂ ਅਤੇ ਡਿਜੀਟਲ ਸਪੋਰਟ ਸੈਸ਼ਨ।",
+        "ws_subtitle": "ਇਸ ਹਫ਼ਤੇ ਦੀਆਂ ਵਰਕਸ਼ਾਪਾਂ ਵੇਖੋ ਅਤੇ ਆਪਣੀਆਂ ਲੋੜਾਂ ਅਨੁਸਾਰ ਇੱਕ ਸੈਸ਼ਨ ਚੁਣੋ। ਆਪਣੀ ਜਗ੍ਹਾ ਰਿਜ਼ਰਵ ਕਰਨ ਲਈ ਹੇਠਾਂ ਰਜਿਸਟਰ ਕਰੋ।",
         "ws_register_title": "ਹੁਣੇ ਰਜਿਸਟਰ ਕਰੋ",
         "ws_register_sub": "ਸ਼ਾਮਲ ਹੋਣਾ ਮੁਫ਼ਤ ਹੈ · ਕੋਈ ਖਾਤਾ ਜ਼ਰੂਰੀ ਨਹੀਂ",
         "ws_first_name": "ਪਹਿਲਾ ਨਾਮ *",
@@ -549,7 +549,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 ورش العمل",
         "ws_back": "← العودة إلى لوحة التحكم",
-        "ws_subtitle": "📚 ورش عمل مجتمعية وجلسات دعم رقمي.",
+        "ws_subtitle": "استكشف ورش العمل لهذا الأسبوع وابحث عن الجلسة التي تناسب احتياجاتك. سجّل أدناه لحجز مكانك.ي.",
         "ws_register_title": "سجّل الآن",
         "ws_register_sub": "مجاني للانضمام · لا حساب مطلوب",
         "ws_first_name": "الاسم الأول *",
@@ -704,7 +704,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 ওয়ার্কশপ",
         "ws_back": "← ড্যাশবোর্ডে ফিরে যান",
-        "ws_subtitle": "📚 কমিউনিটি ওয়ার্কশপ এবং ডিজিটাল সহায়তা সেশন।",
+        "ws_subtitle": "এই সপ্তাহের কর্মশালাগুলো দেখুন এবং আপনার প্রয়োজনের সঙ্গে মানানসই একটি সেশন বেছে নিন। আপনার স্থান সংরক্ষণ করতে নিচে নিবন্ধন করুন।",
         "ws_register_title": "এখনই নিবন্ধন করুন",
         "ws_register_sub": "যোগ দেওয়া বিনামূল্যে · কোনো অ্যাকাউন্ট দরকার নেই",
         "ws_first_name": "প্রথম নাম *",
@@ -864,7 +864,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 ওয়ার্কশপ",
         "ws_back": "← ড্যাশবোর্ডে ফিরা যান",
-        "ws_subtitle": "📚 কমিউনিটি ওয়ার্কশপ আর ডিজিটাল সহায়তা সেশন।",
+        "ws_subtitle": "এই হপ্তার কর্মশালাগুলা দেখউন আর আপনার দরকারর লগে মানানসই একটা সেশন বাছি লউন। নিজের জায়গা নিশ্চিত করতে নিচে নিবন্ধন করউন।",
         "ws_register_title": "এখনই নিবন্ধন করেন",
         "ws_register_sub": "যোগ দেওয়া ফ্রি · কোনো অ্যাকাউন্ট লাগবো না",
         "ws_first_name": "প্রথম নাম *",
@@ -1020,7 +1020,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 ওয়ার্কশপ",
         "ws_back": "← ড্যাশবোর্ডে ফিরি যান",
-        "ws_subtitle": "📚 কমিউনিটি ওয়ার্কশপ আর ডিজিটাল সহায়তা সেশন।",
+        "ws_subtitle": "এই সপ্তাহের কর্মশালাগুলা দেখুন আর আপনার প্রয়োজন অনুযায়ী একটা সেশন বাছাই করুন। আপনার জায়গা সংরক্ষণ করতে নিচে নিবন্ধন করুন।",
         "ws_register_title": "এখনই নিবন্ধন করেন",
         "ws_register_sub": "যোগ দেওয়া ফ্রি · কোনো অ্যাকাউন্ট লাগবো না",
         "ws_first_name": "প্রথম নাম *",
@@ -1178,7 +1178,7 @@ TRANSLATIONS = {
         # --- workshops.py ---
         "ws_title": "📅 Warsztaty",
         "ws_back": "← Powrót do panelu",
-        "ws_subtitle": "📚 Warsztaty społecznościowe i sesje wsparcia cyfrowego.",
+        "ws_subtitle": "Zapoznaj się z warsztatami odbywającymi się w tym tygodniu i znajdź zajęcia odpowiadające Twoim potrzebom. Zarejestruj się poniżej, aby zarezerwować swoje miejsce.",
         "ws_register_title": "Zarejestruj się teraz",
         "ws_register_sub": "Udział bezpłatny · Bez konta",
         "ws_first_name": "Imię *",
