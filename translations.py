@@ -157,7 +157,7 @@ TRANSLATIONS = {
     "Urdu": {
         # --- app.py ---
         "app_title": "لیڈی ووڈ کنیکٹ",
-        "app_subtitle": "آپ کا کمیونٹی مرکز",
+        "app_subtitle": "آلیکڈیوڈ کنیکٹ میں خوش آمدید۔ لیکڈیوڈ میں ورکشاپس، کمیونٹی ایونٹس اور سپورٹ سروسز دریافت کریں۔کمیو ی بس",
         "nav_bus": "بس",
         "nav_workshops": "ورکشاپس",
         "nav_announcements": "اعلانات",
@@ -309,8 +309,8 @@ TRANSLATIONS = {
 
     "Punjabi": {
         # --- app.py ---
-        "app_title": "لیڈی ووڈ کنیکٹ",
-        "app_subtitle": "تہاڈا کمیونٹی مرکز",
+        "app_title": "لیڈی ووਡ کنیکٹ",
+        "app_subtitle": "ਲੇਡੀਵੁੱਡ ਕਨੈਕਟ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ। ਲੇਡੀਵੁੱਡ ਵਿੱਚ ਵਾਰਕਸ਼ਾਪਾਂ, ਕਮਿਊਨਿਟੀ ਇਵੈਂਟਸ ਅਤੇ ਸਹਾਇਤਾ ਸੇਵਾਵਾਂ ਦਾ ਪਤਾ ਲਗਾਓ।ਕਮਿਊਨਿਟੀ ਬੱਸ",
         "nav_bus": "ਬੱਸ",
         "nav_workshops": "ਵਰਕਸ਼ਾਪਾਂ",
         "nav_announcements": "ਐਲਾਨ",
@@ -462,7 +462,7 @@ TRANSLATIONS = {
     "Arabic": {
         # --- app.py ---
         "app_title": "ليدي وود كونيكت",
-        "app_subtitle": "مركزك المجتمعي",
+        "app_subtitle": "مرحبًا بك في لييديوود كونكت. اكتشف ورش العمل والفعاليات المجتمعية وخدمات الدعم في لييديوود.",
         "nav_bus": "الحافلة",
         "nav_workshops": "ورش العمل",
         "nav_announcements": "الإعلانات",
@@ -616,7 +616,7 @@ TRANSLATIONS = {
     "Bengali": {
         # --- app.py ---
         "app_title": "লেডিউড কানেক্ট",
-        "app_subtitle": "আপনার কমিউনিটি হাব",
+        "app_subtitle": "লেডিওড কনেক্টে আপনাকে স্বাগতম। লেডিওডে ওয়ার্কশপ, কমিউনিটি ইভেন্ট এবং সহায়তা পরিষেবাগুলি অন্বেষণ করুন।",
         "nav_bus": "বাস",
         "nav_workshops": "ওয়ার্কশপ",
         "nav_announcements": "ঘোষণা",
@@ -776,7 +776,7 @@ TRANSLATIONS = {
     "Sylheti": {
         # --- app.py ---
         "app_title": "লেডিউড কানেক্ট",
-        "app_subtitle": "আপনার কমিউনিটি হাব",
+        "app_subtitle": "Ladywood Connect-এ স্বাগতম। Ladywood-এ কর্মশালা, সামাজিক অনুষ্ঠান এবং সহায়তা পরিষেবা সম্পর্কে জানুন।",
         "nav_bus": "বাস",
         "nav_workshops": "ওয়ার্কশপ",
         "nav_announcements": "খবর",
@@ -933,7 +933,7 @@ TRANSLATIONS = {
     "Chatgaya": {
         # --- app.py ---
         "app_title": "লেডিউড কানেক্ট",
-        "app_subtitle": "আপনার কমিউনিটি হাব",
+        "app_subtitle": "Ladywood Connect-এ স্বাগতম। Ladywood এলাকার মধ্যে দক্ষতা শেখানোর কর্মশালা, কমিউনিটি উৎসব এবং সহায়তা সেবাগুলো খুঁজে নিন।",
         "nav_bus": "বাস",
         "nav_workshops": "ওয়ার্কশপ",
         "nav_announcements": "খবর",
@@ -1087,7 +1087,7 @@ TRANSLATIONS = {
     "Polish": {
         # --- app.py ---
         "app_title": "Ladywood Connect",
-        "app_subtitle": "Twoje centrum społecznościowe",
+        "app_subtitle": "Witamy w Ladywood Connect. Odkryj warsztaty, lokalne wydarzenia oraz usługi wsparcia dostępne w Ladywood.",
         "nav_bus": "Autobus",
         "nav_workshops": "Warsztaty",
         "nav_announcements": "Ogłoszenia",
