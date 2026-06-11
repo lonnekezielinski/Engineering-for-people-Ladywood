@@ -94,7 +94,25 @@ st.markdown(f"""
 .page-title    {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:5px; }}
 .section-title {{ font-size:{section_title_size}; font-weight:700; color:#0D1B3D; margin-top:30px; margin-bottom:10px; }}
 .info-box      {{ background:#DDB8E8; border:2px solid #c99de0; border-radius:24px; padding:20px 28px; margin-bottom:20px; font-size:{body_size}; color:#2a1a3e; }}
-.live-badge    {{ display:inline-block; background:#CFEAC2; color:#2a6e1f; font-weight:700; font-size:16px; border-radius:20px; padding:6px 18px; margin-bottom:16px; border:2px solid #a8d8a0; }}
+.bus-location-box {{
+    background: #CFEAC2;
+    border: 2px solid #A8D8A0;
+    border-radius: 28px;
+    padding: 26px 30px;
+    margin-bottom: 28px;
+    color: #1A3E1A;
+}}
+
+.bus-location-header {{
+    font-size: {body_size};
+    font-weight: 900;
+    margin-bottom: 18px;
+}}
+
+.bus-location-content {{
+    font-size: {body_size};
+    line-height: 1.6;
+}}
 .schedule-box  {{ background:#C8E2F5; border:2px solid #a0c8e8; border-radius:24px; padding:20px 28px; margin-bottom:10px; }}
 .tip-box       {{ background:#F4D2BD; border:2px solid #e0b89a; border-radius:24px; padding:20px 28px; margin-top:20px; font-size:{body_size}; color:#5a2e0e; }}
 .day-row       {{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #b8d4e8; font-size:{body_size}; color:#0D1B3D; }}
@@ -283,6 +301,16 @@ tooltip=t("bus_map_tooltip", lang),
 ).add_to(m)
 st_folium(m, width="100%", height=420)
 
+st.markdown(f'''
+<div class="bus-location-box">
+    <div class="bus-location-header">
+        {t("bus_live_badge", lang)}
+    </div>
+    <div class="bus-location-content">
+        {t("bus_address", lang)}
+    </div>
+</div>
+''', unsafe_allow_html=True)
 
 st.markdown(f"""
 <div class="workshop-redirect-box">
