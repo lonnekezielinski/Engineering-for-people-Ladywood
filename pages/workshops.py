@@ -448,41 +448,40 @@ st.markdown(f'<div class="page-title">{t("ws_title", lang)}</div>', unsafe_allow
 st.markdown(f'<div class="intro-box">{t("ws_subtitle", lang)}</div>', unsafe_allow_html=True)
 
 ### WORKSHOP SCHEDULE
-
 left, right = st.columns([2.2, 1])
 
 days = {
-    "Monday": [
+    t("ws_option_day_monday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_mondayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_mondayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_mondayconfidence", lang), "theme-confidence"),
     ],
-    "Tuesday": [
+    t("ws_option_day_tuesday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_tuesdayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_tuesdayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_tuesdayconfidence", lang), "theme-confidence"),
     ],
-    "Wednesday": [
+    t("ws_option_day_wednesday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_wednesdayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_wednesdayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_wednesdayconfidence", lang), "theme-confidence"),
     ],
-    "Thursday": [
+    t("ws_option_day_thursday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_thursdayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_thursdayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_thursdayconfidence", lang), "theme-confidence"),
     ],
-    "Friday": [
+    t("ws_option_day_friday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_fridayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_fridayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_fridayconfidence", lang), "theme-confidence"),
     ],
-    "Saturday": [
+    t("ws_option_day_saturday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_saturdayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_saturdayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_saturdayconfidence", lang), "theme-confidence"),
     ],
-    "Sunday": [
+    t("ws_option_day_sunday", lang): [
         ("10:00 AM – 11:30 AM", t("ws_access", lang), t("ws_sundayaccess", lang), "theme-access"),
         ("1:00 PM – 2:30 PM", t("ws_opportunity", lang), t("ws_sundayopportunity", lang), "theme-opportunity"),
         ("3:00 PM – 4:30 PM", t("ws_confidence", lang), t("ws_sundayconfidence", lang), "theme-confidence"),
@@ -494,7 +493,7 @@ with left:
     st.markdown(f'<p class="schedule-note">{t("ws_schedule_note", lang)}</p>', unsafe_allow_html=True)
 
     for day, sessions in days.items():
-        with st.expander(f"{day}", expanded=(day == "Friday")):
+        with st.expander(day, expanded=False):
             for time, theme, text, css_class in sessions:
                 st.markdown(
                     f"""
@@ -514,7 +513,7 @@ with right:
     <div class="side-card soft-card">
         <div class="side-icon">🚌</div>
         <div>
-            <h3>Community Bus</h3> 
+            <h3>{t("ws_communitybus", lang)}</h3>
             <p>{t("ws_communitybus", lang)}</p>
             <strong>Chamberlain Gardens, Ladywood, Birmingham B16 8XN</strong>
             <br><br>
