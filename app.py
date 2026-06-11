@@ -99,7 +99,7 @@ st.markdown(f"""
 
 /* --- Header title and logo --- */
 .title      {{ font-size: {title_size}; font-weight: 800; color: #0D1B3D; }}
-.subtitle   {{ font-size: {subtitle_size}; color: #444; margin-bottom: 40px; }}
+.subtitle   {{ font-size: {subtitle_size}; font-weight: 500; color: #444; margin-bottom: 40px; }}
 .title-row  {{ display: flex; align-items: center; gap: 20px; }}
 .title-logo {{ width: 90px; height: 90px; object-fit: contain; }}
 
@@ -232,7 +232,7 @@ with col2:
     st.markdown(f"""
     <a href="workshops?lang={lang}&text_size={st.session_state["text_size"]}" target="_self">
         <div class='card workshops'>
-            <div class='card-icon'>📅</div>
+            <div class='card-icon'>💻</div>
             <div class='card-title'>{t("nav_workshops", lang)}</div>
         </div>
     </a>

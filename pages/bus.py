@@ -95,24 +95,43 @@ st.markdown(f"""
 .section-title {{ font-size:{section_title_size}; font-weight:700; color:#0D1B3D; margin-top:30px; margin-bottom:10px; }}
 .info-box      {{ background:#DDB8E8; border:2px solid #c99de0; border-radius:24px; padding:20px 28px; margin-bottom:20px; font-size:{body_size}; color:#2a1a3e; }}
 .bus-location-box {{
-    background: #CFEAC2;
-    border: 2px solid #A8D8A0;
+    background: white;
+    border: 2px solid rgba(0,0,0,0.06);
     border-radius: 28px;
     padding: 26px 30px;
-    margin-bottom: 28px;
-    color: #1A3E1A;
+    margin: 18px 0 28px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    color: #0D1B3D;
+    font-size: 18px;
 }}
 
-.bus-location-header {{
-    font-size: {body_size};
+.bus-location-icon {{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #DDF0D8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-shrink: 0;
+}}
+
+.bus-location-box h3 {{
+    margin: 0 0 8px 0;
+    color: #0D1B3D;
+    font-size: 28px;
     font-weight: 900;
-    margin-bottom: 18px;
 }}
 
-.bus-location-content {{
-    font-size: {body_size};
-    line-height: 1.6;
+.bus-location-box p {{
+    margin: 0 0 14px 0;
+    color: #0D1B3D;
 }}
+
 .schedule-box  {{ background:#C8E2F5; border:2px solid #a0c8e8; border-radius:24px; padding:20px 28px; margin-bottom:10px; }}
 .tip-box       {{ background:#F4D2BD; border:2px solid #e0b89a; border-radius:24px; padding:20px 28px; margin-top:20px; font-size:{body_size}; color:#5a2e0e; }}
 .day-row       {{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #b8d4e8; font-size:{body_size}; color:#0D1B3D; }}
@@ -281,7 +300,7 @@ with top_right:
 st.markdown(f'<div class="page-title">{t("bus_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="info-box">{t("bus_info", lang)}</div>', unsafe_allow_html=True)
 
-### LIVE LOCATION
+# --- Live location ---
 st.markdown(f'<div class="section-title">{t("bus_where", lang)}</div>', unsafe_allow_html=True)
 
 bus_lat, bus_lon = 52.475583, -1.928278 
@@ -299,31 +318,36 @@ folium.Marker(
 tooltip=t("bus_map_tooltip", lang),
     icon=folium.Icon(color="purple", icon="bus", prefix="fa")
 ).add_to(m)
-st_folium(m, width="100%", height=420)
 
-st.markdown(f'''
-<div class="bus-location-box">
-    <div class="bus-location-header">
-        {t("bus_live_badge", lang)}
-    </div>
-    <div class="bus-location-content">
-        {t("bus_address", lang)}
-    </div>
-</div>
-''', unsafe_allow_html=True)
+# --- Right column with information & initialize both columns ---
+map_col, info_col = st.columns([1.5, 1])
 
-st.markdown(f"""
-<div class="workshop-redirect-box">
-    <div class="workshop-redirect-icon">🧑‍💻</div>
-    <div>
-        <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
-        <p>{t('bus_seecommunityoffers', lang)}</p>
-        <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
-            View workshops →
-        </a>
+with map_col:
+    st_folium(m, width="100%", height=500)
+
+with info_col:
+    st.markdown(f"""
+    <div class="bus-location-box">
+        <div class="bus-location-icon">📍</div>
+        <div>
+            <h3>{t("bus_live_badge", lang)}</h3>
+            <p>{t("bus_address", lang)}</p>
+        </div>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div class="workshop-redirect-box">
+        <div class="workshop-redirect-icon">🧑‍💻</div>
+        <div>
+            <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
+            <p>{t('bus_seecommunityoffers', lang)}</p>
+            <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
+                View workshops →
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 ### WEEKLY SCHEDULE
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)

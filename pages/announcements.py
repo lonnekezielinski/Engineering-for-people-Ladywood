@@ -109,7 +109,6 @@ st.markdown(f"""
 .subtitle-box {{ background:#CFEAC2; border:2px solid #A8D8A0; border-radius:24px; padding:20px 28px; margin-bottom:30px; font-size:{body_size}; color:#1A3E1A; }}
 
 .announcement-card {{ background:white; border-radius:28px; padding:22px; margin-bottom:22px; display:flex; flex-direction:row; align-items:center; gap:24px; border:2px solid rgba(0,0,0,0.05); box-shadow:0 4px 12px rgba(0,0,0,0.04); transition:0.2s; }}
-.announcement-card:hover {{ transform:scale(1.01); }}
 .icon-box {{ width:110px; height:110px; border-radius:25px; display:flex; align-items:center; justify-content:center; font-size:45px; flex-shrink:0; }}
 .green  {{ background:#D8EBCF; }}
 .purple {{ background:#E5D8F2; }}
