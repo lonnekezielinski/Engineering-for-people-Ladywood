@@ -312,13 +312,6 @@ st.markdown(f'''
 </div>
 ''', unsafe_allow_html=True)
 
-st.markdown(
-    f'''<div class="info-box" style="background:#CFEAC2;border-color:#a8d8a0;color:#1a3e1a;">
-    <span class="live-badge">{t("bus_live_badge", lang)}</span><br>
-    {t("bus_address", lang)}
-    </div>''',
-    unsafe_allow_html=True
-)
 st.markdown(f"""
 <div class="workshop-redirect-box">
     <div class="workshop-redirect-icon">🧑‍💻</div>
