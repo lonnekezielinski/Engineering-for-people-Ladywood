@@ -325,6 +325,6 @@ with requests_tab:
     <div class="panel-title">{t("fb_contact_title", lang)}</div>
     <div class="request-card"><div class="request-icon orange">📞</div><div><div class="request-title">0121 345 6789</div></div></div>
     <div class="request-card"><div class="request-icon orange">✉️</div><div><div class="request-title">info@ladywoodconnect.org</div></div></div>
-    <div class="request-card"><div class="request-icon orange">📪</div><div><div class="request-title">Fill in the form at the Community Bus</div></div></div>
+    <div class="request-card"><div class="request-icon orange">📪</div><div><div class="request-title">{t("fb_contact_bus_form", lang)}</div></div></div>
     </div>
     """, unsafe_allow_html=True)
