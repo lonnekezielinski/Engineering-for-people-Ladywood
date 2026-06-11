@@ -1,5 +1,3 @@
-### IMPORTS
-### IMPORTS
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
@@ -10,7 +8,7 @@ from translations import t, apply_rtl_css
 
 st.set_page_config(page_title="Bus - Ladywood Connect", layout="wide")
 
-# ── Language: read from URL first, then session state ──
+# --- Language settings ---
 if "language" not in st.session_state:
     if "lang" in st.query_params:
         url_lang = st.query_params["lang"]
@@ -44,6 +42,7 @@ LANGUAGE_MAP = {
 
 lang = st.session_state.get("language", "English")
 
+# --- Text sizing ---
 if "text_size" in st.query_params:
     url_text_size = st.query_params["text_size"]
     if url_text_size in ["S", "M", "L"]:
@@ -81,20 +80,25 @@ elif text_size == "L":
     mobile_section_title_size = "34px"
     mobile_body_size = "24px"
 
-### CUSTOM CSS
+# --- Custom CSS ---
 st.markdown(f"""
 <style>
+/* --- Page layout --- */
 [data-testid="stAppViewContainer"] {{ background-color: #F5F2EA; }}
 [data-testid="stHeader"]           {{ background-color: transparent; }}
 [data-testid="stSidebar"]          {{ display: none; }}
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
 
+/* --- Back button --- */
 .stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
 
+/* --- Header title and intro --- */
 .page-title    {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:5px; }}
 .section-title {{ font-size:{section_title_size}; font-weight:700; color:#0D1B3D; margin-top:30px; margin-bottom:10px; }}
-.info-box      {{ background:#DDB8E8; border:2px solid #c99de0; border-radius:24px; padding:20px 28px; margin-bottom:20px; font-size:{body_size}; color:#2a1a3e; }}
-.bus-location-box {{
+.info-box      {{ background:#DDB8E8; border:2px solid #c99de0; border-radius:24px; padding:20px 28px; margin-bottom:20px; font-size:{body_size}; font-weight: 500; color:#2a1a3e; }}
+
+/* --- Information cards --- */
+.bus-location-box, .workshop-redirect-box {{
     background: white;
     border: 2px solid rgba(0,0,0,0.06);
     border-radius: 28px;
@@ -105,14 +109,13 @@ st.markdown(f"""
     gap: 22px;
     align-items: flex-start;
     color: #0D1B3D;
-    font-size: 18px;
+    font-size: {body_size};
 }}
 
-.bus-location-icon {{
+.bus-location-icon, .workshop-redirect-icon {{
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: #DDF0D8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,138 +123,67 @@ st.markdown(f"""
     flex-shrink: 0;
 }}
 
-.bus-location-box h3 {{
-    margin: 0 0 8px 0;
-    color: #0D1B3D;
-    font-size: 28px;
-    font-weight: 900;
-}}
+.bus-location-icon {{ background: #DDF0D8; }}
+.workshop-redirect-icon {{ background: #D9ECFA;}}
+.bus-location-box h3, .workshop-redirect-box h3 {{ margin: 0 0 8px 0; color: #0D1B3D; font-size: {section_title_size}; font-weight: 900; }}
+.bus-location-box p, .workshop-redirect-box p {{ margin: 0 0 14px 0; color: #0D1B3D; font-size: {body_size};}}
 
-.bus-location-box p {{
-    margin: 0 0 14px 0;
-    color: #0D1B3D;
-}}
-
+/* --- Weekly schedule --- */
 .schedule-box  {{ background:#C8E2F5; border:2px solid #a0c8e8; border-radius:24px; padding:20px 28px; margin-bottom:10px; }}
-.tip-box       {{ background:#F4D2BD; border:2px solid #e0b89a; border-radius:24px; padding:20px 28px; margin-top:20px; font-size:{body_size}; color:#5a2e0e; }}
 .day-row       {{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #b8d4e8; font-size:{body_size}; color:#0D1B3D; }}
 .day-name      {{ font-weight:700; width:120px; }}
 .day-time      {{ color:#444; }}
-.closed        {{ color:#cc4444; font-weight:600; }}
-a {{ text-decoration:none !important; color:inherit !important; }}
 
+/* --- Removes default link style around card --- */
+a {{ text-decoration:none !important; color:inherit !important; }}
+/* Want to keep said styling on one part */
+.workshop-redirect-box a {{ color: #285C7A !important; text-decoration: underline !important; }}
+
+/* --- Accessibility settings --- */
 .setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
+
+/* Language dropdown menue */
 [data-testid="stSelectbox"] {{ width: 280px !important; max-width: 280px; }}
-[data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
-div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
 [data-baseweb="select"] span {{ color: #222 !important; font-weight: 500; }}
 
-.workshop-redirect-box {{
-    background: white;
-    border: 2px solid rgba(0,0,0,0.06);
-    border-radius: 28px;
-    padding: 26px 30px;
-    margin: 18px 0 28px 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    display: flex;
-    gap: 22px;
-    align-items: flex-start;
-    color: #0D1B3D;
-    font-size: 18px;
-}}
+/* Text size buttons */
+[data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
+div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
 
-.workshop-redirect-icon {{
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: #D9ECFA;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    flex-shrink: 0;
-}}
-
-.workshop-redirect-box h3 {{
-    margin: 0 0 8px 0;
-    color: #0D1B3D;
-    font-size: 28px;
-    font-weight: 900;
-}}
-
-.workshop-redirect-box p {{
-    margin: 0 0 14px 0;
-    color: #0D1B3D;
-}}
-
-.workshop-redirect-box a {{
-    color: #285C7A !important;
-    font-weight: 900;
-    text-decoration: underline !important;
-}}
-
-/* ---MOBILE FIXES--- */
+/* --- Mobile layout fixes --- */
 @media (max-width: 768px) {{
+    /* Prevent horizontal scrolling */
     html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
     .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
     
-    .title, .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
-    h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
-
-    .subtitle,
-    .subtitle-box,
-    .intro-box,
-    .info-box,
-    .tip-box {{
-        font-size: {mobile_body_size} !important;
-        padding: 16px 18px !important;
-        border-radius: 20px !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }}
+    .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
 
     .section-title {{ font-size: {mobile_section_title_size} !important; }}
 
-    .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
-
-    .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
-
-    .card-content h3 {{ font-size: 22px !important; line-height: 1.25 !important; }}
-
-    .card-content p {{ font-size: 16px !important; line-height: 1.45 !important;}}
-
-    .form-card,
-    .help-card,
-    .request-card,
-    .contact-card {{
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }}
-
-    input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important;}}
-
-    [data-testid="stSelectbox"],
-    [data-testid="stRadio"] {{
-        width: 100% !important;
-        max-width: 100% !important;
-    }}
-
+    /* Scaling and sizing */
+    .info-box {{ font-size: {mobile_body_size} !important; padding: 16px 18px !important; border-radius: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
+    .bus-location-box, .workshop-redirect-box {{ font-size: {mobile_body_size} !important; padding: 20px !important; gap: 16px !important; box-sizing: border-box !important; }}
+    .bus-location-box h3, .workshop-redirect-box h3 {{ font-size: {mobile_section_title_size} !important; }}
+    .bus-location-box p, .workshop-redirect-box p {{ font-size: {mobile_body_size} !important; }}
+    .bus-location-icon, .workshop-redirect-icon {{ width: 56px !important; height: 56px !important; font-size: 26px !important;}}
     .day-row, .day-name, .day-time {{ font-size: {mobile_body_size} !important; }}
 
-    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+    /* Accessibility controls */
+    [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
 
-    iframe {{height: 300px !important;}}
-    
+    /* Back button */
+    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important;}}
+
+    /* Reduce map height */
+    iframe {{ height: 300px !important; }}    
 }}
-
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 
-### TOP BAR
+# --- Top bar ---
 top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
 
 with top_left:
@@ -298,7 +230,7 @@ with top_right:
             st.query_params["text_size"] = text_size
             st.rerun()
 
-### TITLE
+# --- Title ---
 st.markdown(f'<div class="page-title">{t("bus_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="info-box">{t("bus_info", lang)}</div>', unsafe_allow_html=True)
 
@@ -351,26 +283,26 @@ with info_col:
     </div>
     """, unsafe_allow_html=True)
 
-### WEEKLY SCHEDULE
+# --- Weekly schedule ---
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)
 
 days = [
-    ("bus_monday",    "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
-    ("bus_tuesday",   "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
-    ("bus_wednesday", "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
-    ("bus_thursday",  "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
-    ("bus_friday",    "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
-    ("bus_saturday",  "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
-    ("bus_sunday",    "⏰ 7:00 – 12:00 & 13:00 - 18:00", False),
+    ("bus_monday",    "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
+    ("bus_tuesday",   "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
+    ("bus_wednesday", "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
+    ("bus_thursday",  "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
+    ("bus_friday",    "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
+    ("bus_saturday",  "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
+    ("bus_sunday",    "⏰ 7:00 – 12:00 & 13:00 - 18:00"),
 ]
 
 rows_html = ""
-for i, (day_key, time_str, closed) in enumerate(days):
+for i, (day_key, time_str) in enumerate(days):
     border = "" if i < len(days) - 1 else "border-bottom:none;"
-    if closed:
-        time_html = f'<span class="day-time closed">{t("bus_closed", lang)}</span>'
-    else:
-        time_html = f'<span class="day-time">{time_str}</span>'
-    rows_html += f'<div class="day-row" style="{border}"><span class="day-name">{t(day_key, lang)}</span>{time_html}</div>'
-
+    rows_html += (
+        f'<div class="day-row" style="{border}">'
+        f'<span class="day-name">{t(day_key, lang)}</span>'
+        f'<span class="day-time">{time_str}</span>'
+        f'</div>'
+    )
 st.markdown(f'<div class="schedule-box">{rows_html}</div>', unsafe_allow_html=True)

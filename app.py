@@ -2,17 +2,17 @@ import streamlit as st
 import base64
 from translations import t, apply_rtl_css
 
-# PAGE CONFIG
+# --- Page configuration ---
 st.set_page_config(page_title="Ladywood Connect", layout="wide")
 
-# Load logo
+# --- Load & place logo ---
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
 logo_icon = get_base64_image("assets/waypoint-logo.png")
 
-# Language settings
+# --- Language settings --- 
 LANGUAGE_OPTIONS = [
     "🇬🇧 English",
     "🇸🇦 Arabic",
@@ -46,7 +46,7 @@ if "language" not in st.session_state:
 
 lang = st.session_state["language"]
 
-# Text sizing
+# --- Text sizing ---
 if "text_size" in st.query_params:
     url_text_size = st.query_params["text_size"]
     if url_text_size in ["S", "M", "L"]:
@@ -87,7 +87,7 @@ elif text_size == "L":
     mobile_subtitle_size = "24px"
     mobile_card_title_size = "30px"
 
-# CUSTOM CSS
+# --- Custom CSS ---
 st.markdown(f"""
 <style>
 /* --- Page layout --- */ 
@@ -146,7 +146,7 @@ a {{ text-decoration: none !important; color: inherit !important; }}
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
 [data-baseweb="select"] span  {{ color: #222 !important; font-weight: 500; }}
 
-/* Text size radio buttons */
+/* Text size buttons */
 [data-testid="stRadio"] {{
     width: 220px !important; background: white; border: 2px solid #D8D2C7;
     border-radius: 18px; padding: 8px 12px; margin-top: 0; margin-left: 0 !important;
@@ -155,6 +155,7 @@ div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !i
 
 /* --- Mobile layout fixes --- */
 @media (max-width: 768px) {{
+    /* Prevent horizontal scrolling */
     html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
     .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important; }}
 

@@ -50,7 +50,7 @@ TRANSLATIONS = {
         "bus_seecommunityoffers": "See what the community bus is offering this week.",
 
         # --- feedback.py ---
-        "fb_title": "💬 Feedback & Requests",
+        "fb_title": "📋 Feedback & Requests",
         "fb_back": "← Back to dashboard",
         "fb_intro": "<strong>🧡 We value your voice.</strong><br>Share your feedback or request a service. Together, we make Ladywood better. Your feedback and requests help us improve services and create a stronger community.",
         "fb_tab_feedback": "💬 Feedback",
@@ -358,7 +358,7 @@ TRANSLATIONS = {
         "bus_seecommunityoffers": "ਦੇਖੋ ਕਿ ਕਮਿਊਨਿਟੀ ਬੱਸ ਇਸ ਹਫ਼ਤੇ ਕੀ ਪੇਸ਼ ਕਰ ਰਹੀ ਹੈ।",
 
         # --- feedback.py ---
-        "fb_title": "💬 ਰਾਏ ਅਤੇ ਬੇਨਤੀਆਂ",
+        "fb_title": "📋 ਰਾਏ ਅਤੇ ਬੇਨਤੀਆਂ",
         "fb_back": "← ਡੈਸ਼ਬੋਰਡ ਤੇ ਵਾਪਸ",
         "fb_intro": "<strong>🧡 ਤੁਹਾਡੀ ਆਵਾਜ़ ਮਹੱਤਵਪੂਰਨ ਹੈ।</strong><br>ਆਪਣੀ ਰਾਏ ਦਿਓ ਜਾਂ ਸੇਵਾ ਦੀ ਬੇਨਤੀ ਕਰੋ। ਮਿલ ਕੇ અਸીં લેડીવુડ નું બેટર બનાવી રહ્યાં છીએ।",
         "fb_tab_feedback": "💬 ਰਾਏ",
@@ -510,7 +510,7 @@ TRANSLATIONS = {
         "bus_seecommunityoffers": "اطّلع على ما تقدّمه الحافلة المجتمعية هذا الأسبوع.",
 
         # --- feedback.py ---
-        "fb_title": "💬 الملاحظات والطلبات",
+        "fb_title": "📋 الملاحظات والطلبات",
         "fb_back": "← العودة إلى لوحة التحكم",
         "fb_intro": "<strong>🧡 رأيك يهمنا.</strong><br>شارك ملاحظاتك أو اطلب خدمة. معاً نجعل ليدي وود أفضل.",
         "fb_tab_feedback": "💬 ملاحظات",
@@ -664,7 +664,7 @@ TRANSLATIONS = {
 
 
         # --- feedback.py ---
-        "fb_title": "💬 মতামত ও অনুরোধ",
+        "fb_title": "📋 মতামত ও অনুরোধ",
         "fb_back": "← ড্যাশবোর্ডে ফিরে যান",
         "fb_intro": "<strong>🧡 আপনার মতামত আমাদের কাছে মূল্যবান।</strong><br>আপনার মতামত জানান বা সেবার অনুরোধ করুন। একসাথে আমরা লেডিউডকে আরও ভালো করব।",
         "fb_tab_feedback": "💬 মতামত",
@@ -819,7 +819,7 @@ TRANSLATIONS = {
 
 
         # --- feedback.py ---
-        "fb_title": "💬 মতামত আর আরজি",
+        "fb_title": "📋 মতামত আর আরজি",
         "fb_back": "← ড্যাশবোর্ডে ফিরা যান",
         "fb_intro": "<strong>🧡 আপনের কথা আমাগো কাছে দরকারি।</strong><br>আপনের মতামত দেন বা সেবার আরজি করেন। একলগে আমরা লেডিউডরে আরও ভালো করমু।",
         "fb_tab_feedback": "💬 মতামত",
@@ -972,7 +972,7 @@ TRANSLATIONS = {
         "bus_seecommunityoffers": "দেখন অউ হপ্তাত কমিউনিটি বাসে কী দিয়ের।",
 
         # --- feedback.py ---
-        "fb_title": "💬 মত আর দরখাস্ত",
+        "fb_title": "📋 মত আর দরখাস্ত",
         "fb_back": "← ড্যাশবোর্ডে ফিরি যান",
         "fb_intro": "<strong>🧡 আপনার কথা আমাগোর কাছে জরুরি।</strong><br>আপনার মত দেন বা সেবার দরখাস্ত করেন। একলগে আমরা লেডিউডরে আরও ভালো করমু।",
         "fb_tab_feedback": "💬 মত",
@@ -1129,7 +1129,7 @@ TRANSLATIONS = {
         "ws_success": "Dziękujemy — Twoja rejestracja na warsztat została przyjęta.",
 
         # --- feedback.py ---
-        "fb_title": "💬 Opinie i wnioski",
+        "fb_title": "📋 Opinie i wnioski",
         "fb_back": "← Powrót do panelu",
         "fb_intro": "<strong>🧡 Twój głos ma znaczenie.</strong><br>Podziel się opinią lub złóż wniosek o usługę. Razem sprawiamy, że Ladywood jest lepszym miejscem.",
         "fb_tab_feedback": "💬 Opinie",
