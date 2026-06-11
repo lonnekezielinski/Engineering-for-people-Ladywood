@@ -546,7 +546,6 @@ with st.form("workshop_registration_form"):
         <div class="quick-note">
             <div class="quick-note-icon">📝</div>
             <div>
-                <strong>Quick note</strong><br>
                 {t("ws_quick_note", lang)}
             </div>
         </div>
