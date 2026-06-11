@@ -241,6 +241,8 @@ div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !imp
     .day-row, .day-name, .day-time {{ font-size: {mobile_body_size} !important; }}
 
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
+
+    iframe {{height: 300px !important;}}
     
 }}
 
