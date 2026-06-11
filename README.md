@@ -73,13 +73,13 @@ Ladywood Connect Dashboard
 1. Extract the project ZIP file 
 2. (Recommended) Create a virtual environment 
 
-### Windows
+Windows:
 ```bash
 python -m venv venv 
 venv\Scripts\activate
 ``` 
 
-### Mac / Linux 
+Mac / Linux: 
 ```bash
 python3 -m venv venv 
 source venv/bin/activate
