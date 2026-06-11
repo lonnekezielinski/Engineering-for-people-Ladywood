@@ -612,7 +612,6 @@ TRANSLATIONS = {
         "ws_workshop_select" : "اختر ورشة العمل"
     },
 
-    # ── Bengali (Standard) ─────────────────────────────────────────────────────
     "Bengali": {
         # --- app.py ---
         "app_title": "লেডিউড কানেক্ট",
@@ -768,11 +767,6 @@ TRANSLATIONS = {
 
     },
 
-    # ── Sylheti Bengali ────────────────────────────────────────────────────────
-    # Sylheti is spoken by the majority of Bangladeshis in Birmingham / Ladywood.
-    # It does not have a fully standardised orthography; we use standard Bengali
-    # script with Sylheti vocabulary and phrasing, which is the most widely
-    # understood written form for Sylheti speakers.
     "Sylheti": {
         # --- app.py ---
         "app_title": "লেডিউড কানেক্ট",
@@ -927,9 +921,6 @@ TRANSLATIONS = {
         "ws_workshop_select" : "ওয়ার্কশপ বাছুন"
     },
 
-    # ── Chittagonian (Chatgaya) Bengali ────────────────────────────────────────
-    # Spoken by many Bangladeshi residents from the Chittagong region.
-    # Written using standard Bengali script with Chatgaya vocabulary.
     "Chatgaya": {
         # --- app.py ---
         "app_title": "লেডিউড কানেক্ট",
@@ -1083,7 +1074,6 @@ TRANSLATIONS = {
         "ws_workshop_select" : "ওয়ার্কশপ বাছুন"
     },
 
-    # ── Polish ─────────────────────────────────────────────────────────────────
     "Polish": {
         # --- app.py ---
         "app_title": "Ladywood Connect",
@@ -1240,23 +1230,17 @@ TRANSLATIONS = {
 
 RTL_LANGUAGES = {"Arabic", "Urdu"}
 
-# All valid language codes — used for URL param validation across all pages
 ALL_LANGUAGES = list(TRANSLATIONS.keys())
 
-
 def t(key: str, lang: str) -> str:
-    """Get translation for a key in the given language. Falls back to English."""
     return TRANSLATIONS.get(lang, TRANSLATIONS["English"]).get(
         key, TRANSLATIONS["English"].get(key, key)
     )
 
-
 def is_rtl(lang: str) -> bool:
     return lang in RTL_LANGUAGES
 
-
 def apply_rtl_css(lang: str) -> str:
-    """Returns CSS string to inject for RTL support if needed."""
     if is_rtl(lang):
         return """
 <style>

@@ -1,21 +1,18 @@
-# To run: open terminal -> activate virtual environment: venv/Scripts/activate (Windows) or source venv/bin/activate (Mac) -> streamlit run app.py in terminal
-# To stop the application: ctrl + C in terminal (or cmd + C)
-
-# IMPORTS
 import streamlit as st
 import base64
-from translations import t, is_rtl, apply_rtl_css
+from translations import t, apply_rtl_css
 
+# PAGE CONFIG
+st.set_page_config(page_title="Ladywood Connect", layout="wide")
+
+# Load logo
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
 logo_icon = get_base64_image("assets/waypoint-logo.png")
 
-# PAGE CONFIG
-st.set_page_config(page_title="Ladywood Connect", layout="wide")
-
-# ── Language stored in session_state so all pages can read it ──
+# Language settings
 LANGUAGE_OPTIONS = [
     "🇬🇧 English",
     "🇸🇦 Arabic",
@@ -49,7 +46,7 @@ if "language" not in st.session_state:
 
 lang = st.session_state["language"]
 
-# Text size stored in session_state
+# Text sizing
 if "text_size" in st.query_params:
     url_text_size = st.query_params["text_size"]
     if url_text_size in ["S", "M", "L"]:
@@ -90,26 +87,30 @@ elif text_size == "L":
     mobile_subtitle_size = "24px"
     mobile_card_title_size = "30px"
 
-### CUSTOM CSS
+# CUSTOM CSS
 st.markdown(f"""
 <style>
+/* --- Page layout --- */ 
 [data-testid="stAppViewContainer"] {{ background-color: #F5F2EA; }}
 [data-testid="stHeader"]           {{ background-color: transparent; }}
 [data-testid="stToolbar"]          {{ right: 2rem; }}
 [data-testid="stSidebar"]          {{ display: none; }}
 .block-container                   {{ padding: 2rem 3rem; }}
 
-.title    {{ font-size: {title_size}; font-weight: 800; color: #0D1B3D; }}
-.subtitle {{ font-size: {subtitle_size}; color: #444; margin-bottom: 40px; }}
-.title-row {{ display: flex; align-items: center; gap: 20px; }}
+/* --- Header title and logo --- */
+.title      {{ font-size: {title_size}; font-weight: 800; color: #0D1B3D; }}
+.subtitle   {{ font-size: {subtitle_size}; color: #444; margin-bottom: 40px; }}
+.title-row  {{ display: flex; align-items: center; gap: 20px; }}
 .title-logo {{ width: 90px; height: 90px; object-fit: contain; }}
 
+/* --- Date and weather box --- */ 
 .weather-box {{
     background: #FAFAFA; border: 2px solid #D8D2C7; border-radius: 18px;
     padding: 22px; display: flex; justify-content: space-between;
     color: #1A1A1A; font-size: 20px; font-weight: 500;
 }}
 
+/* --- Homepage cards --- */
 .card {{
     height: 240px; padding: 30px; border-radius: 32px;
     border: 2px solid rgba(0,0,0,0.05);
@@ -118,88 +119,75 @@ st.markdown(f"""
     margin-bottom: 25px; cursor: pointer; transition: 0.2s;
 }}
 .card:hover     {{ transform: scale(1.02); }}
-.card-icon {{ font-size: 80px; line-height: 1;}}
+.card-icon      {{ font-size: 80px; line-height: 1;}}
 .card-title     {{ font-size: {card_title_size}; font-weight: 800; margin-top: 8px; }}
 
+/* Card background colors */
 .bus           {{ background-color: #DDB8E8; }}
 .workshops     {{ background-color: #C8E2F5; }}
 .announcements {{ background-color: #CFEAC2; }}
 .feedback      {{ background-color: #F4D2BD; }}
 
+/* Card title colors */
 .bus .card-title           {{ color: #5A2E75; }}
 .workshops .card-title     {{ color: #285C7A; }}
 .announcements .card-title {{ color: #3D6B32; }}
 .feedback .card-title      {{ color: #9A5B2E; }}
 
+/* Removes default link style around card */
 a {{ text-decoration: none !important; color: inherit !important; }}
 
+/* --- Accessibility settings --- */
 .setting-label {{ font-size: {setting_label_size}; font-weight: 600; color: #0D1B3D; margin-bottom: 8px; }}
 
+/* Language dropdown menu */
 [data-testid="stSelectbox"] {{ width: 320px !important; max-width: 320px; margin-top: 0; }}
 [data-testid="stSelectbox"] label {{ display: none; }}
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
 [data-baseweb="select"] span  {{ color: #222 !important; font-weight: 500; }}
 
+/* Text size radio buttons */
 [data-testid="stRadio"] {{
     width: 220px !important; background: white; border: 2px solid #D8D2C7;
     border-radius: 18px; padding: 8px 12px; margin-top: 0; margin-left: 0 !important;
 }}
 div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !important; font-size: 16px !important; }}
 
-/* ---MOBILE FIXES--- */
+/* --- Mobile layout fixes --- */
 @media (max-width: 768px) {{
     html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
     .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important; }}
 
     /* General page titles */
-    .title, .page-title {{ font-size: {mobile_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
+    .title, .page-title {{ font-size: 38px !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
 
-    /* Very large headings written inline */
+    /* Break headings correctly */
     h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important; }}
 
-    /* Subtitle/info boxes */
-    .subtitle, .subtitle-box, .intro-box, .info-box, .tip-box {{ font-size: {mobile_subtitle_size} !important; padding: 16px 18px !important; border-radius: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
+    /* Subtitle */
+    .subtitle {{ font-size: 18px !important; }}
 
     /* Homepage cards */
     .card {{ height: 165px !important; padding: 18px !important; border-radius: 24px !important; margin-bottom: 18px !important; }}
     .card-icon {{ font-size: 55px; }}
     .card-title {{ font-size: {mobile_card_title_size} !important; text-align: center !important; line-height: 1.2 !important; }}
 
-    /* Announcement cards */
-    .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
-    .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
-    .card-content h3 {{ font-size: 22px !important; line-height: 1.25 !important; }}
-    .card-content p {{ font-size: 16px !important; line-height: 1.45 !important; }}
-
-    /* Forms and request cards */
-    .form-card, .help-card, .request-card, .contact-card {{ width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }}
-
-    /* Inputs */
-    input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important; }}
-
     /* Accessibility controls */
     [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
 
     /* Back button */
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
-            
-    .weather-box {{ margin-bottom: 25px !important; }}
+      
+    /* Weather and date */
+    .weather-box {{ margin-bottom: 25px !important; font-size: 15px !important; padding: 14px !important; flex-direction: column !important; gap: 8px !important; }}
 }}
-
-/* Title fix for home page specifically */
-@media (max-width: 768px) {{
-    .title {{ font-size: 38px !important; max-width: 100% !important; }}
-    .subtitle {{ font-size: 18px !important; }}
-    .weather-box {{ font-size: 15px !important; padding: 14px !important; flex-direction: column !important; gap: 8px !important; }}
-}}
-
 </style>
 """, unsafe_allow_html=True)
 
-# Inject RTL CSS if needed
+# Right-to-left layout for certain languages
 st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 
-### HEADER
+# --- Header ---
 col1, col2 = st.columns([4, 1])
 with col1:
     st.markdown(f"""
@@ -219,7 +207,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 
-### BUTTON GRID
+# --- Card grid ---
 col1, col2 = st.columns(2)
 with col1:
     st.markdown(f"""
@@ -259,7 +247,7 @@ with col2:
     </a>
     """, unsafe_allow_html=True)
 
-### BOTTOM SETTINGS
+# --- Bottom settings ---
 bottom1, bottom2 = st.columns([1, 1])
 with bottom1:
     st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
