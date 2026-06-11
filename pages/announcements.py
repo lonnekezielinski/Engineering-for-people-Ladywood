@@ -223,7 +223,7 @@ st.markdown(f'<div class="subtitle-box">{t("ann_subtitle", lang)}</div>', unsafe
 announcement_data = [
     ("🚌", "purple", "ann_1_title", "ann_1_text"),
     ("🏠", "green",  "ann_2_title", "ann_2_text"),
-    ("🌍", "blue",   "ann_3_title", "ann_3_text"),
+    ("🎥", "blue",   "ann_3_title", "ann_3_text"),
     ("🍽️", "pink",  "ann_4_title", "ann_4_text"),
 ]
 

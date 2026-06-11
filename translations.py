@@ -2,7 +2,7 @@ TRANSLATIONS = {
     "English": {
         # --- app.py ---
         "app_title": "Ladywood Connect",
-        "app_subtitle": "Welcome to Ladywood Connect. Discover workshops, community events and support services in Ladywood.",
+        "app_subtitle": "The place for Community Bus information, workshops, community updates, and support services in Ladywood.",
         "nav_bus": "Community Bus",
         "nav_workshops": "Workshops",
         "nav_announcements": "Announcements",
@@ -12,17 +12,17 @@ TRANSLATIONS = {
 
         # --- announcements.py ---
         "ann_title": "📢 Announcements",
-        "ann_subtitle": "Stay connected with your community! Discover local events, important updates, services,transport updates, and opportunities happening across Ladywood.",
+        "ann_subtitle": "Stay connected with your community! Discover local events, important updates, services, transport updates, and opportunities happening across Ladywood.",
         "ann_back": "← Back to dashboard",
         "ann_view_all": "View All Announcements",
-        "ann_1_title": "Community Bus",
+        "ann_1_title": "Community Bus is at Chamberlain Gardens",
         "ann_1_text": "Visit us at Chamberlain Gardens this week for free digital support, advice and community activities. For more information go to the Workshop page.",
-        "ann_2_title": "Re_Club at Retrofit house",
-        "ann_2_text": "Join us this June to repair, reuse, learn new skills and connect with your community.",
-        "ann_3_title": "National Emergency Briefing (16+)",
-        "ann_3_text": "A powerful film exploring how climate change and nature challenges affects everyday life.",
-        "ann_4_title": "Neighbourhood Supper Club",
-        "ann_4_text": "Share a meal, meet neighbours and explore ideas for a stronger local community.",
+        "ann_2_title": "Visit Re_Club at Retrofit house",
+        "ann_2_text": "Join us this June to repair, reuse, learn new skills and connect with your community. For more information go to the CIVIC SQUARE website.",
+        "ann_3_title": "Film: National Emergency Briefing (16+)",
+        "ann_3_text": "A powerful film exploring how climate change and nature challenges affects everyday life. For more information go to the CIVIC SQUARE website.",
+        "ann_4_title": "Join us at the Neighbourhood Supper Club",
+        "ann_4_text": "Share a meal, meet neighbours and explore ideas for a stronger local community. For more information go to the CIVIC SQUARE website.",
 
         # --- bus.py ---
         "bus_title": "🚌 Community Bus",
