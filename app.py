@@ -66,6 +66,7 @@ if text_size == "S":
     mobile_title_size = "38px"
     mobile_subtitle_size = "18px"
     mobile_card_title_size = "22px"
+    mobile_setting_label_size = "16px"
 
 elif text_size == "M":
     title_size = "84px"
@@ -76,6 +77,7 @@ elif text_size == "M":
     mobile_title_size = "44px"
     mobile_subtitle_size = "21px"
     mobile_card_title_size = "26px"
+    mobile_setting_label_size = "18px"
 
 elif text_size == "L":
     title_size = "96px"
@@ -86,6 +88,7 @@ elif text_size == "L":
     mobile_title_size = "50px"
     mobile_subtitle_size = "24px"
     mobile_card_title_size = "30px"
+    mobile_setting_label_size = "24px"
 
 # --- Custom CSS ---
 st.markdown(f"""
@@ -107,7 +110,7 @@ st.markdown(f"""
 .weather-box {{
     background: #FAFAFA; border: 2px solid #D8D2C7; border-radius: 18px;
     padding: 22px; display: flex; justify-content: space-between;
-    color: #1A1A1A; font-size: 20px; font-weight: 500;
+    color: #1A1A1A; font-size: {setting_label_size}; font-weight: 500;
 }}
 
 /* --- Homepage cards --- */
@@ -166,7 +169,7 @@ div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !i
     h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important; }}
 
     /* Subtitle */
-    .subtitle {{ font-size: 18px !important; }}
+    .subtitle {{ font-size: {mobile_subtitle_size} !important; }}
 
     /* Homepage cards */
     .card {{ height: 165px !important; padding: 18px !important; border-radius: 24px !important; margin-bottom: 18px !important; }}
@@ -180,7 +183,7 @@ div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !i
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
       
     /* Weather and date */
-    .weather-box {{ margin-bottom: 25px !important; font-size: 15px !important; padding: 14px !important; flex-direction: column !important; gap: 8px !important; }}
+    .weather-box {{ margin-bottom: 25px !important; font-size: {mobile_setting_label_size} !important; padding: 14px !important; flex-direction: column !important; gap: 8px !important; }}
 }}
 </style>
 """, unsafe_allow_html=True)
