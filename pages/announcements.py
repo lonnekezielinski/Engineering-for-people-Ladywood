@@ -119,7 +119,7 @@ st.markdown(f"""
 /* --- View all announcements button --- */
 .view-button {{ background:#E3F2DB; border:2px solid #9ED492; border-radius:20px; padding:18px 30px; margin:35px auto 10px auto; width:320px; height:68px; display:flex; align-items:center; justify-content:center; position:relative; font-size:{button_size}; font-weight:700; color:#3D6B32; transition:0.2s; box-shadow:0 4px 10px rgba(0,0,0,0.04); }}
 .view-button span {{ position:absolute; right:28px; top:50%; transform:translateY(-50%); font-size:24px; line-height:1; }}
-.view-button:hover {{ transform:translateY(-2px); background:#F8FFF5; box-shadow:0 8px 18px rgba(0,0,0,0.08); }}
+.view-button:hover {{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.08); }}
 
 /* Removes default link style around card */
 a {{ text-decoration:none !important; color:inherit !important; }}
