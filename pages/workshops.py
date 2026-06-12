@@ -53,30 +53,42 @@ text_size = st.session_state["text_size"]
 
 if text_size == "S":
     page_title_size = "58px"
-    body_size = "18px"
+    body_size = "18px" # use for theme title as well
     form_title_size = "1.8rem"
+    schedule_day_size = "21px"
+    schedule_text_size = "16px"
 
     mobile_page_title_size = "40px"
     mobile_body_size = "16px"
     mobile_form_title_size = "1.5rem"
+    mobile_schedule_day_size = "19px"
+    mobile_schedule_text_size = "15px"
 
 elif text_size == "M":
     page_title_size = "70px"
     body_size = "22px"
     form_title_size = "2.2rem"
+    schedule_day_size = "24px"
+    schedule_text_size = "19px"
 
     mobile_page_title_size = "48px"
     mobile_body_size = "20px"
     mobile_form_title_size = "1.9rem"
+    mobile_schedule_day_size = "22px"
+    mobile_schedule_text_size = "18px"
 
 elif text_size == "L":
     page_title_size = "82px"
     body_size = "26px"
     form_title_size = "2.6rem"
+    schedule_day_size = "28px"
+    schedule_text_size = "23px"
 
     mobile_page_title_size = "56px"
     mobile_body_size = "24px"
-    mobile_form_title_size = "2.3rem"
+    mobile_form_title_size = "2.3rem"    
+    mobile_schedule_day_size = "25px"
+    mobile_schedule_text_size = "21px"
 
 # --- Custom CSS ---
 st.markdown(f"""
@@ -109,9 +121,9 @@ st.markdown(f"""
     /* --- Schedule styling --- */
     .schedule-main-title {{ color: #0D1B3D !important; font-size: {form_title_size} !important; font-weight: 900 !important; line-height: 1.05 !important; margin-bottom: 16px !important; font-family: 'Playfair Display', serif; }}
     .schedule-note {{ color: #4B5563 !important; font-size: {body_size} !important; }}
-    .theme-title {{ font-weight: 900 !important; }}
-    .theme-text {{ margin-top: 4px; }}
-    .theme-time {{ font-weight: 900; white-space: nowrap; color: #0D1B3D; }}
+    .theme-title {{ font-size: {body_size}; font-weight: 900 !important; }}
+    .theme-text {{ font-size: {schedule_text_size}; margin-top: 4px; }}
+    .theme-time {{ font-size: {schedule_text_size}; font-weight: 900; white-space: nowrap; color: #0D1B3D; }}
 
     /* --- Workshop theme colors --- */
     .theme-access {{ background: #FFF1B8; color: #6B4E00; }}
@@ -120,6 +132,7 @@ st.markdown(f"""
 
     /* --- Schedule toggles --- */
     [data-testid="stExpander"] {{
+        font-size: {schedule_day_size};
         background: rgba(255,255,255,0.65) !important;
         border: 2px solid rgba(0,0,0,0.05) !important;
         border-bottom: 1px solid #EEE7DC !important;
@@ -130,7 +143,7 @@ st.markdown(f"""
     }}
     [data-testid="stExpander"] details, [data-testid="stExpander"] summary {{ background: white !important; color: #0D1B3D !important; border-radius: 18px !important; overflow: hidden !important;}}
     [data-testid="stExpander"] summary {{ padding-top: 8px !important; padding-bottom: 8px !important; }}
-    [data-testid="stExpander"] summary p {{ font-size: 21px !important; font-weight: 900 !important; color: #0D1B3D !important; }}
+    [data-testid="stExpander"] summary p {{ font-size: {schedule_day_size} !important; font-weight: 900 !important; color: #0D1B3D !important; }}
     [data-testid="stExpander"] {{ border: none !important; border-bottom: 1px solid #EEE7DC !important; box-shadow: none !important; }}
     [data-testid="stExpander"] summary {{ font-size: 22px !important; font-weight: 900 !important; color: #0D1B3D !important; }}
 
@@ -243,6 +256,12 @@ st.markdown(f"""
         
         .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
         h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
+
+        /* Scaling for toggles */
+        .theme-title {{ font-size: {mobile_body_size} !important;}}
+        .theme-text {{ font-size: {mobile_schedule_text_size} !important; }}
+        .theme-time {{font-size: {mobile_schedule_text_size} !important;}}
+        [data-testid="stExpander"] summary p {{ font-size: {mobile_schedule_day_size} !important; }}
 
         .intro-box {{
             font-size: {mobile_body_size} !important;
