@@ -99,13 +99,6 @@ st.markdown(f"""
 .title      {{ font-size: {title_size}; font-weight: 800; color: #0D1B3D; }}
 .subtitle   {{ font-size: {subtitle_size}; font-weight: 500; color: #444; margin-bottom: 40px; }}
 
-/* Date and weather box */ 
-.weather-box {{
-    background: #FAFAFA; border: 2px solid #D8D2C7; border-radius: 18px;
-    padding: 22px; display: flex; justify-content: space-between;
-    color: #1A1A1A; font-size: {setting_label_size}; font-weight: 500;
-}}
-
 /* Homepage cards */
 .card {{
     height: 240px; padding: 30px; border-radius: 32px;
@@ -155,7 +148,6 @@ div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !i
 
     [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
     .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
-    .weather-box {{ margin-bottom: 25px !important; font-size: {mobile_setting_label_size} !important; padding: 14px !important; flex-direction: column !important; gap: 8px !important; }}
 }}
 </style>
 """, unsafe_allow_html=True)
@@ -166,29 +158,19 @@ st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 # Header
 logo_path = Path("static/waypoint-logo.png")
 
-col1, col2 = st.columns([4, 1])
-with col1:
-    col_logo, col_title = st.columns([0.10, 0.90])
-    with col_logo:
-        st.image(str(logo_path), width=90)
-    with col_title:
-        st.markdown(
-            f'<div class="title">{t("app_title", lang)}</div>',
-            unsafe_allow_html=True
-        )
-
+col_logo, col_title = st.columns([0.10, 0.90])
+with col_logo:
+    st.image(str(logo_path), width=90)
+with col_title:
     st.markdown(
-        f'<div class="subtitle">{t("app_subtitle", lang)}</div>',
+        f'<div class="title">{t("app_title", lang)}</div>',
         unsafe_allow_html=True
     )
-with col2:
-    st.markdown("""
-    <div class='weather-box'>
-        <span>📅 19 June 2026</span>
-        <span>⛅ 17°C</span>
-    </div>
-    """, unsafe_allow_html=True)
 
+st.markdown(
+    f'<div class="subtitle">{t("app_subtitle", lang)}</div>',
+    unsafe_allow_html=True
+)
 
 # Card grid
 col1, col2 = st.columns(2)
