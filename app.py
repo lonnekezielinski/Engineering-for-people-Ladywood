@@ -73,7 +73,7 @@ elif text_size == "M":
     mobile_setting_label_size = "18px"
 
 elif text_size == "L":
-    title_size = "96px"
+    title_size = "94px"
     subtitle_size = "32px"
     card_title_size = "42px"
     setting_label_size = "26px"
@@ -123,7 +123,7 @@ a {{ text-decoration: none !important; color: inherit !important; }}
 /* Accessibility settings */
 .setting-label {{ font-size: {setting_label_size}; font-weight: 600; color: #0D1B3D; margin-bottom: 8px; }}
 
-[data-testid="stSelectbox"] {{ width: 320px !important; max-width: 320px; margin-top: 0; }}
+[data-testid="stSelectbox"] {{ width: 240px !important; max-width: 240px; margin-top: 0; }}
 [data-testid="stSelectbox"] label {{ display: none; }}
 [data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
 [data-baseweb="select"] span  {{ color: #222 !important; font-weight: 500; }}
@@ -158,7 +158,7 @@ st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 # Header
 logo_path = Path("static/waypoint-logo.png")
 
-col_logo, col_title, col_lang, col_text = st.columns([0.09, 0.51, 0.23, 0.17], vertical_alignment="center")
+col_logo, col_title, col_lang, col_text = st.columns([0.09, 0.57, 0.17, 0.17], vertical_alignment="center")
 with col_logo:
     st.image(str(logo_path), width=90)
 
@@ -255,36 +255,3 @@ with col2:
         </div>
     </a>
     """, unsafe_allow_html=True)
-
-# Bottom settings
-bottom1, bottom2 = st.columns([1, 1])
-with bottom1:
-    st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
-    selected_display = st.selectbox(
-        "Language",
-        LANGUAGE_OPTIONS,
-        index=LANGUAGE_OPTIONS.index(next(k for k, v in LANGUAGE_MAP.items() if v == lang)),
-        label_visibility="collapsed"
-    )
-    new_lang = LANGUAGE_MAP[selected_display]
-    if new_lang != st.session_state["language"]:
-        st.session_state["language"] = new_lang
-        st.query_params["lang"] = new_lang
-        st.rerun()
-
-with bottom2:
-    st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
-
-    text_size_choice = st.radio(
-        "Text size",
-        ["S", "M", "L"],
-        index=["S", "M", "L"].index(st.session_state["text_size"]),
-        horizontal=True,
-        label_visibility="collapsed",
-        key="home_text_size_radio"
-    )
-
-    if text_size_choice != st.session_state["text_size"]:
-        st.session_state["text_size"] = text_size_choice
-        st.query_params["text_size"] = text_size_choice
-        st.rerun()
