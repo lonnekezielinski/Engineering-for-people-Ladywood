@@ -1,12 +1,13 @@
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
-from translations import t, apply_rtl_css
+from translations import t
+from styling import apply_style
 
-# --- Page configuration ---
+# Page configuration
 st.set_page_config(page_title="Feedback & Requests", layout="wide")
 
-# --- Language settings ---
+# Language settings
 if "language" not in st.session_state:
     if "lang" in st.query_params:
         url_lang = st.query_params["lang"]
@@ -39,167 +40,9 @@ LANGUAGE_MAP = {
 }
 
 lang = st.session_state.get("language", "English")
+apply_style(lang)
 
-# --- Text sizing ---
-if "text_size" in st.query_params:
-    url_text_size = st.query_params["text_size"]
-    if url_text_size in ["S", "M", "L"]:
-        st.session_state["text_size"] = url_text_size
-
-if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "S"
-
-text_size = st.session_state["text_size"]
-
-if text_size == "S":
-    page_title_size = "58px"
-    body_size = "18px"
-    card_title_size = "28px"
-    button_size = "20px"
-
-    mobile_page_title_size = "40px"
-    mobile_body_size = "16px"
-    mobile_card_title_size = "22px"
-    mobile_button_size = "18px"
-
-elif text_size == "M":
-    page_title_size = "70px"
-    body_size = "22px"
-    card_title_size = "34px"
-    button_size = "24px"
-
-    mobile_page_title_size = "46px"
-    mobile_body_size = "19px"
-    mobile_card_title_size = "26px"
-    mobile_button_size = "21px"
-
-elif text_size == "L":
-    page_title_size = "82px"
-    body_size = "26px"
-    card_title_size = "40px"
-    button_size = "28px"
-
-    mobile_page_title_size = "52px"
-    mobile_body_size = "22px"
-    mobile_card_title_size = "30px"
-    mobile_button_size = "24px"
-
-# --- Custom CSS ---
-st.markdown(f"""
-<style>
-/* --- Page layout --- */
-[data-testid="stAppViewContainer"] {{ background-color:#F5F2EA; }}
-[data-testid="stHeader"]           {{ background:transparent; }}
-[data-testid="stSidebar"]          {{ display:none; }}
-.block-container {{ padding-top:2rem; padding-bottom:2rem; padding-left:3rem; padding-right:3rem; }}
-
-/* --- Back button --- */
-.stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
-
-/* --- Header title and intro --- */
-.page-title  {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:8px; }}
-.intro-box   {{ background:#F4D2BD; border:2px solid #E4B999; border-radius:24px; padding:22px 28px; margin-bottom:30px; font-size:{body_size}; font-weight: 500; color:#5A2E0E; line-height:1.5; }}
-
-/* --- Tabs --- */
-.stTabs [data-baseweb="tab-list"]  {{ gap:14px; margin-bottom:30px; border-bottom:2px solid #D8D2C7; }}
-.stTabs [data-baseweb="tab"]       {{ background:#F5F2EA; border:2px solid #D8D2C7; border-bottom:none; border-radius:18px 18px 0 0; padding:14px 32px; font-size:30px; font-weight:700; color:#555; height:65px; }}
-.stTabs [data-baseweb="tab"] p     {{ font-size:18px; }}
-.stTabs [aria-selected="true"]     {{ background:white !important; color:#7B3FB2 !important; border-bottom:5px solid #7B3FB2 !important; }}
-
-/* --- Panels --- */
-.panel       {{ background:white; border:2px solid rgba(0,0,0,0.06); border-radius:28px; padding:28px; margin-bottom:25px; box-shadow:0 4px 12px rgba(0,0,0,0.04); }}
-.panel-title {{ font-size:{card_title_size}; font-weight:800; color:#0D1B3D; margin-bottom:20px; }}
-
-/* --- Help rows --- */
-.help-row    {{ display:flex; gap:18px; align-items:flex-start; margin-bottom:24px; }}
-.help-icon   {{ width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }}
-.help-title {{ font-size:{body_size}; font-weight:800; color:#0D1B3D; }}
-.help-text  {{ font-size:{body_size}; color:#444; }}
-
-/* ---- Icon background colors --- */
-.blue   {{ background:#D9ECFA; }}
-.green  {{ background:#D8EBCF; }}
-.purple {{ background:#E5D8F2; }}
-.orange {{ background:#F7DFC8; }}
-
-/* --- Contact and request card --- */
-.request-card  {{ background:#FAFAFA; border:2px solid rgba(0,0,0,0.06); border-radius:20px; padding:18px; margin-bottom:14px; display:flex; align-items:center; gap:18px; }}
-.request-icon  {{ width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:32px; flex-shrink:0; }}
-.request-title {{ font-size:{body_size}; font-weight:800; color:#0D1B3D; }}
-.request-meta  {{ font-size:{body_size}; color:#555; margin-top:4px; }}
-.status        {{ margin-left:auto; padding:8px 14px; border-radius:18px; font-size:14px; font-weight:700; }}
-.in-progress   {{ background:#D9ECFA; color:#1C6BB0; }}
-.under-review  {{ background:#F7DFC8; color:#A35E00; }}
-.completed     {{ background:#D8EBCF; color:#287A3E; }}
-.closed        {{ background:#E8E8E8; color:#555; }}
-
-/* --- Forms and inputs --- */
-input, textarea, [data-baseweb="select"] > div {{ background-color:white !important; color:#0D1B3D !important; border:2px solid #D8D2C7 !important; }}
-textarea::placeholder, input::placeholder {{ color:#777 !important; }}
-.stTextArea textarea {{ min-height:170px; }}
-[data-testid="stSelectbox"] label p, [data-testid="stTextArea"] label p, [data-testid="stTextInput"] label p {{ color:#0D1B3D !important; font-weight:700 !important; font-size:17px !important; }}
-
-/* --- Submit button form --- */
-div[data-testid="stFormSubmitButton"] button {{ width:100%; background:#7B3FB2; color:white; border:none; border-radius:16px; padding:16px; font-size:20px; font-weight:700; }}
-div[data-testid="stFormSubmitButton"] button:hover {{ background:#6A329E; color:white; }}
-
-/* Success message */
-[data-testid="stAlert"]   {{ background-color:#D8EBCF !important; border:2px solid #9ED18F !important; border-radius:18px !important; }}
-[data-testid="stAlert"] p {{ color:#1E4D2B !important; font-size:18px !important; font-weight:700 !important; }}
-
-/* --- Accessibility controls --- */
-.setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
-
-/* Language dropdown menue */
-[data-testid="stSelectbox"] {{ width: 280px !important; max-width: 280px; }}
-[data-baseweb="select"] > div {{ background-color:white !important; border:2px solid #D8D2C7 !important; border-radius:18px !important; color:#222 !important; }}
-[data-baseweb="select"] span {{ color:#222 !important; font-weight:500; }}
-
-/* Text size radio buttons */
-[data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
-div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
-
-/* --- Mobile layout fixes --- */
-@media (max-width: 768px) {{
-    /* Prevent horizontal scrolling */
-    html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
-    .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
-    
-    /* General page titles */
-    .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
-    
-    /* Break headings correctly */
-    h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
-
-    /* Scaling, stacking and sizing */
-    .intro-box {{ font-size: {mobile_body_size} !important; padding: 16px 18px !important; border-radius: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
-    .panel-title {{ font-size: {mobile_card_title_size} !important; }}
-    .help-row {{ gap: 12px !important;}}
-    .help-icon, .request-icon {{ width: 56px !important; height: 56px !important; font-size: 28px !important; }}
-    .help-title, .help-text, .request-title, .request-meta {{ font-size: {mobile_body_size} !important; }}
-    .request-card {{ display:flex !important; align-items:center !important; gap:12px !important; }} 
-    .request-title, .request-meta {{ word-break: break-word !important; overflow-wrap: anywhere !important; }}
-    .request-title {{ max-width:100% !important; }}
-    .status {{ margin-left:0 !important; font-size:13px !important; padding:7px 10px !important; flex-shrink:0 !important; }}  
-
-    /* Form */
-    input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important;}}
-    [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
-    [data-testid="stSelectbox"] label p, [data-testid="stTextArea"] label p, [data-testid="stTextInput"] label p, [data-testid="stAlert"] p {{ font-size: {mobile_body_size} !important; }}
-    div[data-testid="stFormSubmitButton"] button {{ font-size: {mobile_button_size} !important; }}
-    .stTabs [data-baseweb="tab"] {{ padding: 10px 16px !important; height: auto !important; }}
-    .stTabs [data-baseweb="tab"] p {{ font-size: {mobile_body_size} !important; }}
-    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
-}}
-
-
-
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
-
-# --- Top bar ---
+# Top bar
 top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
 
 with top_left:
@@ -246,11 +89,11 @@ with top_right:
             st.query_params["text_size"] = text_size
             st.rerun()
 
-# --- Header ---
+# Header
 st.markdown(f'<div class="page-title">{t("fb_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="intro-box">{t("fb_intro", lang)}</div>', unsafe_allow_html=True)
 
-# --- Tabs ---
+# Tabs 
 feedback_tab, requests_tab = st.tabs([t("fb_tab_feedback", lang), t("fb_tab_requests", lang)])
 
 # Feedback tab

@@ -1,6 +1,7 @@
 import streamlit as st
 from pathlib import Path
-from translations import t, apply_rtl_css
+from translations import t
+from styling import apply_style
 
 # Page configuration
 st.set_page_config(page_title="Ladywood Connect", layout="wide")
@@ -38,125 +39,10 @@ if "language" not in st.session_state:
         st.session_state["language"] = "English"
 
 lang = st.session_state["language"]
-
-# Text sizing 
-if "text_size" in st.query_params:
-    url_text_size = st.query_params["text_size"]
-    if url_text_size in ["S", "M", "L"]:
-        st.session_state["text_size"] = url_text_size
-
-if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "S"
-
-text_size = st.session_state["text_size"]
-
-if text_size == "S":
-    title_size = "72px"
-    subtitle_size = "24px"
-    card_title_size = "30px"
-    setting_label_size = "18px"
-
-    mobile_title_size = "38px"
-    mobile_subtitle_size = "18px"
-    mobile_card_title_size = "22px"
-    mobile_setting_label_size = "16px"
-
-elif text_size == "M":
-    title_size = "84px"
-    subtitle_size = "28px"
-    card_title_size = "36px"
-    setting_label_size = "22px"
-
-    mobile_title_size = "44px"
-    mobile_subtitle_size = "21px"
-    mobile_card_title_size = "26px"
-    mobile_setting_label_size = "18px"
-
-elif text_size == "L":
-    title_size = "94px"
-    subtitle_size = "32px"
-    card_title_size = "42px"
-    setting_label_size = "26px"
-
-    mobile_title_size = "50px"
-    mobile_subtitle_size = "24px"
-    mobile_card_title_size = "30px"
-    mobile_setting_label_size = "24px"
-
-# Custom CSS
-st.markdown(f"""
-<style>
-/* Page layout */ 
-[data-testid="stAppViewContainer"] {{ background-color: #F5F2EA; }}
-[data-testid="stHeader"]           {{ background-color: transparent; }}
-[data-testid="stToolbar"]          {{ right: 2rem; }}
-[data-testid="stSidebar"]          {{ display: none; }}
-.block-container                   {{ padding: 2rem 3rem; }}
-
-/* Header title and logo */
-.title-row  {{ display: flex; align-items: center; gap: 20px; }}
-.title-logo {{ width: 90px; height: 90px; object-fit: contain; }}
-.title      {{ font-size: {title_size}; font-weight: 800; color: #0D1B3D; }}
-.subtitle   {{ font-size: {subtitle_size}; font-weight: 500; color: #444; margin-bottom: 40px; }}
-
-/* Homepage cards */
-.card {{
-    height: 240px; padding: 30px; border-radius: 32px;
-    border: 2px solid rgba(0,0,0,0.05);
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center; gap: 18px;
-    margin-bottom: 25px; cursor: pointer; transition: 0.2s;
-}}
-.card:hover {{ transform: scale(1.02); }}
-.card-icon {{ font-size: 80px; line-height: 1;}}
-.card-title {{ font-size: {card_title_size}; font-weight: 800; margin-top: 8px; }}
-
-/* Card background colors and title colors */
-.bus {{ background-color: #DDB8E8; }} .bus .card-title {{ color: #5A2E75; }}
-.workshops {{ background-color: #C8E2F5; }} .workshops .card-title {{ color: #285C7A; }}
-.announcements {{ background-color: #CFEAC2; }} .announcements .card-title {{ color: #3D6B32; }}
-.feedback {{ background-color: #F4D2BD; }} .feedback .card-title {{ color: #9A5B2E; }}
-
-/* take away standard link styling */
-a {{ text-decoration: none !important; color: inherit !important; }}
-
-/* Accessibility settings */
-.setting-label {{ font-size: {setting_label_size}; font-weight: 600; color: #0D1B3D; margin-bottom: 8px; }}
-
-[data-testid="stSelectbox"] {{ width: 240px !important; max-width: 240px; margin-top: 0; }}
-[data-testid="stSelectbox"] label {{ display: none; }}
-[data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
-[data-baseweb="select"] span  {{ color: #222 !important; font-weight: 500; }}
-
-[data-testid="stRadio"] {{
-    width: 220px !important; background: white; border: 2px solid #D8D2C7;
-    border-radius: 18px; padding: 8px 12px; margin-top: 0; margin-left: 0 !important;
-}}
-div[role="radiogroup"] label p {{ color: #0D1B3D !important; font-weight: 600 !important; font-size: 16px !important; }}
-
-/* Mobile layout fixes */
-@media (max-width: 768px) {{
-    html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
-    .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important; }}
-    .title, .page-title {{ font-size: 38px !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
-    h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important; }}
-    .subtitle {{ font-size: {mobile_subtitle_size} !important; }}
-
-    .card {{ height: 165px !important; padding: 18px !important; border-radius: 24px !important; margin-bottom: 18px !important; }}
-    .card-icon {{ font-size: 55px; }}
-    .card-title {{ font-size: {mobile_card_title_size} !important; text-align: center !important; line-height: 1.2 !important; }}
-
-    [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
-    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
-}}
-</style>
-""", unsafe_allow_html=True)
-
-# Right-to-left layout for certain languages
-st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
+apply_style(lang)
 
 # Header
-logo_path = Path("static/waypoint-logo.png")
+logo_path = Path("assets/waypoint-logo.png")
 
 col_logo, col_title, col_lang, col_text = st.columns([0.09, 0.57, 0.17, 0.17], vertical_alignment="center")
 with col_logo:

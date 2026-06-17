@@ -1,12 +1,13 @@
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
-from translations import t, apply_rtl_css
+from translations import t
+from styling import apply_style
 
-# --- Page configuration ---
+# Page configuration
 st.set_page_config(page_title="Workshops", layout="wide")
 
-# --- Language settings ---
+# Language settings
 if "language" not in st.session_state:
     if "lang" in st.query_params:
         url_lang = st.query_params["lang"]
@@ -39,257 +40,9 @@ LANGUAGE_MAP = {
 }
 
 lang = st.session_state.get("language", "English")
+apply_style(lang)
 
-# --- Text sizing ---
-if "text_size" in st.query_params:
-    url_text_size = st.query_params["text_size"]
-    if url_text_size in ["S", "M", "L"]:
-        st.session_state["text_size"] = url_text_size
-
-if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "S"
-
-text_size = st.session_state["text_size"]
-
-if text_size == "S":
-    page_title_size = "58px"
-    body_size = "18px" # use for theme title as well
-    form_title_size = "1.8rem"
-    schedule_day_size = "21px"
-    schedule_text_size = "16px"
-
-    mobile_page_title_size = "40px"
-    mobile_body_size = "16px"
-    mobile_form_title_size = "1.5rem"
-    mobile_schedule_day_size = "19px"
-    mobile_schedule_text_size = "15px"
-
-elif text_size == "M":
-    page_title_size = "70px"
-    body_size = "22px"
-    form_title_size = "2.2rem"
-    schedule_day_size = "24px"
-    schedule_text_size = "19px"
-
-    mobile_page_title_size = "48px"
-    mobile_body_size = "20px"
-    mobile_form_title_size = "1.9rem"
-    mobile_schedule_day_size = "22px"
-    mobile_schedule_text_size = "18px"
-
-elif text_size == "L":
-    page_title_size = "82px"
-    body_size = "26px"
-    form_title_size = "2.6rem"
-    schedule_day_size = "28px"
-    schedule_text_size = "23px"
-
-    mobile_page_title_size = "56px"
-    mobile_body_size = "24px"
-    mobile_form_title_size = "2.3rem"    
-    mobile_schedule_day_size = "25px"
-    mobile_schedule_text_size = "21px"
-
-# --- Custom CSS ---
-st.markdown(f"""
-<style>
-    /* --- Page layout --- */
-    [data-testid="stAppViewContainer"] {{background-color: #F5F2EA;}}
-    [data-testid="stHeader"] {{background-color: transparent;}}
-    [data-testid="stSidebar"] {{ display:none; }}
-    .block-container {{padding-top: 1rem;}}
-    #MainMenu, footer {{visibility: hidden;}}
-    
-    /* --- Back button --- */
-    .stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
-
-    /* --- Header title and intro --- */
-    .page-title {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:10px; }}
-    .intro-box {{  font-size:{body_size}; font-weight: 500; background:#C8E2F5; border:2px solid #9CC7E6; border-radius:24px; padding:22px 28px; margin-bottom:30px; color:#285C7A; line-height:1.5; }}
-    
-    /* --- Accessibility settings --- */
-    .setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
-    
-    /* Language dropdown menue */
-    [data-baseweb="select"] > div {{ background-color:white !important; border:2px solid #D8D2C7 !important; border-radius:18px !important; color:#222 !important; }}
-    [data-baseweb="select"] span {{ color:#222 !important; font-weight:500; }}
-
-    /* Text size radio buttons */
-    [data-testid="stRadio"] {{ width:240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
-    div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important;}}
-    
-    /* --- Schedule styling --- */
-    .schedule-main-title {{ color: #0D1B3D !important; font-size: {form_title_size} !important; font-weight: 900 !important; line-height: 1.05 !important; margin-bottom: 16px !important; font-family: 'Playfair Display', serif; }}
-    .schedule-note {{ color: #4B5563 !important; font-size: {body_size} !important; }}
-    .theme-title {{ font-size: {body_size}; font-weight: 900 !important; }}
-    .theme-text {{ font-size: {schedule_text_size}; margin-top: 4px; }}
-    .theme-time {{ font-size: {schedule_text_size}; font-weight: 900; white-space: nowrap; color: #0D1B3D; }}
-
-    /* --- Workshop theme colors --- */
-    .theme-access {{ background: #FFF1B8; color: #6B4E00; }}
-    .theme-opportunity {{ background: #D8EBCF; color: #2F6B32;}}
-    .theme-confidence {{ background: #D9ECFA; color: #285C7A; }}
-
-    /* --- Schedule toggles --- */
-    [data-testid="stExpander"] {{
-        font-size: {schedule_day_size};
-        background: rgba(255,255,255,0.65) !important;
-        border: 2px solid rgba(0,0,0,0.05) !important;
-        border-bottom: 1px solid #EEE7DC !important;
-        border-radius: 18px !important;
-        overflow: hidden !important;
-        margin-bottom: 16px !important;
-        box-shadow: none !important;
-    }}
-    [data-testid="stExpander"] details, [data-testid="stExpander"] summary {{ background: white !important; color: #0D1B3D !important; border-radius: 18px !important; overflow: hidden !important;}}
-    [data-testid="stExpander"] summary {{ padding-top: 8px !important; padding-bottom: 8px !important; }}
-    [data-testid="stExpander"] summary p {{ font-size: {schedule_day_size} !important; font-weight: 900 !important; color: #0D1B3D !important; }}
-    [data-testid="stExpander"] {{ border: none !important; border-bottom: 1px solid #EEE7DC !important; box-shadow: none !important; }}
-    [data-testid="stExpander"] summary {{ font-size: 22px !important; font-weight: 900 !important; color: #0D1B3D !important; }}
-
-    /* --- Right information cards --- */
-    .side-card {{
-        border: 2px solid rgba(0,0,0,0.06);
-        border-radius: 32px;
-        padding: 28px;
-        font-size: {body_size};
-        line-height: 1.5;
-        color: #0D1B3D;
-    }}
-
-    .soft-card {{
-        background: white !important;
-        border-radius: 28px !important;
-        padding: 32px !important;
-        margin-bottom: 24px !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        display: flex;
-        gap: 22px;
-        align-items: flex-start;
-    }}
-
-    .soft-card .side-icon {{
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        background: #D9ECFA;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        flex-shrink: 0;
-    }}
-
-    .compact-theme-row {{
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        align-items: center;
-        padding: 14px 18px;
-        border-radius: 14px;
-        margin-bottom: 10px;
-    }}
-
-    /* --- Registration form card --- */
-    [data-testid="stForm"] {{
-        background: white !important;
-        border: 2px solid rgba(0,0,0,0.06) !important;
-        border-radius: 28px !important;
-        padding: 32px !important;
-        margin-bottom: 40px !important;
-    }}
-    .registration-title {{ font-size: {form_title_size}; font-weight: 900; color: #0D1B3D; margin-bottom: 6px; }}
-
-    /* --- Form inputs --- */
-    div[data-testid="stTextInput"] input {{ border-radius:50px !important; border:1.5px solid #e5e5e5 !important; padding:0.65rem 1.2rem !important; font-size:{body_size} !important; background:#fafafa !important; }}
-    div[data-testid="stTextInput"] input:focus {{ border-color:#f7679a !important; background:white !important; box-shadow:0 0 0 3px rgba(247,103,154,0.1) !important; }}
-    div[data-testid="stTextInput"] label {{ font-size:{body_size} !important; font-weight:500 !important; color:#444 !important; }}
-    textarea {{ background: white !important; color: #0D1B3D !important; border: 2px solid #1f2230 !important; border-radius: 14px !important; }}
-
-    /* --- Submit button --- */
-    div[data-testid="stFormSubmitButton"] button {{
-        width: auto !important;
-        min-width: 170px;
-        background: #285C7A !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 18px !important;
-        padding: 14px 24px !important;
-        font-size: {body_size} !important;
-        font-weight: 800 !important;
-    }}
-    div[data-testid="stFormSubmitButton"] button, div[data-testid="stFormSubmitButton"] button * {{ color: white !important; }}
-
-    /* --- Quick note --- */
-    .quick-note {{
-        font-size: {body_size};
-        background: #F5F2EA;
-        border: 2px solid #EEE7DC;
-        border-radius: 20px;
-        padding: 18px 22px;
-        margin: 18px 0 28px 0;
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        color: #0D1B3D;
-        line-height: 1.5;
-    }}
-    .quick-note-icon {{
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: #D9ECFA;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }}
-
-    /* --- Text color fixes --- */
-    .registration-card, .registration-card label, .registration-card p, .registration-card div, .registration-card span, [data-testid="stForm"] label, [data-testid="stForm"] p {{ color: #0D1B3D !important;}}
-    
-    /* --- Mobile layout fixes --- */
-    @media (max-width: 768px) {{
-        /* Prevent horizontal scrolling */
-        html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
-        .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
-        
-        .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
-        h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
-
-        /* Scaling for toggles */
-        .theme-title {{ font-size: {mobile_body_size} !important;}}
-        .theme-text {{ font-size: {mobile_schedule_text_size} !important; }}
-        .theme-time {{font-size: {mobile_schedule_text_size} !important;}}
-        [data-testid="stExpander"] summary p {{ font-size: {mobile_schedule_day_size} !important; }}
-
-        .intro-box {{
-            font-size: {mobile_body_size} !important;
-            padding: 16px 18px !important;
-            border-radius: 20px !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-        }}
-        
-        .registration-title {{ font-size: {mobile_form_title_size} !important; }}
-        input, textarea, select {{ max-width: 100% !important; box-sizing: border-box !important; }}
-        [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
-        .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important;}}
-    
-        .schedule-main-title {{ font-size: {mobile_form_title_size} !important; }}
-        .schedule-note {{ font-size: {mobile_body_size} !important; }}
-        .side-card {{ font-size: {mobile_body_size} !important; }}
-        .quick-note {{ font-size: {mobile_body_size} !important; }}
-        div[data-testid="stTextInput"] input, div[data-testid="stTextInput"] label, textarea {{ font-size: {mobile_body_size} !important; }}
-        div[data-testid="stFormSubmitButton"] button {{ font-size: {mobile_body_size} !important; }}
-    }}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-""", unsafe_allow_html=True)
-
-st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
-
-# --- Top bar ---
+# Top bar
 top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
 
 with top_left:
@@ -336,11 +89,11 @@ with top_right:
             st.query_params["text_size"] = text_size
             st.rerun()
 
-# --- Header ---
+# Header
 st.markdown(f'<div class="page-title">{t("ws_title", lang)}</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="intro-box">{t("ws_subtitle", lang)}</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="workshop-intro-box">{t("ws_subtitle", lang)}</div>', unsafe_allow_html=True)
 
-# --- Workshop schedule ---
+# Workshop schedule
 left, right = st.columns([2.2, 1])
 
 days = {
@@ -431,7 +184,7 @@ with right:
     </div>
     """, unsafe_allow_html=True)
 
-# --- Workshop registration ---
+# Workshop registration
 with st.form("workshop_registration_form"):
     st.markdown(f'<div class="registration-title">{t("ws_register_title", lang)}</div>', unsafe_allow_html=True)
     st.markdown(

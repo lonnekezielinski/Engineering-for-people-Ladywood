@@ -1,12 +1,13 @@
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import streamlit as st
-from translations import t, apply_rtl_css
+from translations import t
+from styling import apply_style
 
-# --- Page configuration ---
+# Page configuration
 st.set_page_config(page_title="Announcements", layout="wide")
 
-# --- Language settings ---
+# Language settings
 if "language" not in st.session_state:
     if "lang" in st.query_params:
         url_lang = st.query_params["lang"]
@@ -39,136 +40,9 @@ LANGUAGE_MAP = {
 }
 
 lang = st.session_state.get("language", "English")
+apply_style(lang)
 
-# --- Text sizing ---
-if "text_size" in st.query_params:
-    url_text_size = st.query_params["text_size"]
-    if url_text_size in ["S", "M", "L"]:
-        st.session_state["text_size"] = url_text_size
-
-if "text_size" not in st.session_state:
-    st.session_state["text_size"] = "S"
-
-text_size = st.session_state["text_size"]
-
-if text_size == "S":
-    page_title_size = "58px"
-    body_size = "18px"
-    card_title_size = "28px"
-    button_size = "20px"
-
-    mobile_page_title_size = "40px"
-    mobile_body_size = "16px"
-    mobile_card_title_size = "22px"
-    mobile_button_size = "18px"
-
-elif text_size == "M":
-    page_title_size = "70px"
-    body_size = "22px"
-    card_title_size = "34px"
-    button_size = "24px"
-
-    mobile_page_title_size = "46px"
-    mobile_body_size = "19px"
-    mobile_card_title_size = "26px"
-    mobile_button_size = "21px"
-
-elif text_size == "L":
-    page_title_size = "82px"
-    body_size = "26px"
-    card_title_size = "40px"
-    button_size = "28px"
-
-    mobile_page_title_size = "52px"
-    mobile_body_size = "22px"
-    mobile_card_title_size = "30px"
-    mobile_button_size = "24px"
-
-# --- Custom CSS ---
-st.markdown(f"""
-<style>
-/* --- Page layout --- */ 
-[data-testid="stAppViewContainer"] {{ background-color: #F5F2EA; }}
-[data-testid="stHeader"]           {{ background: transparent; }}
-[data-testid="stToolbar"]          {{ right: 2rem; }}
-[data-testid="stSidebar"]          {{ display: none; }}
-.block-container {{ max-width:none; width:100%; padding-top:2rem; padding-bottom:2rem; padding-left:4rem; padding-right:4rem; }}
-
-/* --- Back button --- */
-.stButton > button {{ background:white; border-radius:18px; border:2px solid #D8D2C7; padding:12px 18px; font-size:18px; color:#444; margin-bottom:25px; }}
-
-/* --- Header title and intro --- */
-.page-title    {{ font-size:{page_title_size}; font-weight:900; color:#0D1B3D; margin-bottom:5px; }}
-.subtitle-box {{ background:#CFEAC2; border:2px solid #A8D8A0; border-radius:24px; padding:20px 28px; margin-bottom:30px; font-size:{body_size}; font-weight: 500; color:#1A3E1A; }}
-
-/* --- Announcements cards --- */
-.announcement-card {{ background:white; border-radius:28px; padding:22px; margin-bottom:22px; display:flex; flex-direction:row; align-items:center; gap:24px; border:2px solid rgba(0,0,0,0.05); box-shadow:0 4px 12px rgba(0,0,0,0.04); transition:0.2s; }}
-.icon-box {{ width:110px; height:110px; border-radius:25px; display:flex; align-items:center; justify-content:center; font-size:45px; flex-shrink:0; }}
-
-/* Announcement icon background color */
-.green  {{ background:#D8EBCF; }}
-.purple {{ background:#E5D8F2; }}
-.blue   {{ background:#D9ECFA; }}
-.pink   {{ background:#F7D7DD; }}
-
-.card-content   {{ display:flex; flex-direction:column; justify-content:center; width:100%; margin:0; padding:0; }}
-.card-content * {{ margin-left:0; }}
-.card-content h3 {{ margin:0; font-size:{card_title_size}; color:#111; }}
-.card-content p  {{ margin-top:8px; font-size:{body_size}; line-height:1.6; color:#555; }}
-
-/* --- View all announcements button --- */
-.view-button {{ background:#E3F2DB; border:2px solid #9ED492; border-radius:20px; padding:18px 30px; margin:35px auto 10px auto; width:320px; height:68px; display:flex; align-items:center; justify-content:center; position:relative; font-size:{button_size}; font-weight:700; color:#3D6B32; transition:0.2s; box-shadow:0 4px 10px rgba(0,0,0,0.04); }}
-.view-button span {{ position:absolute; right:28px; top:50%; transform:translateY(-50%); font-size:24px; line-height:1; }}
-.view-button:hover {{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.08); }}
-
-/* Removes default link style around card */
-a {{ text-decoration:none !important; color:inherit !important; }}
-
-/* --- Accessibility settings --- */
-.setting-label {{ font-size:{body_size}; font-weight:700; color:#0D1B3D; margin-bottom:8px; }}
-
-/* Language dropdown menu */
-[data-testid="stSelectbox"] {{ width: 280px !important; max-width: 280px; }}
-[data-baseweb="select"] > div {{ background-color: white !important; border: 2px solid #D8D2C7 !important; border-radius: 18px !important; color: #222 !important; }}
-[data-baseweb="select"] span {{ color: #222 !important; font-weight: 500;}}
-
-/* Text size radio buttons */
-[data-testid="stRadio"] {{ width: 240px !important; background:white; border:2px solid #D8D2C7; border-radius:18px; padding:6px 12px; }}
-div[role="radiogroup"] label p {{ color:#0D1B3D !important; font-weight:600 !important; }}
-
-/* ---Mobile layout fixes--- */
-/* All the styling below is to scale the announcement page to make it fit a phone browser well*/
-@media (max-width: 768px) {{
-    /* Prevent horizontal scrolling */
-    html, body, [data-testid="stAppViewContainer"] {{ overflow-x: hidden !important; }}
-
-    .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 1rem !important; max-width: 100% !important;}}
-    .page-title {{ font-size: {mobile_page_title_size} !important; line-height: 1.1 !important; word-break: normal !important; overflow-wrap: normal !important; }}
-    
-    /* Break headings correctly */
-    h1, h2, h3 {{ word-break: normal !important; overflow-wrap: normal !important;}}
-    
-    /* Subtitle */
-    .subtitle-box {{ font-size: {mobile_body_size} !important; }}
-    
-    /* Card scaling  */
-    .announcement-card {{ flex-direction: column !important; align-items: center !important; text-align: center !important; padding: 20px !important; max-width: 100% !important; box-sizing: border-box !important; }}
-    .icon-box {{ width: 80px !important; height: 80px !important; font-size: 34px !important; }}
-    .card-content h3 {{ font-size: {mobile_card_title_size} !important; line-height: 1.25 !important; }}
-    .card-content p {{ font-size: {mobile_body_size} !important; line-height: 1.45 !important;}}
-    .view-button {{font-size: {mobile_button_size} !important; }}
-    
-    /* Scale view all announcements button */
-    [data-testid="stSelectbox"], [data-testid="stRadio"] {{ width: 100% !important; max-width: 100% !important; }}
-    .stButton > button {{ font-size: 16px !important; padding: 10px 14px !important; margin-bottom: 20px !important; }}
-}}
-
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
-
-# --- Top bar ---
+# Top bar 
 top_left, spacer, top_right = st.columns([2, 0.3, 1.7])
 
 with top_left:
@@ -215,11 +89,11 @@ with top_right:
             st.query_params["text_size"] = text_size
             st.rerun()
 
-# --- Header ---
+# Header
 st.markdown(f'<div class="page-title">{t("ann_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="subtitle-box">{t("ann_subtitle", lang)}</div>', unsafe_allow_html=True)
 
-# --- Announcements ---
+# Announcements
 announcement_data = [
     ("🚌", "purple", "ann_1_title", "ann_1_text"),
     ("🏠", "green",  "ann_2_title", "ann_2_text"),
@@ -238,7 +112,7 @@ for icon, colour, title_key, text_key in announcement_data:
 </div>
 """, unsafe_allow_html=True)
 
-# --- View all announcements button ---
+# View all announcements button
 st.markdown(f"""
 <a href="https://civicsquare.cc/" target="_blank">
   <div class="view-button">
