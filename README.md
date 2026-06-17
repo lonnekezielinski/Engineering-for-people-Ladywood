@@ -56,11 +56,19 @@ The key focus of the project is digital inclusion. The platform provides multili
 Ladywood Connect Dashboard
 │
 ├── app.py
+├── styling.py
 ├── translations.py
 ├── requirements.txt
 ├── README.md
 │
+├── .streamlit/
+│   └── config.toml
+│
 ├── assets/
+│   ├── styles.css
+│   ├── inside-bus.png
+│   ├── outside-bus.png
+│   └── waypoint-logo.png
 │
 └── pages/
     ├── announcements.py
