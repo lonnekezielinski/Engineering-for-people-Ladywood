@@ -158,14 +158,58 @@ st.markdown(apply_rtl_css(lang), unsafe_allow_html=True)
 # Header
 logo_path = Path("static/waypoint-logo.png")
 
-col_logo, col_title = st.columns([0.10, 0.90])
+col_logo, col_title, col_lang, col_text = st.columns([0.09, 0.51, 0.23, 0.17], vertical_alignment="center")
 with col_logo:
     st.image(str(logo_path), width=90)
+
 with col_title:
     st.markdown(
         f'<div class="title">{t("app_title", lang)}</div>',
         unsafe_allow_html=True
     )
+
+with col_lang:
+    st.markdown(
+        f"<div class='setting-label'>{t('label_language', lang)}</div>",
+        unsafe_allow_html=True
+    )
+
+    selected_display = st.selectbox(
+        "Language",
+        LANGUAGE_OPTIONS,
+        index=LANGUAGE_OPTIONS.index(
+            next(k for k, v in LANGUAGE_MAP.items() if v == lang)
+        ),
+        label_visibility="collapsed",
+        key="top_language_selectbox"
+    )
+
+    new_lang = LANGUAGE_MAP[selected_display]
+
+    if new_lang != st.session_state["language"]:
+        st.session_state["language"] = new_lang
+        st.query_params["lang"] = new_lang
+        st.rerun()
+
+with col_text:
+    st.markdown(
+        f"<div class='setting-label'>{t('label_textsize', lang)}</div>",
+        unsafe_allow_html=True
+    )
+
+    text_size_choice = st.radio(
+        "Text size",
+        ["S", "M", "L"],
+        index=["S", "M", "L"].index(st.session_state["text_size"]),
+        horizontal=True,
+        label_visibility="collapsed",
+        key="top_text_size_radio"
+    )
+
+    if text_size_choice != st.session_state["text_size"]:
+        st.session_state["text_size"] = text_size_choice
+        st.query_params["text_size"] = text_size_choice
+        st.rerun()
 
 st.markdown(
     f'<div class="subtitle">{t("app_subtitle", lang)}</div>',
