@@ -630,8 +630,7 @@ div[role="radiogroup"] label p {
 }
 
 div[data-testid="stTextInput"] input,
-div[data-testid="stTextArea"] textarea,
-[data-baseweb="select"] > div {
+div[data-testid="stTextArea"] textarea {
     background-color: #FAFAFA !important;
     border: 2px solid #D8D2C7 !important;
     border-radius: 18px !important;
@@ -685,8 +684,7 @@ div[data-testid="stTextArea"] textarea,
     .section-title,
     .card-title,
     .panel-title,
-    .registration-title,
-    [data-testid="stExpander"] summary p {
+    .registration-title {
         font-size: var(--mobile-heading-size) !important;
     }
 

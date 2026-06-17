@@ -49,16 +49,10 @@ with col_logo:
     st.image(str(logo_path), width=90)
 
 with col_title:
-    st.markdown(
-        f'<div class="title">{t("app_title", lang)}</div>',
-        unsafe_allow_html=True
-    )
+    st.markdown(f'<div class="title">{t("app_title", lang)}</div>', unsafe_allow_html=True)
 
 with col_lang:
-    st.markdown(
-        f"<div class='setting-label'>{t('label_language', lang)}</div>",
-        unsafe_allow_html=True
-    )
+    st.markdown(f"<div class='setting-label'>{t('label_language', lang)}</div>", unsafe_allow_html=True)
 
     selected_display = st.selectbox(
         "Language",
@@ -78,10 +72,7 @@ with col_lang:
         st.rerun()
 
 with col_text:
-    st.markdown(
-        f"<div class='setting-label'>{t('label_textsize', lang)}</div>",
-        unsafe_allow_html=True
-    )
+    st.markdown(f"<div class='setting-label'>{t('label_textsize', lang)}</div>", unsafe_allow_html=True)
 
     text_size_choice = st.radio(
         "Text size",
@@ -97,10 +88,7 @@ with col_text:
         st.query_params["text_size"] = text_size_choice
         st.rerun()
 
-st.markdown(
-    f'<div class="subtitle">{t("app_subtitle", lang)}</div>',
-    unsafe_allow_html=True
-)
+st.markdown(f'<div class="subtitle">{t("app_subtitle", lang)}</div>', unsafe_allow_html=True)
 
 # Card grid
 col1, col2 = st.columns(2)

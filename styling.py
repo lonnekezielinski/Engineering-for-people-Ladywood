@@ -2,8 +2,6 @@ import pathlib
 import streamlit as st
 from translations import apply_rtl_css
 
-
-# To load CSS from assets folder
 def load_css(file_path):
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)

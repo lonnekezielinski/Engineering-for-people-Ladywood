@@ -114,7 +114,7 @@ tooltip=t("bus_map_tooltip", lang),
     icon=folium.Icon(color="purple", icon="bus", prefix="fa")
 ).add_to(m)
 
-# Right column with information & initialize both columns
+# Right column with information and also make two columns so that the map becomes smaller 
 map_col, info_col = st.columns([1.5, 1])
 
 with map_col:

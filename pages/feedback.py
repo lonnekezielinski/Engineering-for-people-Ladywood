@@ -93,7 +93,6 @@ with top_right:
 st.markdown(f'<div class="page-title">{t("fb_title", lang)}</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="intro-box">{t("fb_intro", lang)}</div>', unsafe_allow_html=True)
 
-# Tabs 
 feedback_tab, requests_tab = st.tabs([t("fb_tab_feedback", lang), t("fb_tab_requests", lang)])
 
 # Feedback tab
