@@ -78,7 +78,7 @@ Ladywood Connect Dashboard
 ```
 ---
 ## Installation
-1. Extract the project ZIP file 
+1. Extract the ZIP file 
 2. (Recommended) Create a virtual environment 
 
 Windows:
@@ -97,11 +97,11 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-5. Run the application 
+5. Run the application locally
 ```bash
 streamlit run app.py
 ```
-6. The application will open automatically. If not, open the local URL that will be displayed in the terminal (http://localhost:8501)
+6. The application will open automatically. If not, open the local URL that will be displayed in the terminal (http://localhost:8501).
 ---
 ## Deployment 
 This platform was developed using Streamlit and deployed using Streamlit Community Cloud.
