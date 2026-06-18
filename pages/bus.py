@@ -120,7 +120,6 @@ map_col, info_col = st.columns([1.5, 1])
 with map_col:
     st_folium(m, width="100%", height=500)
 
-with info_col:
     st.markdown(f"""
     <div class="bus-location-box">
         <div class="bus-location-icon">📍</div>
@@ -167,3 +166,5 @@ for i, (day_key, time_str) in enumerate(days):
         f'</div>'
     )
 st.markdown(f'<div class="schedule-box">{rows_html}</div>', unsafe_allow_html=True)
+with info_col:
+    st.image("assets/outside-bus.png", width="stretchst")
