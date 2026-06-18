@@ -118,30 +118,33 @@ tooltip=t("bus_map_tooltip", lang),
 map_col, info_col = st.columns([1.5, 1])
 
 with map_col:
-    st_folium(m, width="100%", height=500)
+    st_folium(m, width="100%", height=350)
 
-    st.markdown(f"""
-    <div class="bus-location-box">
-        <div class="bus-location-icon">📍</div>
-        <div>
-            <h3>{t("bus_live_badge", lang)}</h3>
-            <p>{t("bus_address", lang)}</p>
-        </div>
+with info_col:
+    st.image("assets/outside-bus.png")
+    
+st.markdown(f"""
+<div class="bus-location-box">
+    <div class="bus-location-icon">📍</div>
+    <div>
+        <h3>{t("bus_live_badge", lang)}</h3>
+        <p>{t("bus_address", lang)}</p>
     </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="workshop-redirect-box">
-        <div class="workshop-redirect-icon">🧑‍💻</div>
-        <div>
-            <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
-            <p>{t('bus_seecommunityoffers', lang)}</p>
-            <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
-                View workshops →
-            </a>
-        </div>
+st.markdown(f"""
+<div class="workshop-redirect-box">
+    <div class="workshop-redirect-icon">🧑‍💻</div>
+    <div>
+        <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
+        <p>{t('bus_seecommunityoffers', lang)}</p>
+        <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
+            View workshops →
+        </a>
     </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
 
 # Weekly schedule 
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)
@@ -166,5 +169,3 @@ for i, (day_key, time_str) in enumerate(days):
         f'</div>'
     )
 st.markdown(f'<div class="schedule-box">{rows_html}</div>', unsafe_allow_html=True)
-with info_col:
-    st.image("assets/outside-bus.png", width="stretchst")
