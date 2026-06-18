@@ -115,36 +115,39 @@ tooltip=t("bus_map_tooltip", lang),
 ).add_to(m)
 
 # Right column with information and also make two columns so that the map becomes smaller 
-map_col, info_col = st.columns([1.5, 1])
+map_col, info_col = st.columns([1.7, 1])
 
 with map_col:
-    st_folium(m, width="100%", height=350)
+    st_folium(m, width="100%", height=400)
 
 with info_col:
-    st.image("assets/outside-bus.png")
-    
-st.markdown(f"""
-<div class="bus-location-box">
-    <div class="bus-location-icon">📍</div>
-    <div>
-        <h3>{t("bus_live_badge", lang)}</h3>
-        <p>{t("bus_address", lang)}</p>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+    st.image("assets/outside-bus-dashboard.png")
 
-st.markdown(f"""
-<div class="workshop-redirect-box">
-    <div class="workshop-redirect-icon">🧑‍💻</div>
-    <div>
-        <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
-        <p>{t('bus_seecommunityoffers', lang)}</p>
-        <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
-            View workshops →
-        </a>
+col1, col2 = st.columns([1, 1])
+with col1:
+    st.markdown(f"""
+    <div class="bus-location-box">
+        <div class="bus-location-icon">📍</div>
+        <div>
+            <h3>{t("bus_live_badge", lang)}</h3>
+            <p>{t("bus_address", lang)}</p>
+        </div>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown(f"""
+    <div class="workshop-redirect-box">
+        <div class="workshop-redirect-icon">🧑‍💻</div>
+        <div>
+            <h3>{t('bus_wanttojoinaworkshop', lang)}</h3>
+            <p>{t('bus_seecommunityoffers', lang)}</p>
+            <a href="workshops?lang={lang}&text_size={st.session_state['text_size']}" target="_self">
+                View workshops →
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Weekly schedule 
 st.markdown(f'<div class="section-title">{t("bus_hours_title", lang)}</div>', unsafe_allow_html=True)
