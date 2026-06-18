@@ -113,13 +113,10 @@ folium.Marker(
 tooltip=t("bus_map_tooltip", lang),
     icon=folium.Icon(color="purple", icon="bus", prefix="fa")
 ).add_to(m)
-
-# Right column with information and also make two columns so that the map becomes smaller 
+ 
 map_col, info_col = st.columns([1.7, 1])
-
 with map_col:
     st_folium(m, width="100%", height=400)
-
 with info_col:
     st.image("assets/outside-bus-dashboard.png")
 
