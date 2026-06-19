@@ -421,7 +421,6 @@ div[role="radiogroup"] label p {
     font-size: var(--body-size);
 }
 
-/* Feedback tabs */
 .stTabs [data-baseweb="tab-list"] {
     gap: 14px;
     margin-bottom: 30px;
@@ -540,6 +539,11 @@ div[role="radiogroup"] label p {
     padding: 28px;
 }
 
+.side-card a {
+    color: #285C7A !important;
+    text-decoration: underline !important;
+}
+
 .soft-card {
     background-color: #FFFFFF !important;
     border-radius: 28px !important;
@@ -549,6 +553,7 @@ div[role="radiogroup"] label p {
     margin-bottom: 24px !important;
     padding: 32px !important;
 }
+
 
 .side-icon,
 .quick-note-icon {
